@@ -10,8 +10,8 @@
     --accent: #556b2f;
     --accent-dark: #3f5122;
     --text: #1f2937;
-    --muted: #6b7280;
-    --bg: #f8fafc;
+    --muted: #7a806f;
+    --bg: #dfe5d6;
     --white: #ffffff;
     --shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
     --radius: 18px;
@@ -28,6 +28,17 @@ body {
         linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)),
         url('images/hero.jpg') center/cover fixed no-repeat;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Ako je sadržaj kratak, footer ostaje na dnu */
+html, body {
+    height: 100%;
 }
 
 /* HEADER */
