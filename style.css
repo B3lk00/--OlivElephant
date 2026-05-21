@@ -359,10 +359,29 @@ footer p {
 
 /* neki nowi dropdown */
 
-.dropdown-menu {
-    display: none;
+.nav-drop {
+    display: inline-block;
+    color: var(--cream);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.4px;
+    padding: 10px 17px;
+    border-radius: 999px;
+    border: 1px solid rgba(194, 163, 107, 0.22);
+    background: rgba(255, 255, 255, 0.04);
+    cursor: pointer;
+    font-family: inherit;
 }
 
-.dropdown.open .dropdown-menu {
-    display: block;
+.dropdown:hover .nav-drop {
+    color: #10140f;
+    background: linear-gradient(135deg, var(--sand), var(--green-light));
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
 }
