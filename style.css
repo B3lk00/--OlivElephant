@@ -356,3 +356,13 @@ footer p {
         gap: 4px;
     }
 }
+
+/* neki nowi dropdown */
+
+.dropdown-menu {
+    display: none;
+}
+
+.dropdown.open .dropdown-menu {
+    display: block;
+}
