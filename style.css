@@ -356,3 +356,23 @@ footer p {
         gap: 4px;
     }
 }
+/* hover dropdown menu*/
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 330px;
+    z-index: 9999;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
