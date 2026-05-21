@@ -99,9 +99,9 @@ nav a:hover,
 
 .dropdown-menu {
     position: absolute;
-    top: calc(100% + 10px);
+    top: 100%;
     left: 50%;
-    transform: translateX(-50%) translateY(8px);
+    transform: translateX(-50%);
     min-width: 330px;
     padding: 10px;
     background: rgba(16, 20, 15, 0.92);
@@ -109,10 +109,11 @@ nav a:hover,
     border: 1px solid rgba(194, 163, 107, 0.35);
     border-radius: 18px;
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: 0.25s ease;
+    transition: opacity 0.25s ease;
 }
 
 .dropdown:hover .dropdown-menu {
