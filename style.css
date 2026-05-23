@@ -545,3 +545,12 @@ footer p {
 .next {
     right: 35px;
 }
+
+.feature-link h3 {
+    color: var(--dark);
+    margin-bottom: 12px;
+}
+
+.feature-link p {
+    color: #444;
+}
