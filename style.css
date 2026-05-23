@@ -385,3 +385,48 @@ footer p {
     visibility: visible !important;
     pointer-events: auto !important;
 }
+
+/*streliste */
+
+.hero-text {
+    font-size: 1.25rem;
+    line-height: 1.9;
+    max-width: 950px;
+    margin: 25px 0 45px;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 50px;
+}
+
+.feature-card,
+.category-link {
+    display: block;
+    background: rgba(255,255,255,0.55);
+    padding: 26px;
+    border-radius: 18px;
+    border: 1px solid rgba(85,107,47,0.25);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    text-decoration: none;
+    color: var(--text);
+    transition: 0.25s ease;
+}
+
+.feature-card:hover,
+.category-link:hover {
+    transform: translateY(-6px);
+    border-color: rgba(85,107,47,0.55);
+}
+
+.category-link h3 {
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
