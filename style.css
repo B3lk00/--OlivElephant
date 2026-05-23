@@ -545,7 +545,6 @@ footer p {
 .next {
     right: 35px;
 }
-/*klubhouse css*/
 
 /* ===== KLUBHAUS ===== */
 
@@ -562,6 +561,31 @@ footer p {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 25px;
     margin-top: 40px;
+}
+
+.feature-link {
+    display: block;
+    text-decoration: none !important;
+    color: inherit;
+
+    background: transparent;
+
+    border: none;
+    border-radius: 20px;
+
+    padding: 30px;
+
+    box-shadow: none;
+
+    transition: all .3s ease;
+}
+
+.feature-link:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(85,107,47,0.55);
+
+    box-shadow: 0 20px 40px rgba(0,0,0,0.18);
 }
 
 .feature-link h3 {
