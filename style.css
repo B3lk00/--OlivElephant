@@ -564,31 +564,6 @@ footer p {
     margin-top: 40px;
 }
 
-.feature-link {
-    display: block;
-    text-decoration: none !important;
-    color: inherit;
-
-    background: rgba(255,255,255,0.55);
-
-    border: 1px solid rgba(85,107,47,0.25);
-    border-radius: 20px;
-
-    padding: 30px;
-
-    box-shadow: 0 12px 28px rgba(0,0,0,0.08);
-
-    transition: all .3s ease;
-}
-
-.feature-link:hover {
-    transform: translateY(-8px);
-
-    border-color: rgba(85,107,47,0.55);
-
-    box-shadow: 0 20px 40px rgba(0,0,0,0.18);
-}
-
 .feature-link h3 {
     color: var(--dark);
     margin-bottom: 15px;
