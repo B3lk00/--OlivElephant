@@ -76,3 +76,14 @@ function changeImage(direction) {
 
     document.getElementById("lightbox-img").src = images[currentImage];
 }
+
+/*za prenociste*/
+
+const images = [
+    "images/apartman1.jpg",
+    "images/apartman2.jpg",
+    "images/apartman3.jpg",
+    "images/avlija.jpg",
+    "images/terasa.jpg",
+    "images/priroda.jpg"
+];
