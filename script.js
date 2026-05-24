@@ -12,7 +12,7 @@ dropdowns.forEach((dropdown) => {
     });
 });
 
-/*lightbox*/
+/*lightbox za klubhouse*/
 
 const images = [
     "images/caffe1.jpg",
@@ -43,6 +43,36 @@ function changeImage(direction) {
     if (currentImage >= images.length) {
         currentImage = 0;
     }
+
+    document.getElementById("lightbox-img").src = images[currentImage];
+}
+
+/*lightbox za rent a quad*/
+
+const images = [
+    "images/quad1.jpg",
+    "images/buggy1.jpg",
+    "images/gclass1.jpg",
+    "images/rent1.jpg"
+];
+
+let currentImage = 0;
+
+function openLightbox(index) {
+    currentImage = index;
+    document.getElementById("lightbox-img").src = images[currentImage];
+    document.getElementById("lightbox").style.display = "flex";
+}
+
+function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+}
+
+function changeImage(direction) {
+    currentImage += direction;
+
+    if (currentImage < 0) currentImage = images.length - 1;
+    if (currentImage >= images.length) currentImage = 0;
 
     document.getElementById("lightbox-img").src = images[currentImage];
 }
