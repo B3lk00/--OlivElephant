@@ -731,3 +731,173 @@ footer p {
 .contact-card h3 {
     margin-bottom: 10px;
 }
+
+
+/* ===== MOBILNA VERZIJA ===== */
+
+@media (max-width: 768px) {
+
+    body {
+        background-attachment: scroll;
+    }
+
+    header {
+        padding: 14px 12px;
+        position: relative;
+    }
+
+    header h1 {
+        font-size: 1.15rem;
+        line-height: 1.25;
+        letter-spacing: 1px;
+        margin-bottom: 14px;
+    }
+
+    nav {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .dropdown,
+    nav > a {
+        width: 100%;
+    }
+
+    nav a,
+    .nav-drop,
+    .dropdown > a {
+        width: 100%;
+        text-align: center;
+        font-size: 0.82rem;
+        padding: 10px 8px;
+        border-radius: 14px;
+    }
+
+    .dropdown-menu {
+        position: static;
+        width: 100%;
+        min-width: 100%;
+        margin-top: 6px;
+        border-radius: 12px;
+        box-shadow: none;
+        transform: none;
+        z-index: 10;
+    }
+
+    .dropdown:hover .dropdown-menu {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    main {
+        width: calc(100% - 20px);
+        margin: 22px auto;
+        padding: 24px 16px;
+        border-radius: 16px;
+    }
+
+    main h2 {
+        font-size: 2rem;
+    }
+
+    .hero-text,
+    .page-intro {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .program-grid,
+    .feature-grid,
+    .two-columns,
+    .contact-grid,
+    .home-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px;
+    }
+
+    .program-card,
+    .feature-card,
+    .feature-link,
+    .single-card,
+    .contact-card {
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .home-main {
+        width: calc(100% - 20px);
+    }
+
+    .home-hero {
+        padding: 38px 22px;
+        border-radius: 18px;
+    }
+
+    .home-hero h2 {
+        font-size: 2.2rem;
+    }
+
+    .home-hero p {
+        font-size: 1rem;
+    }
+
+    .home-buttons {
+        flex-direction: column;
+    }
+
+    .home-buttons a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .gallery img {
+        height: 220px;
+    }
+
+    .map-wrapper iframe {
+        height: 320px;
+    }
+
+    .lightbox img {
+        max-width: 92%;
+        max-height: 75%;
+    }
+
+    .close {
+        top: 12px;
+        right: 20px;
+        font-size: 38px;
+    }
+
+    .prev,
+    .next {
+        font-size: 42px;
+    }
+
+    .prev {
+        left: 12px;
+    }
+
+    .next {
+        right: 12px;
+    }
+
+    footer {
+        padding: 16px 12px;
+        font-size: 0.85rem;
+    }
+
+    .footer-contact {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
