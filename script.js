@@ -90,6 +90,11 @@ const images = [
 
 /*hamburger */
 
-function toggleMenu() {
-    document.getElementById("mobileMenu").classList.toggle("active");
+const menuToggle = document.getElementById("menuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+
+if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener("click", function () {
+        mobileMenu.classList.toggle("active");
+    });
 }
