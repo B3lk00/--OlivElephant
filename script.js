@@ -87,3 +87,9 @@ const images = [
     "images/terasa.jpg",
     "images/priroda.jpg"
 ];
+
+/*hamburger */
+
+function toggleMenu() {
+    document.getElementById("mobileMenu").classList.toggle("active");
+}
