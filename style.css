@@ -1007,27 +1007,116 @@ footer p {
     text-transform: uppercase;
 }
 
+/* ===== PREMIUM BLOK ISPOD HERO SEKCIJE ===== */
+
 .statement-section {
     margin-top: 34px;
-    padding: 48px;
-    border-radius: 26px;
-    background: linear-gradient(145deg, rgba(241,234,216,.96), rgba(232,223,200,.94));
+    padding: 60px;
+
+    border-radius: 30px;
+
+    background:
+        radial-gradient(circle at 15% 20%, rgba(194,163,107,.18), transparent 30%),
+        radial-gradient(circle at 85% 80%, rgba(85,107,47,.25), transparent 35%),
+        linear-gradient(
+            135deg,
+            #0b0f0a 0%,
+            #10140f 45%,
+            #1b2417 100%
+        );
+
     border: 1px solid rgba(194,163,107,.35);
-    box-shadow: 0 20px 45px rgba(0,0,0,.25);
+
+    box-shadow: 0 30px 80px rgba(0,0,0,.45);
+
+    position: relative;
+    overflow: hidden;
+}
+
+.statement-section::before {
+    content: "";
+
+    position: absolute;
+    inset: 18px;
+
+    border-radius: 22px;
+
+    border: 1px solid rgba(194,163,107,.15);
+
+    pointer-events: none;
+}
+
+.statement-label {
+    display: inline-block;
+
+    color: var(--sand);
+
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 800;
+
+    margin-bottom: 18px;
 }
 
 .statement-section h3 {
-    font-size: clamp(1.8rem, 4vw, 3rem);
-    color: var(--dark);
-    line-height: 1.15;
-    margin-bottom: 20px;
+    color: var(--cream);
+
+    font-size: clamp(2.4rem, 5vw, 4.5rem);
+
+    line-height: 1.05;
+
+    margin-bottom: 25px;
+}
+
+.statement-section h3::after {
+    content: "";
+
+    display: block;
+
+    width: 160px;
+    height: 4px;
+
+    margin-top: 18px;
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--sand),
+            var(--green-light)
+        );
 }
 
 .statement-section p {
+    color: rgba(232,223,200,.88);
+
     font-size: 1.15rem;
-    line-height: 1.9;
-    max-width: 950px;
-    color: #343a31;
+
+    line-height: 2;
+
+    max-width: 900px;
+}
+
+@media (max-width: 768px) {
+
+    .statement-section {
+        padding: 35px 25px;
+    }
+
+    .statement-section::before {
+        inset: 12px;
+    }
+
+    .statement-section h3 {
+        font-size: 2.3rem;
+    }
+
+    .statement-section p {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
 }
 
 @media (max-width: 768px) {
