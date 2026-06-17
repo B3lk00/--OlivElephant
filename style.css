@@ -1143,3 +1143,70 @@ footer p {
         padding: 30px 22px;
     }
 }
+
+
+
+/* ===== TAMNI PREMIUM IZGLED ZA SVE KATEGORIJE ===== */
+
+main {
+    background:
+        radial-gradient(circle at 15% 20%, rgba(194,163,107,.14), transparent 30%),
+        radial-gradient(circle at 85% 80%, rgba(85,107,47,.25), transparent 35%),
+        linear-gradient(135deg, #0b0f0a 0%, #10140f 45%, #1b2417 100%) !important;
+
+    border: 1px solid rgba(194,163,107,.35) !important;
+    box-shadow: 0 30px 80px rgba(0,0,0,.45) !important;
+}
+
+main h2,
+main h3 {
+    color: var(--cream) !important;
+}
+
+main p,
+.hero-text,
+.page-intro {
+    color: rgba(232,223,200,.88) !important;
+}
+
+.program-card,
+.feature-card,
+.feature-link,
+.single-card,
+.contact-card,
+.route-box,
+.clubhouse-info {
+    background: rgba(255,255,255,.06) !important;
+    border: 1px solid rgba(194,163,107,.25) !important;
+    color: var(--cream) !important;
+}
+
+.program-card p,
+.feature-card p,
+.feature-link p,
+.single-card p,
+.contact-card p,
+.route-box p,
+.clubhouse-info p {
+    color: rgba(232,223,200,.78) !important;
+}
+
+.program-card h3,
+.feature-card h3,
+.feature-link h3,
+.single-card h3,
+.contact-card h3,
+.route-box h3,
+.clubhouse-info h3 {
+    color: var(--sand) !important;
+}
+
+main li {
+    background: rgba(255,255,255,.06) !important;
+    border: 1px solid rgba(194,163,107,.22) !important;
+    color: rgba(232,223,200,.9) !important;
+}
+
+main h2::after {
+    background: linear-gradient(90deg, var(--sand), var(--green-light)) !important;
+}
