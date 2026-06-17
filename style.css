@@ -905,3 +905,152 @@ footer p {
     }
 }
 
+
+/* ===== WOW POČETNA ===== */
+
+.home-main {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}
+
+.wow-hero {
+    position: relative;
+    min-height: 680px;
+    border-radius: 30px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 20% 25%, rgba(194,163,107,.22), transparent 28%),
+        radial-gradient(circle at 80% 80%, rgba(85,107,47,.35), transparent 30%),
+        linear-gradient(135deg, #0b0f0a 0%, #10140f 45%, #1b2417 100%);
+    border: 1px solid rgba(194,163,107,.35);
+    box-shadow: 0 30px 80px rgba(0,0,0,.45);
+    display: flex;
+    align-items: center;
+    padding: 70px;
+}
+
+.wow-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(120deg, transparent 0%, rgba(255,255,255,.06) 45%, transparent 60%);
+    transform: translateX(-100%);
+    animation: shineMove 6s infinite;
+}
+
+@keyframes shineMove {
+    0% {
+        transform: translateX(-100%);
+    }
+    45%, 100% {
+        transform: translateX(120%);
+    }
+}
+
+.wow-overlay {
+    position: absolute;
+    inset: 22px;
+    border: 1px solid rgba(194,163,107,.28);
+    border-radius: 24px;
+    pointer-events: none;
+}
+
+.wow-content {
+    position: relative;
+    z-index: 2;
+    max-width: 850px;
+}
+
+.wow-label {
+    color: var(--sand);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 900;
+    margin-bottom: 18px;
+}
+
+.wow-content h2 {
+    color: var(--cream);
+    font-size: clamp(3.4rem, 8vw, 7rem);
+    line-height: .92;
+    letter-spacing: -2px;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.wow-content h2::after {
+    display: none;
+}
+
+.wow-text {
+    color: rgba(232,223,200,.88);
+    font-size: 1.3rem;
+    line-height: 1.9;
+    max-width: 720px;
+}
+
+.wow-line {
+    width: 160px;
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--sand), var(--green-light));
+    margin: 35px 0 20px;
+}
+
+.wow-small {
+    color: var(--sand);
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.statement-section {
+    margin-top: 34px;
+    padding: 48px;
+    border-radius: 26px;
+    background: linear-gradient(145deg, rgba(241,234,216,.96), rgba(232,223,200,.94));
+    border: 1px solid rgba(194,163,107,.35);
+    box-shadow: 0 20px 45px rgba(0,0,0,.25);
+}
+
+.statement-section h3 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    color: var(--dark);
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.statement-section p {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    max-width: 950px;
+    color: #343a31;
+}
+
+@media (max-width: 768px) {
+    .wow-hero {
+        min-height: 560px;
+        padding: 36px 24px;
+        border-radius: 22px;
+    }
+
+    .wow-overlay {
+        inset: 14px;
+        border-radius: 18px;
+    }
+
+    .wow-content h2 {
+        font-size: 3rem;
+    }
+
+    .wow-text {
+        font-size: 1rem;
+    }
+
+    .statement-section {
+        padding: 30px 22px;
+    }
+}
