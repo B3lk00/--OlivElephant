@@ -974,8 +974,8 @@ footer p {
 
 .wow-content h2 {
     color: var(--cream);
-    font-size: clamp(3.4rem, 8vw, 7rem);
-    line-height: .92;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 0.95;
     letter-spacing: -2px;
     margin-bottom: 30px;
     text-transform: uppercase;
