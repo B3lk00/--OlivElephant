@@ -1329,3 +1329,25 @@ main h2::after {
     }
 
 }
+
+
+html,
+body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+
+    nav {
+        right: auto !important;
+        left: 100%;
+        width: 280px;
+        max-width: 80vw;
+    }
+
+    nav.active {
+        left: calc(100% - 280px);
+    }
+
+}
