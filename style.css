@@ -1351,3 +1351,52 @@ body {
     }
 
 }
+
+
+/* FIX: mobilni scroll stranica */
+
+html,
+body {
+    min-height: 100%;
+    height: auto !important;
+    overflow-x: hidden;
+    overflow-y: auto !important;
+}
+
+body {
+    min-height: 100dvh;
+}
+
+main {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+}
+
+@media (max-width: 768px) {
+    main {
+        width: calc(100% - 20px);
+        margin: 20px auto 30px;
+        padding: 28px 18px;
+        overflow: visible !important;
+    }
+
+    .program-grid,
+    .feature-grid,
+    .two-columns {
+        display: grid;
+        grid-template-columns: 1fr !important;
+        gap: 18px;
+    }
+
+    .program-card,
+    .feature-card,
+    .single-card {
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    footer {
+        margin-top: 30px;
+    }
+}
