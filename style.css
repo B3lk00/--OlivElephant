@@ -1400,3 +1400,119 @@ main {
         margin-top: 30px;
     }
 }
+
+
+
+/* ===== WOW CONTENT LAYOUT ===== */
+
+.premium-section {
+    position: relative;
+    padding: 55px;
+    border-radius: 32px;
+    overflow: hidden;
+
+    background:
+        radial-gradient(circle at 15% 20%, rgba(194,163,107,.18), transparent 35%),
+        radial-gradient(circle at 90% 80%, rgba(85,107,47,.25), transparent 35%),
+        linear-gradient(135deg, #0b0f0a, #10140f 45%, #1b2417);
+
+    border: 1px solid rgba(194,163,107,.35);
+    box-shadow: 0 30px 80px rgba(0,0,0,.45);
+}
+
+.premium-section::before {
+    content: "";
+    position: absolute;
+    inset: 18px;
+    border-radius: 24px;
+    border: 1px solid rgba(194,163,107,.16);
+    pointer-events: none;
+}
+
+.premium-layout {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 45px;
+    align-items: center;
+}
+
+.premium-label {
+    color: var(--sand);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 900;
+    margin-bottom: 18px;
+    display: inline-block;
+}
+
+.premium-title {
+    color: var(--cream);
+    font-size: clamp(2.4rem, 5vw, 4.6rem);
+    line-height: 1;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.premium-title::after {
+    content: "";
+    display: block;
+    width: 150px;
+    height: 4px;
+    margin-top: 22px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--sand), var(--green-light));
+}
+
+.premium-text {
+    color: rgba(232,223,200,.88);
+    font-size: 1.15rem;
+    line-height: 2;
+    max-width: 780px;
+}
+
+.premium-points {
+    display: grid;
+    gap: 18px;
+}
+
+.premium-point {
+    padding: 22px 24px;
+    border-left: 4px solid var(--sand);
+    background: rgba(255,255,255,.045);
+    backdrop-filter: blur(8px);
+    border-radius: 0 18px 18px 0;
+}
+
+.premium-point h3 {
+    color: var(--sand) !important;
+    margin-bottom: 8px;
+}
+
+.premium-point p {
+    color: rgba(232,223,200,.78) !important;
+    margin: 0;
+}
+
+/* mobitel */
+@media (max-width: 768px) {
+    .premium-section {
+        padding: 34px 22px;
+        border-radius: 24px;
+    }
+
+    .premium-layout {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .premium-title {
+        font-size: 2.5rem;
+    }
+
+    .premium-text {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+}
