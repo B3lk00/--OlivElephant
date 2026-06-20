@@ -46,3 +46,47 @@ function changeImage(direction) {
 
     document.getElementById("lightbox-img").src = images[currentImage];
 }
+
+
+/* ===== INTRO GLITCH LOADER ===== */
+
+document.addEventListener("DOMContentLoaded", function () {
+    const intro = document.getElementById("intro");
+    const glitchText = document.getElementById("glitchText");
+
+    if (!intro || !glitchText) return;
+
+    const finalText = "OLIV ELEPHANT";
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#@!?%&_=+-*/[]{}<>|\\/~$€£¥";
+
+    let iteration = 0;
+
+    const interval = setInterval(() => {
+        const text = finalText
+            .split("")
+            .map((letter, index) => {
+                if (letter === " ") return " ";
+                if (index < iteration) return finalText[index];
+
+                return chars[Math.floor(Math.random() * chars.length)];
+            })
+            .join("");
+
+        glitchText.innerText = text;
+
+        iteration += 0.18;
+
+        if (iteration >= finalText.length) {
+            glitchText.innerText = finalText;
+            clearInterval(interval);
+
+            setTimeout(() => {
+                intro.style.opacity = "0";
+
+                setTimeout(() => {
+                    intro.remove();
+                }, 800);
+            }, 1500);
+        }
+    }, 35);
+});
