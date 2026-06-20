@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         glitchText.innerText = text;
 
-        iteration += 0.18;
+        iteration += 0.10;
 
         if (iteration >= finalText.length) {
             glitchText.innerText = finalText;
@@ -88,5 +88,5 @@ document.addEventListener("DOMContentLoaded", function () {
                 }, 800);
             }, 1500);
         }
-    }, 35);
+    }, 50);
 });
