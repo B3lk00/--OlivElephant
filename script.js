@@ -48,27 +48,40 @@ function changeImage(direction) {
 }
 
 
-/* ===== INTRO GLITCH LOADER ===== */
+/* ==========================================
+   OLIV ELEPHANT INTRO ANIMACIJA
+========================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
+
     const intro = document.getElementById("intro");
     const glitchText = document.getElementById("glitchText");
 
     if (!intro || !glitchText) return;
 
     const finalText = "OLIV ELEPHANT";
-    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#@!?%&_=+-*/[]{}<>|\\/~$€£¥";
+
+    const chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#@!?%&_=+-*/[]{}<>|\\/~$€£¥";
 
     let iteration = 0;
 
     const interval = setInterval(() => {
+
         const text = finalText
             .split("")
             .map((letter, index) => {
-                if (letter === " ") return " ";
-                if (index < iteration) return finalText[index];
 
-                return chars[Math.floor(Math.random() * chars.length)];
+                if (letter === " ") return " ";
+
+                if (index < iteration) {
+                    return finalText[index];
+                }
+
+                return chars[
+                    Math.floor(Math.random() * chars.length)
+                ];
+
             })
             .join("");
 
@@ -77,16 +90,31 @@ document.addEventListener("DOMContentLoaded", function () {
         iteration += 0.10;
 
         if (iteration >= finalText.length) {
+
             glitchText.innerText = finalText;
+
             clearInterval(interval);
 
             setTimeout(() => {
+
+                glitchText.innerHTML =
+                "OE SPORTSKO<br>REKREATIVNI CENTAR";
+
+            }, 1200);
+
+            setTimeout(() => {
+
                 intro.style.opacity = "0";
 
                 setTimeout(() => {
+
                     intro.remove();
+
                 }, 800);
-            }, 1500);
+
+            }, 3200);
         }
-    }, 50);
+
+    }, 35);
+
 });
