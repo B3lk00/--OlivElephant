@@ -81,14 +81,14 @@ document.addEventListener("DOMContentLoaded", function () {
             .join("");
 
         glitchText.innerText = text;
-        iteration += 0.14;
+        iteration += 0.13;
 
         if (iteration >= finalText.length) {
             glitchText.innerText = finalText;
             clearInterval(interval);
 
             setTimeout(() => {
-                glitchText.innerHTML = "OE SPORTSKO<br>REKREATIVNI CENTAR";
+                glitchText.innerHTML = "OLIV ELEPHANT SPORTSKO<br>REKREATIVNI CENTAR";
             }, 1200);
 
             setTimeout(() => {
