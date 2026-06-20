@@ -1609,41 +1609,42 @@ main {
 }
 
 
+/* FIX: početna bez kartice u kartici */
 
-/* ===== UKLANJANJE DUPLIH OKVIRA + FIX MOBITEL ===== */
+.home-main {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+.home-main::before {
+    display: none !important;
+}
 
 .wow-overlay,
+.wow-hero::before,
 .statement-section::before {
     display: none !important;
 }
 
 @media (max-width: 768px) {
+    .home-main {
+        width: 100% !important;
+        margin: 20px auto 30px !important;
+    }
 
     .wow-hero {
         width: calc(100% - 20px) !important;
-        padding: 30px 18px !important;
+        margin: 0 auto !important;
+        padding: 28px 18px !important;
         border-radius: 22px !important;
     }
 
     .wow-content h2 {
-        font-size: 2.15rem !important;
-        line-height: 1 !important;
+        font-size: 2rem !important;
+        line-height: 1.05 !important;
         letter-spacing: -1px !important;
-        word-break: normal !important;
-        overflow-wrap: normal !important;
-    }
-
-    .wow-label {
-        font-size: 0.65rem !important;
-        letter-spacing: 2px !important;
-    }
-
-    .wow-text {
-        font-size: 0.95rem !important;
-        line-height: 1.65 !important;
-    }
-
-    .wow-small {
-        font-size: 0.75rem !important;
     }
 }
