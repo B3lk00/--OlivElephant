@@ -1402,58 +1402,123 @@ main {
 }
 
 
-/* ===== INTRO LOADER ===== */
+/* ==========================================
+   OLIV ELEPHANT INTRO LOADER
+========================================== */
 
 #intro {
     position: fixed;
     inset: 0;
+
     background:
-        radial-gradient(circle at 20% 20%, rgba(194,163,107,.18), transparent 30%),
-        radial-gradient(circle at 80% 80%, rgba(85,107,47,.25), transparent 35%),
-        linear-gradient(135deg, #0b0f0a 0%, #10140f 45%, #1b2417 100%);
+        linear-gradient(
+            rgba(0,0,0,.72),
+            rgba(0,0,0,.72)
+        ),
+        url("images/intro-bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     z-index: 99999999;
+
     transition: opacity .8s ease;
 }
 
+#intro::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    backdrop-filter: blur(6px);
+
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            rgba(194,163,107,.12),
+            transparent 40%
+        );
+
+    pointer-events: none;
+}
+
 .intro-content {
+    position: relative;
+    z-index: 2;
     text-align: center;
 }
 
-
-.intro-content p {
-    margin-top: 15px;
-    color: #00ffae;
-    letter-spacing: 6px;
-    font-weight: 900;
-}
-
 #glitchText {
-    font-size: clamp(2.8rem, 8vw, 7rem);
+
+    font-size: clamp(3rem, 8vw, 7rem);
+
     color: #fff;
+
     font-weight: 900;
-    letter-spacing: 4px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
     margin: 0;
 
     text-shadow:
-        0 0 10px rgba(255,255,255,.15),
-        0 0 20px rgba(255,255,255,.08);
+        0 0 15px rgba(255,255,255,.18),
+        0 0 30px rgba(255,255,255,.08);
 
     animation: glowPulse 4s ease-in-out infinite;
 }
 
+.intro-content p {
+
+    margin-top: 20px;
+
+    color: #c2a36b;
+
+    font-size: 1.1rem;
+
+    font-weight: 800;
+
+    letter-spacing: 8px;
+
+    text-transform: uppercase;
+}
+
 @keyframes glowPulse {
+
     0%,100% {
+
         text-shadow:
             0 0 10px rgba(255,255,255,.12),
             0 0 20px rgba(255,255,255,.06);
     }
 
     50% {
+
         text-shadow:
             0 0 15px rgba(255,255,255,.22),
             0 0 35px rgba(255,255,255,.12);
     }
+}
+
+/* MOBITEL */
+
+@media(max-width:768px){
+
+    #glitchText{
+        font-size:2.6rem;
+        letter-spacing:2px;
+    }
+
+    .intro-content p{
+        font-size:.8rem;
+        letter-spacing:4px;
+    }
+
 }
