@@ -53,68 +53,51 @@ function changeImage(direction) {
 ========================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
-
     const intro = document.getElementById("intro");
     const glitchText = document.getElementById("glitchText");
 
     if (!intro || !glitchText) return;
 
-    const finalText = "OLIV ELEPHANT";
+    if (sessionStorage.getItem("introPlayed")) {
+        intro.remove();
+        return;
+    }
 
-    const chars =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#@!?%&_=+-*/[]{}<>|\\/~$€£¥";
+    sessionStorage.setItem("introPlayed", "true");
+
+    const finalText = "OLIV ELEPHANT";
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#@!?%&_=+-*/[]{}<>|\\/~$€£¥";
 
     let iteration = 0;
 
     const interval = setInterval(() => {
-
         const text = finalText
             .split("")
             .map((letter, index) => {
-
                 if (letter === " ") return " ";
-
-                if (index < iteration) {
-                    return finalText[index];
-                }
-
-                return chars[
-                    Math.floor(Math.random() * chars.length)
-                ];
-
+                if (index < iteration) return finalText[index];
+                return chars[Math.floor(Math.random() * chars.length)];
             })
             .join("");
 
         glitchText.innerText = text;
-
-        iteration += 0.10;
+        iteration += 0.14;
 
         if (iteration >= finalText.length) {
-
             glitchText.innerText = finalText;
-
             clearInterval(interval);
 
             setTimeout(() => {
-
-                glitchText.innerHTML =
-                "OE SPORTSKO<br>REKREATIVNI CENTAR";
-
+                glitchText.innerHTML = "OE SPORTSKO<br>REKREATIVNI CENTAR";
             }, 1200);
 
             setTimeout(() => {
-
                 intro.style.opacity = "0";
 
                 setTimeout(() => {
-
                     intro.remove();
-
                 }, 800);
-
             }, 3200);
         }
-
     }, 35);
-
 });
