@@ -1401,3 +1401,50 @@ main {
     }
 }
 
+
+/* ===== INTRO LOADER ===== */
+
+#intro {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(194,163,107,.18), transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(85,107,47,.25), transparent 35%),
+        linear-gradient(135deg, #0b0f0a 0%, #10140f 45%, #1b2417 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999999;
+    transition: opacity .8s ease;
+}
+
+.intro-content {
+    text-align: center;
+}
+
+#glitchText {
+    font-size: clamp(2.8rem, 8vw, 7rem);
+    color: #fff;
+    font-weight: 900;
+    letter-spacing: 4px;
+    margin: 0;
+    text-shadow:
+        0 0 10px rgba(255,255,255,.25),
+        0 0 25px rgba(255,255,255,.15);
+    animation: glitchPulse .15s infinite;
+}
+
+.intro-content p {
+    margin-top: 15px;
+    color: #00ffae;
+    letter-spacing: 6px;
+    font-weight: 900;
+}
+
+@keyframes glitchPulse {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(1px); }
+    50% { transform: translateX(-1px); }
+    75% { transform: translateX(1px); }
+    100% { transform: translateX(0); }
+}
