@@ -1551,7 +1551,10 @@ main {
         border-radius: 22px !important;
     }
 
-   overlej
+    .wow-overlay {
+        inset: 12px !important;
+        border-radius: 18px !important;
+    }
 
     .wow-content {
         max-width: 100% !important;
@@ -1602,5 +1605,45 @@ main {
     .statement-section h3 {
         font-size: 2.1rem !important;
         line-height: 1.05 !important;
+    }
+}
+
+
+
+/* ===== UKLANJANJE DUPLIH OKVIRA + FIX MOBITEL ===== */
+
+.wow-overlay,
+.statement-section::before {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+
+    .wow-hero {
+        width: calc(100% - 20px) !important;
+        padding: 30px 18px !important;
+        border-radius: 22px !important;
+    }
+
+    .wow-content h2 {
+        font-size: 2.15rem !important;
+        line-height: 1 !important;
+        letter-spacing: -1px !important;
+        word-break: normal !important;
+        overflow-wrap: normal !important;
+    }
+
+    .wow-label {
+        font-size: 0.65rem !important;
+        letter-spacing: 2px !important;
+    }
+
+    .wow-text {
+        font-size: 0.95rem !important;
+        line-height: 1.65 !important;
+    }
+
+    .wow-small {
+        font-size: 0.75rem !important;
     }
 }
