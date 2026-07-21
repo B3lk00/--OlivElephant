@@ -1651,39 +1651,49 @@ main {
 
 /*------logo----*/
 
+header{
+    position: relative;
+}
+
 .header-logo{
 
     position:absolute;
 
-    left:30px;
+    left:35px;
 
-    top:50%;
+    top:22px;
 
-    transform:translateY(-50%);
-
-    z-index:1000;
+    z-index:999;
 }
 
 .header-logo img{
 
-    width:90px;
-    height:90px;
+    width:70px;
+
+    height:auto;
 
     object-fit:contain;
+
+    transition:.3s;
+}
+
+.header-logo img:hover{
+
+    transform:scale(1.08);
 }
 
 @media(max-width:768px){
 
 .header-logo{
 
-left:15px;
+left:18px;
+top:20px;
 
 }
 
 .header-logo img{
 
-width:55px;
-height:55px;
+width:48px;
 
 }
 
