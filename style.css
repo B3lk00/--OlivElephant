@@ -1651,29 +1651,17 @@ main {
 
 /*------logo----*/
 
-header{
-
-    position:relative;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    padding:20px 40px;
-
-}
-
 .header-logo{
 
     position:absolute;
 
-    left:35px;
+    left:30px;
 
     top:50%;
 
     transform:translateY(-50%);
+
+    z-index:1000;
 }
 
 .header-logo img{
@@ -1682,29 +1670,6 @@ header{
     height:90px;
 
     object-fit:contain;
-
-    transition:.3s;
-}
-
-.header-logo img:hover{
-
-    transform:scale(1.08);
-}
-
-.header-center{
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-}
-
-header h1{
-
-    margin-bottom:18px;
-
 }
 
 @media(max-width:768px){
