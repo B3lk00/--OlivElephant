@@ -3,157 +3,756 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Oliv Elephant Sportsko Rekreativni Centar</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="style.css?v=200">
+
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/favicon.png">
+
+    <style>
+        /* =====================================================
+           NOVA POČETNA STRANICA
+           Stil je ograničen samo na index.html
+        ===================================================== */
+
+        .oe-home {
+            width: min(1240px, calc(100% - 34px));
+            margin: 44px auto 70px;
+            padding: 0 !important;
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+            overflow: visible !important;
+        }
+
+        .oe-home::before {
+            display: none !important;
+        }
+
+        /* HERO */
+
+        .oe-hero {
+            position: relative;
+            min-height: min(760px, calc(100vh - 150px));
+            display: flex;
+            align-items: flex-end;
+            padding: clamp(38px, 7vw, 90px);
+            overflow: hidden;
+            border: 1px solid rgba(194, 163, 107, 0.34);
+            border-radius: 34px;
+            background:
+                radial-gradient(circle at 82% 20%, rgba(122, 143, 69, 0.23), transparent 34%),
+                radial-gradient(circle at 15% 84%, rgba(194, 163, 107, 0.15), transparent 30%),
+                linear-gradient(135deg, #080b08 0%, #10150f 48%, #1b2518 100%);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+            isolation: isolate;
+        }
+
+        .oe-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(110deg, transparent 0 36%, rgba(255,255,255,.055) 46%, transparent 56%),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent 0,
+                    transparent 79px,
+                    rgba(255,255,255,.017) 80px
+                );
+            animation: oeHeroSweep 7s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        .oe-hero::after {
+            content: "OE";
+            position: absolute;
+            right: -0.04em;
+            top: 50%;
+            transform: translateY(-53%);
+            color: rgba(232, 223, 200, 0.035);
+            font-size: clamp(15rem, 37vw, 36rem);
+            font-weight: 950;
+            letter-spacing: -0.12em;
+            line-height: 0.7;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes oeHeroSweep {
+            0%, 45% { transform: translateX(-25%); opacity: .2; }
+            70%, 100% { transform: translateX(25%); opacity: .7; }
+        }
+
+        .oe-hero-content {
+            max-width: 920px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .oe-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            color: var(--sand);
+            font-size: .78rem;
+            font-weight: 850;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+        }
+
+        .oe-kicker::before {
+            content: "";
+            width: 56px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--sand));
+        }
+
+        .oe-hero h2 {
+            max-width: 980px;
+            margin: 0 0 28px !important;
+            color: var(--cream) !important;
+            font-size: clamp(3.4rem, 8.5vw, 8.7rem) !important;
+            font-weight: 950;
+            letter-spacing: -.055em;
+            line-height: .84 !important;
+            text-transform: uppercase;
+        }
+
+        .oe-hero h2::after {
+            display: none !important;
+        }
+
+        .oe-hero-copy {
+            max-width: 720px !important;
+            margin: 0 !important;
+            color: rgba(232, 223, 200, .79) !important;
+            font-size: clamp(1rem, 1.5vw, 1.22rem) !important;
+            line-height: 1.9 !important;
+        }
+
+        .oe-scroll-note {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 38px;
+            color: rgba(194, 163, 107, .88);
+            font-size: .75rem;
+            font-weight: 800;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+
+        .oe-scroll-note span {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(194, 163, 107, .45);
+            border-radius: 50%;
+            animation: oeArrow 1.8s ease-in-out infinite;
+        }
+
+        @keyframes oeArrow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(6px); }
+        }
+
+        /* UVODNA PRIČA */
+
+        .oe-story {
+            display: grid;
+            grid-template-columns: minmax(220px, .7fr) minmax(0, 1.5fr);
+            gap: clamp(34px, 7vw, 110px);
+            padding: clamp(68px, 10vw, 130px) clamp(4px, 3vw, 34px);
+            border-bottom: 1px solid rgba(194, 163, 107, .19);
+        }
+
+        .oe-section-index {
+            color: rgba(194, 163, 107, .58);
+            font-size: 4.8rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .oe-story-title {
+            margin: 0 0 26px !important;
+            color: var(--cream) !important;
+            font-size: clamp(2.2rem, 5vw, 5.4rem) !important;
+            line-height: 1 !important;
+            letter-spacing: -.035em;
+            text-transform: uppercase;
+        }
+
+        .oe-story-title::after {
+            display: none !important;
+        }
+
+        .oe-story p {
+            max-width: 830px !important;
+            margin: 0 !important;
+            color: rgba(232, 223, 200, .76) !important;
+            font-size: clamp(1.05rem, 1.6vw, 1.28rem) !important;
+            line-height: 2 !important;
+        }
+
+        /* AKTUELNI DOGAĐAJ */
+
+        .oe-event {
+            padding: clamp(68px, 9vw, 120px) 0;
+            border-bottom: 1px solid rgba(194, 163, 107, .19);
+        }
+
+        .oe-event-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 30px;
+            margin-bottom: 36px;
+        }
+
+        .oe-event-heading small {
+            display: block;
+            margin-bottom: 14px;
+            color: var(--sand);
+            font-weight: 850;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+        }
+
+        .oe-event-heading h3 {
+            margin: 0 !important;
+            color: var(--cream) !important;
+            font-size: clamp(2.5rem, 6vw, 6rem) !important;
+            line-height: .95 !important;
+            letter-spacing: -.045em;
+            text-transform: uppercase;
+        }
+
+        .oe-event-date {
+            color: var(--sand);
+            font-size: clamp(1rem, 2vw, 1.35rem);
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .oe-event-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr);
+            gap: clamp(30px, 5vw, 70px);
+            align-items: center;
+        }
+
+        .oe-event-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 26px;
+            border: 1px solid rgba(194, 163, 107, .27);
+            box-shadow: 0 28px 70px rgba(0,0,0,.42);
+        }
+
+        .oe-event-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,.4));
+            pointer-events: none;
+        }
+
+        .oe-event-image img {
+            display: block;
+            width: 100%;
+            max-height: 650px;
+            object-fit: cover;
+            transition: transform .7s ease;
+        }
+
+        .oe-event-image:hover img {
+            transform: scale(1.035);
+        }
+
+        .oe-event-copy {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .oe-event-copy::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 3px;
+            bottom: 3px;
+            width: 2px;
+            background: linear-gradient(var(--sand), rgba(85,107,47,.15));
+        }
+
+        .oe-event-copy h4 {
+            margin: 0 0 18px;
+            color: var(--sand);
+            font-size: 1.45rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+        }
+
+        .oe-event-copy p {
+            margin: 0 0 28px !important;
+            color: rgba(232,223,200,.77) !important;
+            font-size: 1.05rem !important;
+            line-height: 1.9 !important;
+        }
+
+        .oe-event-meta {
+            display: grid;
+            gap: 14px;
+            margin: 0 0 32px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .oe-event-meta li {
+            display: grid;
+            grid-template-columns: 36px 1fr;
+            align-items: center;
+            margin: 0 !important;
+            padding: 0 0 14px !important;
+            color: rgba(232,223,200,.86) !important;
+            background: transparent !important;
+            border: 0 !important;
+            border-bottom: 1px solid rgba(194,163,107,.13) !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            font-weight: 650;
+        }
+
+        .oe-event-meta li::before {
+            display: none !important;
+        }
+
+        .oe-event-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 24px;
+            color: var(--dark);
+            background: var(--sand);
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 900;
+            transition: .25s ease;
+        }
+
+        .oe-event-btn:hover {
+            transform: translateY(-3px);
+            background: var(--cream);
+            box-shadow: 0 16px 35px rgba(0,0,0,.28);
+        }
+
+        /* ŠTA NAS IZDVAJA */
+
+        .oe-values {
+            padding: clamp(68px, 9vw, 120px) 0;
+        }
+
+        .oe-values-head {
+            max-width: 760px;
+            margin-bottom: 46px;
+        }
+
+        .oe-values-head small {
+            color: var(--sand);
+            font-weight: 850;
+            letter-spacing: .24em;
+            text-transform: uppercase;
+        }
+
+        .oe-values-head h3 {
+            margin: 16px 0 0 !important;
+            color: var(--cream) !important;
+            font-size: clamp(2.5rem, 6vw, 5.6rem) !important;
+            line-height: .96 !important;
+            letter-spacing: -.045em;
+            text-transform: uppercase;
+        }
+
+        .oe-value-row {
+            display: grid;
+            grid-template-columns: 90px minmax(220px, .72fr) minmax(0, 1.28fr);
+            gap: 28px;
+            align-items: baseline;
+            padding: 29px 0;
+            border-top: 1px solid rgba(194, 163, 107, .18);
+        }
+
+        .oe-value-row:last-child {
+            border-bottom: 1px solid rgba(194, 163, 107, .18);
+        }
+
+        .oe-value-number {
+            color: rgba(194,163,107,.46);
+            font-size: 2.3rem;
+            font-weight: 900;
+        }
+
+        .oe-value-row h4 {
+            margin: 0;
+            color: var(--sand);
+            font-size: clamp(1.2rem, 2vw, 1.65rem);
+        }
+
+        .oe-value-row p {
+            margin: 0 !important;
+            max-width: none !important;
+            color: rgba(232,223,200,.68) !important;
+            line-height: 1.8 !important;
+        }
+
+        /* ZAVRŠNA PORUKA */
+
+        .oe-ending {
+            position: relative;
+            padding: clamp(70px, 11vw, 150px) 0 24px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .oe-ending::before {
+            content: "ELEPHANT";
+            position: absolute;
+            left: 50%;
+            top: 52%;
+            transform: translate(-50%, -50%);
+            color: rgba(232,223,200,.025);
+            font-size: clamp(6rem, 18vw, 16rem);
+            font-weight: 950;
+            letter-spacing: -.08em;
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        .oe-ending h3 {
+            position: relative;
+            margin: 0 auto 22px !important;
+            max-width: 1050px;
+            color: var(--cream) !important;
+            font-size: clamp(2.7rem, 7vw, 7.2rem) !important;
+            line-height: .9 !important;
+            letter-spacing: -.05em;
+            text-transform: uppercase;
+        }
+
+        .oe-ending p {
+            position: relative;
+            margin: 0 auto !important;
+            color: var(--sand) !important;
+            font-size: .9rem !important;
+            font-weight: 850;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+        }
+
+        /* MOBITEL */
+
+        @media (max-width: 820px) {
+            .oe-home {
+                width: calc(100% - 20px);
+                margin-top: 22px;
+            }
+
+            .oe-hero {
+                min-height: 610px;
+                align-items: center;
+                padding: 32px 22px;
+                border-radius: 24px;
+            }
+
+            .oe-hero::after {
+                right: -.1em;
+                font-size: 16rem;
+            }
+
+            .oe-kicker {
+                font-size: .65rem;
+                letter-spacing: .18em;
+            }
+
+            .oe-kicker::before {
+                width: 30px;
+            }
+
+            .oe-hero h2 {
+                font-size: clamp(2.75rem, 14vw, 4.5rem) !important;
+                line-height: .9 !important;
+            }
+
+            .oe-hero-copy {
+                font-size: .98rem !important;
+                line-height: 1.75 !important;
+            }
+
+            .oe-story {
+                grid-template-columns: 1fr;
+                gap: 22px;
+                padding: 70px 4px;
+            }
+
+            .oe-section-index {
+                font-size: 2.8rem;
+            }
+
+            .oe-event-heading {
+                display: block;
+            }
+
+            .oe-event-date {
+                display: block;
+                margin-top: 18px;
+            }
+
+            .oe-event-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .oe-event-copy {
+                padding-left: 20px;
+            }
+
+            .oe-value-row {
+                grid-template-columns: 54px 1fr;
+                gap: 14px;
+            }
+
+            .oe-value-row p {
+                grid-column: 2;
+            }
+
+            .oe-value-number {
+                font-size: 1.65rem;
+            }
+
+            .oe-ending {
+                padding-top: 88px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .oe-hero::before,
+            .oe-scroll-note span {
+                animation: none !important;
+            }
+
+            .oe-event-image img {
+                transition: none !important;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
     <div id="intro">
-    <div class="intro-content">
-        <h1 id="glitchText">#_!@%&</h1>
-        <p>DOBRODOŠLI</p>
+        <div class="intro-content">
+            <h1 id="glitchText">#_!@%&</h1>
+            <p>DOBRODOŠLI</p>
+        </div>
     </div>
-</div>
 
-<header>
+    <header>
+        <div class="header-logo">
+            <img src="images/logo.png" alt="Oliv Elephant">
+        </div>
 
-    <div class="header-logo">
-    <img src="images/logo.png" alt="Oliv Elephant">
-    </div>
-    <h1>Oliv Elephant Sportsko Rekreativni Centar</h1>
+        <h1>Oliv Elephant Sportsko Rekreativni Centar</h1>
 
-    <button class="menu-toggle" id="menuToggle" aria-label="Otvori meni">
-    ☰
-</button>
-    
-<nav id="mobileMenu">
-
-    <a href="index.html" class="nav-link">Početna</a>
-
-    <div class="dropdown">
-        <button class="nav-drop" type="button">
-            Strelište
-            <span class="dropdown-arrow">⌄</span>
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-label="Otvori meni"
+            aria-expanded="false"
+        >
+            ☰
         </button>
 
-        <div class="dropdown-menu">
-            <a href="streliste.html">O strelištu</a>
-            <a href="klub.html">Klub praktičnog streljaštva</a>
-            <a href="akademija.html">Akademija oružja</a>
-        </div>
-    </div>
+        <nav id="mobileMenu">
+            <a href="index.html" class="nav-link">Početna</a>
 
-    <a href="klubhaus.html" class="nav-link">Klubhaus</a>
+            <div class="dropdown">
+                <button class="nav-drop" type="button">
+                    Strelište
+                    <span class="dropdown-arrow">⌄</span>
+                </button>
 
-    <a href="rent.html" class="nav-link">4x4 Rent & Tours</a>
+                <div class="dropdown-menu">
+                    <a href="streliste.html">O strelištu</a>
+                    <a href="klub.html">Klub praktičnog streljaštva</a>
+                    <a href="akademija.html">Akademija oružja</a>
+                </div>
+            </div>
 
-    <a href="smjestaj.html" class="nav-link">Prenoćište</a>
+            <a href="klubhaus.html" class="nav-link">Klubhaus</a>
+            <a href="rent.html" class="nav-link">4x4 Rent & Tours</a>
+            <a href="smjestaj.html" class="nav-link">Prenoćište</a>
+            <a href="kontakt.html" class="nav-link nav-contact">Kontakt</a>
+        </nav>
+    </header>
 
-    <a href="kontakt.html" class="nav-link nav-contact">
-        Kontakt
-    </a>
+    <main class="oe-home">
 
-</nav>
-</header>
+        <section class="oe-hero">
+            <div class="oe-hero-content">
+                <span class="oe-kicker">Oliv Elephant • Sanski Most</span>
 
-<main class="home-main">
+                <h2>
+                    Preciznost.<br>
+                    Avantura.<br>
+                    Priroda.
+                </h2>
 
-    <section class="wow-hero">
-        <div class="wow-overlay"></div>
+                <p class="oe-hero-copy">
+                    Mjesto gdje se sportsko streljaštvo, edukacija,
+                    off-road iskustvo, domaća atmosfera i odmor u prirodi
+                    spajaju u jedan potpuno drugačiji doživljaj.
+                </p>
 
-        <div class="wow-content">
-            <p class="wow-label">OE Sportsko Rekreativni Centar</p>
+                <div class="oe-scroll-note">
+                    <span>↓</span>
+                    Istražite priču centra
+                </div>
+            </div>
+        </section>
 
-            <h2>
-                Preciznost.Avantura.
-                Priroda.
-            </h2>
+        <section class="oe-story">
+            <div class="oe-section-index">01</div>
 
-            <p class="wow-text">
-                Mjesto gdje se sportsko streljaštvo, off-road iskustvo,
-                domaća atmosfera i odmor u prirodi spajaju u jedno
-                jedinstveno iskustvo.
-            </p>
+            <div>
+                <h3 class="oe-story-title">
+                    Više od destinacije.
+                </h3>
 
-            <div class="wow-line"></div>
+                <p>
+                    Oliv Elephant nije zamišljen kao obična lokacija,
+                    već kao prostor u kojem se susreću sport, priroda,
+                    sigurnost, edukacija i avantura. Svaki dio centra
+                    osmišljen je da posjetiocu pruži iskustvo koje traje
+                    duže od same posjete.
+                </p>
+            </div>
+        </section>
 
-            <p class="wow-small">
+        <section class="oe-event">
+            <div class="oe-event-heading">
+                <div>
+                    <small>Aktuelni događaj</small>
+                    <h3>Tactical Medical Kurs</h3>
+                </div>
+
+                <div class="oe-event-date">
+                    19.09. — 20.09.2026.
+                </div>
+            </div>
+
+            <div class="oe-event-layout">
+                <div class="oe-event-image">
+                    <img src="images/event.jpg" alt="Tactical Medical Kurs">
+                </div>
+
+                <div class="oe-event-copy">
+                    <h4>Prijave su u toku</h4>
+
+                    <p>
+                        Tokom cijele godine organizujemo kurseve, turnire,
+                        obuke i posebne događaje. Broj mjesta je ograničen,
+                        a prijave se vrše unaprijed.
+                    </p>
+
+                    <ul class="oe-event-meta">
+                        <li><span>01</span><span>OE Sportsko Rekreativni Centar</span></li>
+                        <li><span>02</span><span>Ograničen broj učesnika</span></li>
+                        <li><span>03</span><span>Teorijski i praktični dio</span></li>
+                    </ul>
+
+                    <a href="kontakt.html" class="oe-event-btn">
+                        Prijava i informacije →
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="oe-values">
+            <div class="oe-values-head">
+                <small>Ono što nas izdvaja</small>
+
+                <h3>
+                    Svaki detalj ima svoju svrhu.
+                </h3>
+            </div>
+
+            <div class="oe-value-row">
+                <span class="oe-value-number">01</span>
+                <h4>Sigurnost i stručni nadzor</h4>
+                <p>
+                    Aktivnosti se odvijaju u kontrolisanom okruženju,
+                    uz jasna pravila i odgovoran pristup.
+                </p>
+            </div>
+
+            <div class="oe-value-row">
+                <span class="oe-value-number">02</span>
+                <h4>Programi za različita iskustva</h4>
+                <p>
+                    Sadržaj je prilagođen početnicima, iskusnim strijelcima,
+                    pojedincima, grupama i posjetiocima željnim avanture.
+                </p>
+            </div>
+
+            <div class="oe-value-row">
+                <span class="oe-value-number">03</span>
+                <h4>Sport, priroda i odmor</h4>
+                <p>
+                    Na jednom mjestu povezujemo streljaštvo, off-road ture,
+                    domaću atmosferu i boravak u prirodi.
+                </p>
+            </div>
+
+            <div class="oe-value-row">
+                <span class="oe-value-number">04</span>
+                <h4>Događaji koji okupljaju ljude</h4>
+                <p>
+                    Redovni turniri, obuke i kursevi stvaraju živ centar
+                    u kojem se uvijek dešava nešto novo.
+                </p>
+            </div>
+        </section>
+
+        <section class="oe-ending">
+            <h3>
                 Stvoreno za one koji žele nešto drugačije.
-            </p>
+            </h3>
 
-            <p>
-            OE Centar nije zamišljen kao obična lokacija, već kao prostor
-            u kojem posjetilac može osjetiti spoj sigurnosti, adrenalina,
-            prirode i domaćeg ambijenta. Svaki detalj centra kreiran je
-            da pruži drugačiji doživljaj — od prvog dolaska do posljednjeg
-            pogleda na okolinu.
-            </p>
-            
-        </div>
-    </section>
+            <p>Oliv Elephant • Preciznost • Avantura • Priroda</p>
+        </section>
 
+    </main>
 
-<section class="event-section">
+    <footer>
+        <div class="footer-title">OE Sportsko Rekreativni Centar</div>
+        <p class="footer-subtitle">Strelište • Avantura • Priroda • Odmor</p>
 
-    <div class="event-header">
-        <span>AKTUELNI DOGAĐAJ</span>
-        <h2>Tactical Medical Kurs</h2>
-        <p>19.09. - 20.09.2026</p>
-    </div>
-
-    <div class="event-container">
-
-        <div class="event-image">
-            <img src="images/event.jpg" alt="Aktuelni događaj">
+        <div class="footer-contact">
+            <span>📍 Kruhari, Sanski Most</span>
+            <a href="tel:+38761759795">📞 +387 61 759 795</a>
+            <a href="mailto:kontakt@olivelephant.com">✉️ kontakt@olivelephant.com</a>
         </div>
 
-        <div class="event-info">
-
-            <h3>Prijave u toku</h3>
-
-            <p>
-                Redovno organizujemo kurseve, turnire, obuke i specijalne
-                događaje tokom cijele godine. Broj mjesta je ograničen,
-                a prijave se vrše unaprijed.
-            </p>
-
-            <ul>
-                <li>📅 Datum: 19.09. - 20.09.2026</li>
-                <li>📍 Lokacija: OE Sportsko Rekreativni Centar</li>
-                <li>👥 Ograničen broj učesnika</li>
-                <li>🎯 Teorijski i praktični dio</li>
-            </ul>
-
-            <a href="kontakt.html" class="event-btn">
-                Prijavi se
-            </a>
-
+        <div class="footer-bottom">
+            © 2026 OE Sportsko Rekreativni Centar. Sva prava zadržana.
         </div>
+    </footer>
 
-    </div>
-
-</section>  
-
-</main>
-
-<footer>
-    <div class="footer-title">OE Sportsko Rekreativni Centar</div>
-    <p class="footer-subtitle">Strelište • Avantura • Priroda • Odmor</p>
-
-    <div class="footer-contact">
-        <span>📍Kruhari,Sanski Most</span>
-        <a href="tel:+381601234567">📞 +387 61-759-795</a>
-        <a href="mailto:info@streljana.rs">✉️  kontakt@olivelephant.com </a>
-    </div>
-
-    <div class="footer-bottom">
-        © 2026 OE Sportsko Rekreativni Centar. Sva prava zadržana.
-    </div>
-</footer>
-
-<script src="script.js"></script>
+    <script src="script.js?v=200"></script>
 </body>
 </html>
