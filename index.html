@@ -36,18 +36,15 @@
 
         .oe-hero {
             position: relative;
-            min-height: min(760px, calc(100vh - 150px));
+            min-height: min(720px, calc(100vh - 150px));
             display: flex;
-            align-items: flex-end;
-            padding: clamp(38px, 7vw, 90px);
+            align-items: center;
+            padding: clamp(40px, 7vw, 90px) clamp(4px, 3vw, 34px);
             overflow: hidden;
-            border: 1px solid rgba(194, 163, 107, 0.34);
-            border-radius: 34px;
-            background:
-                radial-gradient(circle at 82% 20%, rgba(122, 143, 69, 0.23), transparent 34%),
-                radial-gradient(circle at 15% 84%, rgba(194, 163, 107, 0.15), transparent 30%),
-                linear-gradient(135deg, #080b08 0%, #10150f 48%, #1b2518 100%);
-            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+            border: 0;
+            border-radius: 0;
+            background: transparent;
+            box-shadow: none;
             isolation: isolate;
         }
 
@@ -70,11 +67,11 @@
         .oe-hero::after {
             content: "OE";
             position: absolute;
-            right: -0.04em;
+            right: -0.06em;
             top: 50%;
             transform: translateY(-53%);
-            color: rgba(232, 223, 200, 0.035);
-            font-size: clamp(15rem, 37vw, 36rem);
+            color: rgba(232, 223, 200, 0.028);
+            font-size: clamp(15rem, 38vw, 36rem);
             font-weight: 950;
             letter-spacing: -0.12em;
             line-height: 0.7;
@@ -145,6 +142,20 @@
             font-weight: 800;
             letter-spacing: .16em;
             text-transform: uppercase;
+        }
+
+        .oe-hero-content::after {
+            content: "";
+            display: block;
+            width: min(100%, 980px);
+            height: 1px;
+            margin-top: 58px;
+            background: linear-gradient(
+                90deg,
+                rgba(194, 163, 107, .38),
+                rgba(194, 163, 107, .08),
+                transparent
+            );
         }
 
         .oe-scroll-note span {
@@ -463,10 +474,10 @@
             }
 
             .oe-hero {
-                min-height: 610px;
+                min-height: 570px;
                 align-items: center;
-                padding: 32px 22px;
-                border-radius: 24px;
+                padding: 38px 4px 54px;
+                border-radius: 0;
             }
 
             .oe-hero::after {
