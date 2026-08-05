@@ -1,16 +1,58 @@
 console.log("Sajt je učitan.");
 
-/* HAMBURGER MENI */
+
+//hamburger i nav bar
 
 document.addEventListener("DOMContentLoaded", function () {
     const menuToggle = document.getElementById("menuToggle");
     const mobileMenu = document.getElementById("mobileMenu");
+    const dropdownButtons = document.querySelectorAll(".nav-drop");
 
     if (menuToggle && mobileMenu) {
         menuToggle.addEventListener("click", function () {
             mobileMenu.classList.toggle("active");
+
+            const menuIsOpen = mobileMenu.classList.contains("active");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                menuIsOpen ? "true" : "false"
+            );
+
+            menuToggle.textContent = menuIsOpen ? "×" : "☰";
         });
     }
+
+    dropdownButtons.forEach(function (button) {
+        button.addEventListener("click", function (event) {
+            if (window.innerWidth > 768) return;
+
+            event.preventDefault();
+
+            const currentDropdown = button.closest(".dropdown");
+
+            document.querySelectorAll(".dropdown.open").forEach(function (dropdown) {
+                if (dropdown !== currentDropdown) {
+                    dropdown.classList.remove("open");
+                }
+            });
+
+            currentDropdown.classList.toggle("open");
+        });
+    });
+
+    document.querySelectorAll("#mobileMenu a").forEach(function (link) {
+        link.addEventListener("click", function () {
+            if (!mobileMenu || window.innerWidth > 768) return;
+
+            mobileMenu.classList.remove("active");
+
+            if (menuToggle) {
+                menuToggle.textContent = "☰";
+                menuToggle.setAttribute("aria-expanded", "false");
+            }
+        });
+    });
 });
 
 /* LIGHTBOX UNIVERZALNI */
