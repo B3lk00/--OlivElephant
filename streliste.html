@@ -3,144 +3,588 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Strelište - OE Sportsko Rekreativni Centar</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="style.css?v=210">
+
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/favicon.png">
+
+    <style>
+        /* =====================================================
+           STRELIŠTE — PREMIUM STRANICA BEZ KARTICA
+        ===================================================== */
+
+        .range-page {
+            width: min(1240px, calc(100% - 34px));
+            margin: 42px auto 80px;
+            padding: 0 !important;
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+            overflow: visible !important;
+        }
+
+        .range-page::before {
+            display: none !important;
+        }
+
+        /* UVOD */
+
+        .range-hero {
+            position: relative;
+            min-height: 620px;
+            display: flex;
+            align-items: center;
+            padding: clamp(40px, 7vw, 90px) clamp(4px, 3vw, 34px);
+            overflow: hidden;
+            border-bottom: 1px solid rgba(194, 163, 107, .19);
+        }
+
+        .range-hero::after {
+            content: "RANGE";
+            position: absolute;
+            right: -0.05em;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(232, 223, 200, .025);
+            font-size: clamp(9rem, 24vw, 24rem);
+            font-weight: 950;
+            letter-spacing: -.08em;
+            line-height: .8;
+            pointer-events: none;
+        }
+
+        .range-hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 940px;
+        }
+
+        .range-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 26px;
+            color: var(--sand);
+            font-size: .76rem;
+            font-weight: 850;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+        }
+
+        .range-kicker::before {
+            content: "";
+            width: 58px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--sand));
+        }
+
+        .range-hero h2 {
+            margin: 0 0 28px !important;
+            color: var(--cream) !important;
+            font-size: clamp(4rem, 10vw, 9rem) !important;
+            font-weight: 950;
+            letter-spacing: -.06em;
+            line-height: .82 !important;
+            text-transform: uppercase;
+        }
+
+        .range-hero h2::after {
+            display: none !important;
+        }
+
+        .range-lead {
+            max-width: 780px !important;
+            margin: 0 !important;
+            color: rgba(232, 223, 200, .78) !important;
+            font-size: clamp(1.05rem, 1.6vw, 1.28rem) !important;
+            line-height: 1.95 !important;
+        }
+
+        /* KLJUČNE VRIJEDNOSTI */
+
+        .range-principles {
+            padding: clamp(72px, 10vw, 130px) 0;
+            border-bottom: 1px solid rgba(194, 163, 107, .19);
+        }
+
+        .range-section-head {
+            max-width: 800px;
+            margin-bottom: 42px;
+            padding: 0 clamp(4px, 3vw, 34px);
+        }
+
+        .range-section-head small {
+            color: var(--sand);
+            font-weight: 850;
+            letter-spacing: .24em;
+            text-transform: uppercase;
+        }
+
+        .range-section-head h3 {
+            margin: 16px 0 0 !important;
+            color: var(--cream) !important;
+            font-size: clamp(2.5rem, 6vw, 5.8rem) !important;
+            line-height: .96 !important;
+            letter-spacing: -.045em;
+            text-transform: uppercase;
+        }
+
+        .range-row {
+            display: grid;
+            grid-template-columns: 90px minmax(230px, .75fr) minmax(0, 1.25fr);
+            gap: 30px;
+            align-items: baseline;
+            padding: 30px clamp(4px, 3vw, 34px);
+            border-top: 1px solid rgba(194, 163, 107, .16);
+        }
+
+        .range-row:last-child {
+            border-bottom: 1px solid rgba(194, 163, 107, .16);
+        }
+
+        .range-number {
+            color: rgba(194, 163, 107, .43);
+            font-size: 2.4rem;
+            font-weight: 900;
+        }
+
+        .range-row h4 {
+            margin: 0;
+            color: var(--sand);
+            font-size: clamp(1.25rem, 2vw, 1.75rem);
+        }
+
+        .range-row p {
+            margin: 0 !important;
+            max-width: none !important;
+            color: rgba(232, 223, 200, .7) !important;
+            line-height: 1.8 !important;
+        }
+
+        /* PROGRAMI */
+
+        .range-programs {
+            padding: clamp(72px, 10vw, 130px) clamp(4px, 3vw, 34px);
+            border-bottom: 1px solid rgba(194, 163, 107, .19);
+        }
+
+        .range-program-title {
+            max-width: 760px;
+            margin-bottom: 48px;
+        }
+
+        .range-program-title small {
+            color: var(--sand);
+            font-weight: 850;
+            letter-spacing: .24em;
+            text-transform: uppercase;
+        }
+
+        .range-program-title h3 {
+            margin: 16px 0 0 !important;
+            color: var(--cream) !important;
+            font-size: clamp(2.5rem, 6vw, 5.6rem) !important;
+            line-height: .96 !important;
+            letter-spacing: -.045em;
+            text-transform: uppercase;
+        }
+
+        .program-line {
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 24px;
+            align-items: end;
+            padding: 34px 0;
+            color: inherit;
+            text-decoration: none;
+            border-top: 1px solid rgba(194, 163, 107, .17);
+            transition: .28s ease;
+        }
+
+        .program-line:last-child {
+            border-bottom: 1px solid rgba(194, 163, 107, .17);
+        }
+
+        .program-line::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--sand), var(--green-light));
+            transition: width .35s ease;
+        }
+
+        .program-line:hover::before {
+            width: 100%;
+        }
+
+        .program-line h4 {
+            margin: 0 0 10px;
+            color: var(--cream);
+            font-size: clamp(1.8rem, 4vw, 4rem);
+            line-height: 1;
+            letter-spacing: -.035em;
+            text-transform: uppercase;
+            transition: color .25s ease;
+        }
+
+        .program-line p {
+            margin: 0 !important;
+            color: rgba(232, 223, 200, .65) !important;
+        }
+
+        .program-line:hover h4 {
+            color: var(--sand);
+        }
+
+        .program-arrow {
+            color: var(--sand);
+            font-size: 2.2rem;
+            transition: transform .25s ease;
+        }
+
+        .program-line:hover .program-arrow {
+            transform: translateX(8px);
+        }
+
+        /* GALERIJA */
+
+        .range-gallery {
+            padding: clamp(72px, 10vw, 130px) 0 20px;
+        }
+
+        .range-gallery-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 30px;
+            margin-bottom: 38px;
+            padding: 0 clamp(4px, 3vw, 34px);
+        }
+
+        .range-gallery-head small {
+            display: block;
+            margin-bottom: 12px;
+            color: var(--sand);
+            font-weight: 850;
+            letter-spacing: .24em;
+            text-transform: uppercase;
+        }
+
+        .range-gallery-head h3 {
+            margin: 0 !important;
+            color: var(--cream) !important;
+            font-size: clamp(2.5rem, 6vw, 5.6rem) !important;
+            line-height: .95 !important;
+            letter-spacing: -.045em;
+            text-transform: uppercase;
+        }
+
+        .range-gallery-head p {
+            max-width: 370px !important;
+            margin: 0 !important;
+            color: rgba(232, 223, 200, .62) !important;
+            text-align: right;
+        }
+
+        .range-masonry {
+            columns: 4 250px;
+            column-gap: 16px;
+        }
+
+        .range-masonry img {
+            width: 100%;
+            display: block;
+            margin: 0 0 16px;
+            break-inside: avoid;
+            border-radius: 16px;
+            cursor: pointer;
+            filter: saturate(.86) contrast(1.04);
+            transition: transform .3s ease, filter .3s ease;
+        }
+
+        .range-masonry img:hover {
+            transform: scale(1.015);
+            filter: saturate(1) contrast(1.07);
+        }
+
+        /* MOBITEL */
+
+        @media (max-width: 820px) {
+            .range-page {
+                width: calc(100% - 20px);
+                margin-top: 20px;
+            }
+
+            .range-hero {
+                min-height: 540px;
+                padding: 38px 4px 54px;
+            }
+
+            .range-hero::after {
+                right: -.15em;
+                font-size: 10rem;
+            }
+
+            .range-kicker {
+                font-size: .64rem;
+                letter-spacing: .17em;
+            }
+
+            .range-kicker::before {
+                width: 30px;
+            }
+
+            .range-hero h2 {
+                font-size: clamp(3.2rem, 18vw, 5.3rem) !important;
+            }
+
+            .range-lead {
+                font-size: .98rem !important;
+                line-height: 1.78 !important;
+            }
+
+            .range-row {
+                grid-template-columns: 54px 1fr;
+                gap: 14px;
+            }
+
+            .range-row p {
+                grid-column: 2;
+            }
+
+            .range-number {
+                font-size: 1.7rem;
+            }
+
+            .program-line {
+                grid-template-columns: 1fr 32px;
+                padding: 28px 0;
+            }
+
+            .program-line h4 {
+                font-size: 2rem;
+            }
+
+            .range-gallery-head {
+                display: block;
+            }
+
+            .range-gallery-head p {
+                margin-top: 18px !important;
+                text-align: left;
+            }
+
+            .range-masonry {
+                columns: 2 145px;
+                column-gap: 10px;
+            }
+
+            .range-masonry img {
+                margin-bottom: 10px;
+                border-radius: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .range-masonry {
+                columns: 1;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
 <header>
-
     <div class="header-logo">
-    <img src="images/logo.png" alt="Oliv Elephant">
+        <img src="images/logo.png" alt="Oliv Elephant">
     </div>
-    
+
     <h1>Oliv Elephant Sportsko Rekreativni Centar</h1>
 
-    <button class="menu-toggle" id="menuToggle" aria-label="Otvori meni">
-    ☰
-</button>
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Otvori meni"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
 
-<nav id="mobileMenu">
+    <nav id="mobileMenu">
+        <a href="index.html" class="nav-link">Početna</a>
 
-    <a href="index.html" class="nav-link">Početna</a>
+        <div class="dropdown">
+            <button class="nav-drop" type="button">
+                Strelište
+                <span class="dropdown-arrow">⌄</span>
+            </button>
 
-    <div class="dropdown">
-        <button class="nav-drop" type="button">
-            Strelište
-            <span class="dropdown-arrow">⌄</span>
-        </button>
-
-        <div class="dropdown-menu">
-            <a href="streliste.html">O strelištu</a>
-            <a href="klub.html">Klub praktičnog streljaštva</a>
-            <a href="akademija.html">Akademija oružja</a>
+            <div class="dropdown-menu">
+                <a href="streliste.html">O strelištu</a>
+                <a href="klub.html">Klub praktičnog streljaštva</a>
+                <a href="akademija.html">Akademija oružja</a>
+            </div>
         </div>
-    </div>
 
-    <a href="klubhaus.html" class="nav-link">Klubhaus</a>
-
-    <a href="rent.html" class="nav-link">4x4 Rent & Tours</a>
-
-    <a href="smjestaj.html" class="nav-link">Prenoćište</a>
-
-    <a href="kontakt.html" class="nav-link nav-contact">
-        Kontakt
-    </a>
-
-</nav>
+        <a href="klubhaus.html" class="nav-link">Klubhaus</a>
+        <a href="rent.html" class="nav-link">4x4 Rent & Tours</a>
+        <a href="smjestaj.html" class="nav-link">Prenoćište</a>
+        <a href="kontakt.html" class="nav-link nav-contact">Kontakt</a>
+    </nav>
 </header>
 
-<main>
-    <h2>Strelište</h2>
+<main class="range-page">
 
-    <p class="hero-text">
-        Strelište OE Sportsko Rekreativni Centar predstavlja prostor namijenjen
-        sportskom, rekreativnom i edukativnom streljaštvu. Fokus je na sigurnosti,
-        kontroli i kvalitetnom iskustvu za sve posjetioce — od početnika do iskusnih
-        strijelaca.
-    </p>
+    <section class="range-hero">
+        <div class="range-hero-content">
+            <span class="range-kicker">Oliv Elephant • Strelište</span>
 
-    <div class="feature-grid">
-        <div class="feature-card">
-            <h3>Sigurno okruženje</h3>
-            <p>Aktivnosti se odvijaju uz poštovanje pravila sigurnosti i stručni nadzor.</p>
+            <h2>Strelište</h2>
+
+            <p class="range-lead">
+                Prostor namijenjen sportskom, rekreativnom i edukativnom
+                streljaštvu, gdje su sigurnost, kontrola i kvalitetno iskustvo
+                uvijek na prvom mjestu — bez obzira da li ste početnik ili
+                iskusan strijelac.
+            </p>
+        </div>
+    </section>
+
+    <section class="range-principles">
+        <div class="range-section-head">
+            <small>Osnova svakog iskustva</small>
+            <h3>Preciznost počinje pravilnim pristupom.</h3>
         </div>
 
-        <div class="feature-card">
-            <h3>Sportsko streljaštvo</h3>
-            <p>Prostor za trening, razvoj vještina i rad sa iskusnim instruktorima.</p>
+        <div class="range-row">
+            <span class="range-number">01</span>
+            <h4>Sigurno okruženje</h4>
+            <p>
+                Sve aktivnosti odvijaju se uz jasna pravila sigurnosti,
+                stručni nadzor i odgovoran odnos prema svakom učesniku.
+            </p>
         </div>
 
-        <div class="feature-card">
-            <h3>Rekreativno iskustvo</h3>
-            <p>Pogodno za pojedince, grupe i posjetioce koji žele novo iskustvo.</p>
-        </div>
-    </div>
-
-    <div class="info-box">
-        <h3>Istražite programe strelišta</h3>
-
-        <div class="two-columns">
-            <a href="klub.html" class="category-link">
-                <h3>Klub praktičnog streljaštva</h3>
-                <p>Treninzi, članstvo i sportski programi.</p>
-            </a>
-
-            <a href="akademija.html" class="category-link">
-                <h3>Akademija oruzja Oliv Elephant</h3>
-                <p>Obuke, edukacija i osnove sigurnog rukovanja.</p>
-            </a>
+        <div class="range-row">
+            <span class="range-number">02</span>
+            <h4>Sportsko streljaštvo</h4>
+            <p>
+                Prostor za razvoj preciznosti, pravilne tehnike, kontrole
+                i kontinuirano unapređenje streljačkih vještina.
+            </p>
         </div>
 
-    </div>
+        <div class="range-row">
+            <span class="range-number">03</span>
+            <h4>Rekreativno iskustvo</h4>
+            <p>
+                Pogodno za pojedince, grupe i posjetioce koji žele upoznati
+                streljaštvo u kontrolisanom i profesionalnom okruženju.
+            </p>
+        </div>
+    </section>
 
-    <h3 class="section-title">Galerija </h3>
+    <section class="range-programs">
+        <div class="range-program-title">
+            <small>Programi strelišta</small>
+            <h3>Izaberite pravac koji vam odgovara.</h3>
+        </div>
 
-    <div class="gallery">
-<img src="images/shooting range1.jpeg" onclick="openLightbox(0)">
-<img src="images/shooting range2.jpeg" onclick="openLightbox(1)">
-<img src="images/shooting range3.jpeg" onclick="openLightbox(2)">
-<img src="images/shooting range4.jpeg" onclick="openLightbox(3)">
-<img src="images/shooting range5.jpeg" onclick="openLightbox(4)">
-<img src="images/shooting range6.jpeg" onclick="openLightbox(5)">
-<img src="images/shooting range7.jpeg" onclick="openLightbox(6)">
-<img src="images/shooting range8.jpeg" onclick="openLightbox(7)">
-<img src="images/shooting range9.jpeg" onclick="openLightbox(8)">
-<img src="images/shooting range10.jpeg" onclick="openLightbox(9)">
-<img src="images/shooting range11.jpeg" onclick="openLightbox(10)">
-<img src="images/shooting range12.jpeg" onclick="openLightbox(11)">
-<img src="images/shooting range13.jpeg" onclick="openLightbox(12)">
-<img src="images/shooting range14.jpeg" onclick="openLightbox(13)">
-<img src="images/shooting range15.jpeg" onclick="openLightbox(14)">
-<img src="images/shooting range16.jpeg" onclick="openLightbox(15)">
-<img src="images/shooting range17.jpeg" onclick="openLightbox(16">
-<img src="images/shooting range18.jpeg" onclick="openLightbox(17)">
-<img src="images/shooting range19.jpeg" onclick="openLightbox(18)">
-<img src="images/shooting range20.jpeg" onclick="openLightbox(19)">
-<img src="images/shooting range21.jpeg" onclick="openLightbox(20)">
-<img src="images/shooting range22.jpeg" onclick="openLightbox(21)">
-<img src="images/shooting range23.jpeg" onclick="openLightbox(22)">
-<img src="images/shooting range24.jpeg" onclick="openLightbox(23)">
-<img src="images/shooting range25.jpeg" onclick="openLightbox(24)">
-    </div>
+        <a href="klub.html" class="program-line">
+            <div>
+                <h4>Klub praktičnog streljaštva</h4>
+                <p>Treninzi, članstvo, sportski programi i takmičarski razvoj.</p>
+            </div>
 
-    
+            <span class="program-arrow">→</span>
+        </a>
+
+        <a href="akademija.html" class="program-line">
+            <div>
+                <h4>Akademija oružja Oliv Elephant</h4>
+                <p>Obuke, edukacija i osnove sigurnog i pravilnog rukovanja.</p>
+            </div>
+
+            <span class="program-arrow">→</span>
+        </a>
+    </section>
+
+    <section class="range-gallery">
+        <div class="range-gallery-head">
+            <div>
+                <small>Galerija</small>
+                <h3>Strelište kroz detalje.</h3>
+            </div>
+
+            <p>
+                Kliknite na fotografiju za pregled preko cijelog ekrana
+                i listanje galerije.
+            </p>
+        </div>
+
+        <div class="range-masonry">
+            <img src="images/shooting range1.jpeg" alt="Strelište 1" onclick="openLightbox(0)">
+            <img src="images/shooting range2.jpeg" alt="Strelište 2" onclick="openLightbox(1)">
+            <img src="images/shooting range3.jpeg" alt="Strelište 3" onclick="openLightbox(2)">
+            <img src="images/shooting range4.jpeg" alt="Strelište 4" onclick="openLightbox(3)">
+            <img src="images/shooting range5.jpeg" alt="Strelište 5" onclick="openLightbox(4)">
+            <img src="images/shooting range6.jpeg" alt="Strelište 6" onclick="openLightbox(5)">
+            <img src="images/shooting range7.jpeg" alt="Strelište 7" onclick="openLightbox(6)">
+            <img src="images/shooting range8.jpeg" alt="Strelište 8" onclick="openLightbox(7)">
+            <img src="images/shooting range9.jpeg" alt="Strelište 9" onclick="openLightbox(8)">
+            <img src="images/shooting range10.jpeg" alt="Strelište 10" onclick="openLightbox(9)">
+            <img src="images/shooting range11.jpeg" alt="Strelište 11" onclick="openLightbox(10)">
+            <img src="images/shooting range12.jpeg" alt="Strelište 12" onclick="openLightbox(11)">
+            <img src="images/shooting range13.jpeg" alt="Strelište 13" onclick="openLightbox(12)">
+            <img src="images/shooting range14.jpeg" alt="Strelište 14" onclick="openLightbox(13)">
+            <img src="images/shooting range15.jpeg" alt="Strelište 15" onclick="openLightbox(14)">
+            <img src="images/shooting range16.jpeg" alt="Strelište 16" onclick="openLightbox(15)">
+            <img src="images/shooting range17.jpeg" alt="Strelište 17" onclick="openLightbox(16)">
+            <img src="images/shooting range18.jpeg" alt="Strelište 18" onclick="openLightbox(17)">
+            <img src="images/shooting range19.jpeg" alt="Strelište 19" onclick="openLightbox(18)">
+            <img src="images/shooting range20.jpeg" alt="Strelište 20" onclick="openLightbox(19)">
+            <img src="images/shooting range21.jpeg" alt="Strelište 21" onclick="openLightbox(20)">
+            <img src="images/shooting range22.jpeg" alt="Strelište 22" onclick="openLightbox(21)">
+            <img src="images/shooting range23.jpeg" alt="Strelište 23" onclick="openLightbox(22)">
+            <img src="images/shooting range24.jpeg" alt="Strelište 24" onclick="openLightbox(23)">
+            <img src="images/shooting range25.jpeg" alt="Strelište 25" onclick="openLightbox(24)">
+        </div>
+    </section>
+
 </main>
-     <div class="lightbox" id="lightbox">
+
+<div class="lightbox" id="lightbox">
     <span class="close" onclick="closeLightbox()">×</span>
     <button class="prev" onclick="changeImage(-1)">‹</button>
-    <img id="lightbox-img" src="">
+    <img id="lightbox-img" src="" alt="Pregled fotografije">
     <button class="next" onclick="changeImage(1)">›</button>
 </div>
 
-
 <footer>
-    <p>© 2026 OE Sportsko Rekreativni Centar</p>
+    <div class="footer-title">OE Sportsko Rekreativni Centar</div>
+    <p class="footer-subtitle">Strelište • Avantura • Priroda • Odmor</p>
+
+    <div class="footer-contact">
+        <span>📍 Kruhari, Sanski Most</span>
+        <a href="tel:+38761759795">📞 +387 61 759 795</a>
+        <a href="mailto:kontakt@olivelephant.com">✉️ kontakt@olivelephant.com</a>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 OE Sportsko Rekreativni Centar. Sva prava zadržana.
+    </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=210"></script>
 </body>
 </html>
