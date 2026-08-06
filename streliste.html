@@ -183,91 +183,61 @@
             line-height: 1.9 !important;
         }
 
-        /* ZIGZAG PRIČA */
+        /* TEKSTUALNE SEKCIJE BEZ SLIKA I KARTICA */
 
-        .zigzag {
-            padding: clamp(85px, 10vw, 135px) 0;
+        .range-details {
+            padding: clamp(80px, 10vw, 135px) 0;
         }
 
-        .zig-row {
+        .range-detail-row {
             display: grid;
-            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-            gap: clamp(40px, 7vw, 100px);
-            align-items: center;
-            margin-bottom: clamp(90px, 12vw, 150px);
+            grid-template-columns: minmax(180px, .62fr) minmax(0, 1.38fr);
+            gap: clamp(36px, 7vw, 100px);
+            align-items: start;
+            padding: clamp(38px, 5vw, 62px) 0;
+            border-top: 1px solid rgba(194,163,107,.17);
         }
 
-        .zig-row:last-child {
-            margin-bottom: 0;
+        .range-detail-row:last-child {
+            border-bottom: 1px solid rgba(194,163,107,.17);
         }
 
-        .zig-row.reverse .zig-image {
-            order: 2;
+        .range-detail-label {
+            position: sticky;
+            top: 150px;
         }
 
-        .zig-row.reverse .zig-copy {
-            order: 1;
-        }
-
-        .zig-image {
-            position: relative;
-        }
-
-        .zig-image img {
-            width: 100%;
+        .range-detail-label small {
             display: block;
-            aspect-ratio: 4 / 3;
-            object-fit: cover;
-            filter: saturate(.88) contrast(1.05);
-        }
-
-        .zig-image::before {
-            content: "";
-            position: absolute;
-            left: -16px;
-            top: -16px;
-            width: 58%;
-            height: 58%;
-            border-left: 1px solid rgba(194,163,107,.38);
-            border-top: 1px solid rgba(194,163,107,.38);
-            pointer-events: none;
-        }
-
-        .zig-row.reverse .zig-image::before {
-            left: auto;
-            right: -16px;
-            border-left: 0;
-            border-right: 1px solid rgba(194,163,107,.38);
-        }
-
-        .zig-copy {
-            max-width: 520px;
-        }
-
-        .zig-copy small {
-            display: block;
-            margin-bottom: 18px;
-            color: var(--sand);
+            margin-bottom: 14px;
+            color: rgba(194,163,107,.65);
             font-weight: 850;
             letter-spacing: .22em;
             text-transform: uppercase;
         }
 
-        .zig-copy h3 {
-            margin: 0 0 22px !important;
-            color: var(--cream) !important;
-            font-size: clamp(2.2rem, 4.7vw, 4.7rem) !important;
-            line-height: .96 !important;
-            letter-spacing: -.045em;
+        .range-detail-label h3 {
+            margin: 0 !important;
+            color: var(--sand) !important;
+            font-size: clamp(1.8rem, 3.3vw, 3.2rem) !important;
+            line-height: 1 !important;
             text-transform: uppercase;
         }
 
-        .zig-copy p {
-            margin: 0 !important;
-            max-width: 520px !important;
-            color: rgba(232,223,200,.69) !important;
-            font-size: 1.05rem !important;
-            line-height: 1.9 !important;
+        .range-detail-content {
+            max-width: 760px;
+        }
+
+        .range-detail-content p {
+            margin: 0 0 22px !important;
+            max-width: none !important;
+            color: rgba(232,223,200,.73) !important;
+            font-size: clamp(1.02rem, 1.35vw, 1.15rem) !important;
+            line-height: 1.95 !important;
+        }
+
+        .range-detail-content p:last-child {
+            margin-bottom: 0 !important;
         }
 
         /* CITAT PREKO SLIKE */
@@ -477,33 +447,23 @@
                 font-size: clamp(3.1rem, 17vw, 5rem) !important;
             }
 
-            .zig-row,
-            .zig-row.reverse {
+            .range-detail-row {
                 grid-template-columns: 1fr;
-                gap: 34px;
-                margin-bottom: 90px;
+                gap: 22px;
+                padding: 42px 0;
             }
 
-            .zig-row.reverse .zig-image,
-            .zig-row.reverse .zig-copy {
-                order: initial;
+            .range-detail-label {
+                position: static;
             }
 
-            .zig-row:nth-child(even) .zig-copy {
-                order: 1;
+            .range-detail-label h3 {
+                font-size: 2rem !important;
             }
 
-            .zig-row:nth-child(even) .zig-image {
-                order: 2;
-            }
-
-            .zig-image::before,
-            .zig-row.reverse .zig-image::before {
-                left: -8px;
-                right: auto;
-                top: -8px;
-                border-left: 1px solid rgba(194,163,107,.38);
-                border-right: 0;
+            .range-detail-content p {
+                font-size: .98rem !important;
+                line-height: 1.8 !important;
             }
 
             .range-quote {
@@ -576,20 +536,7 @@
 
     <nav id="mobileMenu">
         <a href="index.html" class="nav-link">Početna</a>
-
-        <div class="dropdown">
-            <button class="nav-drop" type="button">
-                Strelište
-                <span class="dropdown-arrow">⌄</span>
-            </button>
-
-            <div class="dropdown-menu">
-                <a href="streliste.html">O strelištu</a>
-                <a href="klub.html">Klub praktičnog streljaštva</a>
-                <a href="akademija.html">Akademija oružja</a>
-            </div>
-        </div>
-
+        <a href="streliste.html">O strelištu</a>
         <a href="klubhaus.html" class="nav-link">Klubhaus</a>
         <a href="rent.html" class="nav-link">4x4 Rent & Tours</a>
         <a href="smjestaj.html" class="nav-link">Prenoćište</a>
@@ -611,11 +558,11 @@
             </div>
 
             <div class="range-slide">
-                <img src="images/shooting range9.jpeg" alt="Trening na strelištu">
+                <img src="images/shooting range3.jpeg" alt="Trening na strelištu">
             </div>
 
             <div class="range-slide">
-                <img src="images/shooting range14.jpeg" alt="Strelište u prirodi">
+                <img src="images/shooting range4.jpeg" alt="Strelište u prirodi">
             </div>
 
             <div class="range-slider-ui">
@@ -649,52 +596,67 @@
 
     </section>
 
-    <section class="zigzag">
+    <section class="range-details">
 
-        <article class="zig-row">
-            <div class="zig-copy">
-                <small>Osnova svakog treninga</small>
-                <h3>Sigurnost bez kompromisa.</h3>
+        <article class="range-detail-row">
+            <div class="range-detail-label">
+                <small>Temelj svakog dolaska</small>
+                <h3>Sigurnost</h3>
+            </div>
+
+            <div class="range-detail-content">
                 <p>
                     Svaka aktivnost počinje jasnim pravilima, stručnim nadzorom
-                    i odgovornim pristupom. Cilj je da svaki učesnik razumije
-                    prostor, opremu i proceduru prije prvog pucnja.
+                    i odgovornim pristupom. Prije prvog pucnja učesnik se upoznaje
+                    sa prostorom, opremom i pravilima ponašanja na strelištu.
                 </p>
-            </div>
 
-            <div class="zig-image">
-                <img src="images/shooting range3.jpeg" alt="Sigurnost na strelištu">
-            </div>
-        </article>
-
-        <article class="zig-row reverse">
-            <div class="zig-image">
-                <img src="images/shooting range8.jpeg" alt="Sportsko streljaštvo">
-            </div>
-
-            <div class="zig-copy">
-                <small>Razvoj vještine</small>
-                <h3>Sportsko streljaštvo.</h3>
                 <p>
-                    Rad na preciznosti, kontroli, brzini i pravilnoj tehnici
-                    kroz strukturiran trening i kontinuirano usavršavanje.
+                    Cilj nije samo pogoditi metu, već razviti pravilne navike,
+                    kontrolu i sigurnost koja se podrazumijeva u svakom trenutku.
                 </p>
             </div>
         </article>
 
-        <article class="zig-row">
-            <div class="zig-copy">
+        <article class="range-detail-row">
+            <div class="range-detail-label">
+                <small>Razvoj tehnike</small>
+                <h3>Sportsko streljaštvo</h3>
+            </div>
+
+            <div class="range-detail-content">
+                <p>
+                    Trening je usmjeren na preciznost, brzinu, kontrolu i pravilnu
+                    tehniku. Svaki program se prilagođava iskustvu učesnika i cilju
+                    koji želi postići.
+                </p>
+
+                <p>
+                    Kroz kontinuiran rad razvijaju se sigurnost u izvođenju,
+                    pravilno rukovanje i sposobnost donošenja mirnih odluka
+                    pod pritiskom.
+                </p>
+            </div>
+        </article>
+
+        <article class="range-detail-row">
+            <div class="range-detail-label">
                 <small>Iskustvo za posjetioce</small>
-                <h3>Rekreacija sa svrhom.</h3>
-                <p>
-                    Idealan sadržaj za pojedince, grupe i goste koji žele
-                    doživjeti streljaštvo u kontrolisanom i profesionalnom
-                    okruženju.
-                </p>
+                <h3>Rekreacija</h3>
             </div>
 
-            <div class="zig-image">
-                <img src="images/shooting range15.jpeg" alt="Rekreativno streljaštvo">
+            <div class="range-detail-content">
+                <p>
+                    Strelište je pogodno i za pojedince, grupe i goste koji se
+                    prvi put susreću sa streljaštvom i žele ga upoznati u
+                    kontrolisanom okruženju.
+                </p>
+
+                <p>
+                    Uz stručnu podršku, posjeta postaje zanimljivo i edukativno
+                    iskustvo koje spaja koncentraciju, disciplinu i osjećaj
+                    ličnog napretka.
+                </p>
             </div>
         </article>
 
