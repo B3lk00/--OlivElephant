@@ -3,139 +3,625 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Klubhaus - OE Sportsko Rekreativni Centar</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="style.css?v=240">
+
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/favicon.png">
+
+    <style>
+        /* =====================================================
+           KLUBHAUS — TOPLI LODGE / CAFFE STIL
+        ===================================================== */
+
+        .club-page {
+            width: min(1240px, calc(100% - 34px));
+            margin: 40px auto 80px;
+            padding: 0 !important;
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+            overflow: visible !important;
+        }
+
+        .club-page::before {
+            display: none !important;
+        }
+
+        /* UVOD SA VELIKOM SLIKOM */
+
+        .club-hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
+            min-height: 640px;
+            border-bottom: 1px solid rgba(194, 163, 107, .18);
+        }
+
+        .club-hero-image {
+            position: relative;
+            min-height: 640px;
+            overflow: hidden;
+        }
+
+        .club-hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: saturate(.9) contrast(1.03) brightness(.82);
+        }
+
+        .club-hero-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(180deg, transparent 55%, rgba(0,0,0,.55)),
+                linear-gradient(90deg, transparent 65%, rgba(10,14,9,.25));
+        }
+
+        .club-image-note {
+            position: absolute;
+            left: 28px;
+            bottom: 24px;
+            z-index: 2;
+            color: rgba(232,223,200,.92);
+            font-size: .75rem;
+            font-weight: 800;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+
+        .club-hero-copy {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: clamp(48px, 6vw, 86px);
+            overflow: hidden;
+        }
+
+        .club-hero-copy::after {
+            content: "LODGE";
+            position: absolute;
+            right: -.14em;
+            bottom: -.08em;
+            color: rgba(232,223,200,.024);
+            font-size: clamp(8rem, 15vw, 15rem);
+            font-weight: 950;
+            letter-spacing: -.08em;
+            line-height: .75;
+            pointer-events: none;
+        }
+
+        .club-hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 560px;
+        }
+
+        .club-kicker {
+            display: block;
+            margin-bottom: 24px;
+            color: var(--sand);
+            font-size: .74rem;
+            font-weight: 850;
+            letter-spacing: .26em;
+            text-transform: uppercase;
+        }
+
+        .club-hero-copy h2 {
+            margin: 0 0 28px !important;
+            color: var(--cream) !important;
+            font-size: clamp(3.1rem, 6.6vw, 6.7rem) !important;
+            font-weight: 950;
+            line-height: .86 !important;
+            letter-spacing: -.055em;
+            text-transform: uppercase;
+        }
+
+        .club-hero-copy h2::after {
+            display: none !important;
+        }
+
+        .club-hero-copy p {
+            margin: 0 0 22px !important;
+            max-width: 560px !important;
+            color: rgba(232,223,200,.76) !important;
+            font-size: clamp(1rem, 1.35vw, 1.14rem) !important;
+            line-height: 1.9 !important;
+        }
+
+        .club-hero-copy p:last-child {
+            margin-bottom: 0 !important;
+        }
+
+        /* CAFFE PRIČA */
+
+        .club-story {
+            display: grid;
+            grid-template-columns: minmax(240px, .68fr) minmax(0, 1.32fr);
+            gap: clamp(42px, 8vw, 120px);
+            padding: clamp(80px, 10vw, 135px) 0;
+            border-bottom: 1px solid rgba(194,163,107,.18);
+        }
+
+        .club-story-title {
+            align-self: start;
+            position: sticky;
+            top: 150px;
+        }
+
+        .club-story-title small {
+            display: block;
+            margin-bottom: 16px;
+            color: var(--sand);
+            font-weight: 850;
+            letter-spacing: .23em;
+            text-transform: uppercase;
+        }
+
+        .club-story-title h3 {
+            margin: 0 !important;
+            color: var(--cream) !important;
+            font-size: clamp(2.4rem, 5vw, 5rem) !important;
+            line-height: .95 !important;
+            letter-spacing: -.045em;
+            text-transform: uppercase;
+        }
+
+        .club-story-copy p {
+            margin: 0 0 26px !important;
+            max-width: 820px !important;
+            color: rgba(232,223,200,.72) !important;
+            font-size: clamp(1.03rem, 1.4vw, 1.18rem) !important;
+            line-height: 2 !important;
+        }
+
+        .club-story-copy p:last-child {
+            margin-bottom: 0 !important;
+        }
+
+        /* PONUDA KAO MENI, BEZ KARTICA */
+
+        .club-menu {
+            padding: clamp(80px, 10vw, 135px) 0;
+            border-bottom: 1px solid rgba(194,163,107,.18);
+        }
+
+        .club-menu-head {
+            max-width: 760px;
+            margin-bottom: 50px;
+        }
+
+        .club-menu-head small {
+            color: var(--sand);
+            font-weight: 850;
+            letter-spacing: .23em;
+            text-transform: uppercase;
+        }
+
+        .club-menu-head h3 {
+            margin: 16px 0 0 !important;
+            color: var(--cream) !important;
+            font-size: clamp(2.5rem, 5.8vw, 5.6rem) !important;
+            line-height: .96 !important;
+            letter-spacing: -.045em;
+            text-transform: uppercase;
+        }
+
+        .club-menu-row {
+            display: grid;
+            grid-template-columns: minmax(220px, .75fr) minmax(0, 1.25fr);
+            gap: 36px;
+            align-items: baseline;
+            padding: 30px 0;
+            border-top: 1px solid rgba(194,163,107,.17);
+        }
+
+        .club-menu-row:last-child {
+            border-bottom: 1px solid rgba(194,163,107,.17);
+        }
+
+        .club-menu-row h4 {
+            margin: 0;
+            color: var(--sand);
+            font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+            text-transform: uppercase;
+        }
+
+        .club-menu-row p {
+            margin: 0 !important;
+            color: rgba(232,223,200,.66) !important;
+            line-height: 1.85 !important;
+        }
+
+        /* CITAT / AMBIJENT */
+
+        .club-quote {
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            margin: 100px 0;
+            overflow: hidden;
+            background:
+                linear-gradient(rgba(8,12,8,.48), rgba(8,12,8,.7)),
+                url("images/caffe6.jpg") center/cover no-repeat;
+        }
+
+        .club-quote::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(194,163,107,.18), transparent 34%);
+        }
+
+        .club-quote blockquote {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0;
+            padding: clamp(40px, 7vw, 90px);
+            color: var(--cream);
+            font-size: clamp(2.6rem, 5.8vw, 6rem);
+            font-weight: 950;
+            line-height: .92;
+            letter-spacing: -.045em;
+            text-transform: uppercase;
+        }
+
+        /* GALERIJA */
+
+        .club-gallery {
+            padding: 20px 0 10px;
+        }
+
+        .club-gallery-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 30px;
+            margin-bottom: 38px;
+        }
+
+        .club-gallery-head small {
+            display: block;
+            margin-bottom: 12px;
+            color: var(--sand);
+            font-weight: 850;
+            letter-spacing: .24em;
+            text-transform: uppercase;
+        }
+
+        .club-gallery-head h3 {
+            margin: 0 !important;
+            color: var(--cream) !important;
+            font-size: clamp(2.5rem, 5.8vw, 5.5rem) !important;
+            line-height: .95 !important;
+            letter-spacing: -.045em;
+            text-transform: uppercase;
+        }
+
+        .club-gallery-head p {
+            max-width: 380px !important;
+            margin: 0 !important;
+            color: rgba(232,223,200,.6) !important;
+            text-align: right;
+        }
+
+        .club-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 14px;
+        }
+
+        .club-gallery-grid img {
+            width: 100%;
+            height: 100%;
+            min-height: 250px;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+            border-radius: 14px;
+            filter: saturate(.88) contrast(1.03);
+            transition: transform .3s ease, filter .3s ease;
+        }
+
+        .club-gallery-grid img:hover {
+            transform: scale(1.015);
+            filter: saturate(1) contrast(1.06);
+        }
+
+        .club-gallery-grid img:nth-child(1),
+        .club-gallery-grid img:nth-child(6),
+        .club-gallery-grid img:nth-child(11) {
+            grid-column: span 7;
+        }
+
+        .club-gallery-grid img:nth-child(2),
+        .club-gallery-grid img:nth-child(5),
+        .club-gallery-grid img:nth-child(10) {
+            grid-column: span 5;
+        }
+
+        .club-gallery-grid img:nth-child(3),
+        .club-gallery-grid img:nth-child(4),
+        .club-gallery-grid img:nth-child(7),
+        .club-gallery-grid img:nth-child(8),
+        .club-gallery-grid img:nth-child(9),
+        .club-gallery-grid img:nth-child(12),
+        .club-gallery-grid img:nth-child(13),
+        .club-gallery-grid img:nth-child(14),
+        .club-gallery-grid img:nth-child(15),
+        .club-gallery-grid img:nth-child(16) {
+            grid-column: span 6;
+        }
+
+        /* MOBITEL */
+
+        @media (max-width: 900px) {
+            .club-page {
+                width: calc(100% - 20px);
+                margin-top: 20px;
+            }
+
+            .club-hero {
+                grid-template-columns: 1fr;
+                min-height: 0;
+            }
+
+            .club-hero-image {
+                min-height: 420px;
+            }
+
+            .club-hero-copy {
+                padding: 58px 4px 72px;
+            }
+
+            .club-hero-copy h2 {
+                font-size: clamp(3.1rem, 17vw, 5rem) !important;
+            }
+
+            .club-story {
+                grid-template-columns: 1fr;
+                gap: 26px;
+            }
+
+            .club-story-title {
+                position: static;
+            }
+
+            .club-menu-row {
+                grid-template-columns: 1fr;
+                gap: 14px;
+                padding: 26px 0;
+            }
+
+            .club-quote {
+                min-height: 430px;
+                margin: 80px 0;
+            }
+
+            .club-quote blockquote {
+                padding: 42px 22px;
+                font-size: clamp(2.4rem, 13vw, 4.2rem);
+            }
+
+            .club-gallery-head {
+                display: block;
+            }
+
+            .club-gallery-head p {
+                margin-top: 18px !important;
+                text-align: left;
+            }
+
+            .club-gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .club-gallery-grid img {
+                grid-column: auto !important;
+                min-height: 180px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .club-hero-image {
+                min-height: 330px;
+            }
+
+            .club-gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
 <header>
-
-        <div class="header-logo">
-    <img src="images/logo.png" alt="Oliv Elephant">
+    <div class="header-logo">
+        <img src="images/logo.png" alt="Oliv Elephant">
     </div>
-    
+
     <h1>Oliv Elephant Sportsko Rekreativni Centar</h1>
 
-    <button class="menu-toggle" id="menuToggle" aria-label="Otvori meni">
-    ☰
-</button>
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Otvori meni"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
 
-<nav id="mobileMenu">
-
-    <a href="index.html" class="nav-link">Početna</a>
-
-    <div class="dropdown">
-        <button class="nav-drop" type="button">
-            Strelište
-            <span class="dropdown-arrow">⌄</span>
-        </button>
-
-        <div class="dropdown-menu">
-            <a href="streliste.html">O strelištu</a>
-            <a href="klub.html">Klub praktičnog streljaštva</a>
-            <a href="akademija.html">Akademija oružja</a>
-        </div>
-    </div>
-
-    <a href="klubhaus.html" class="nav-link">Klubhaus</a>
-
-    <a href="rent.html" class="nav-link">4x4 Rent & Tours</a>
-
-    <a href="smjestaj.html" class="nav-link">Prenoćište</a>
-
-    <a href="kontakt.html" class="nav-link nav-contact">
-        Kontakt
-    </a>
-
-</nav>
+    <nav id="mobileMenu">
+        <a href="index.html" class="nav-link">Početna</a>
+        <a href="streliste.html">O strelištu</a>
+        <a href="klubhaus.html" class="nav-link">Klubhaus</a>
+        <a href="rent.html" class="nav-link">4x4 Rent & Tours</a>
+        <a href="smjestaj.html" class="nav-link">Prenoćište</a>
+        <a href="kontakt.html" class="nav-link nav-contact">Kontakt</a>
+    </nav>
 </header>
 
-<main>
-    
-    <h2>Klubhaus</h2>
+<main class="club-page">
 
-<p class="hero-text">
-    Klubhaus je centralno mjesto okupljanja i odmora u okviru
-    OE Sportsko Rekreativnog Centra. Namijenjen je posjetiocima,
-    članovima kluba i svim gostima koji žele da se opuste nakon
-    aktivnosti na strelištu ili boravka u prirodi.
-</p>
-
-<p class="hero-text">
-    U okviru Strelišta nalaze se <strong>Caffe Mozambik</strong> i
-    ponuda <strong>domaćih proizvoda</strong>, koji zajedno pružaju
-    autentično iskustvo domaće kuhinje, tradicionalnih ukusa i
-    prijatne atmosfere.
-</p>
-
-    <h2>Caffe Mozambik</h2>
-
-    <p class="page-intro">
-        Caffe Mozambik je mjesto za odmor, druženje i predah nakon aktivnosti.
-        U prijatnom ambijentu možete uživati u domaćim proizvodima, kolačima,
-        prirodnim sokovima, kafi i opuštenoj atmosferi.
-    </p>
-
-    <div class="program-grid">
-        <div class="program-card">
-            <h3>☕ Kafa i osvježenje</h3>
-            <p>Topli napici, kafa, čajevi i osvježavajuća pića za posjetioce.</p>
+    <section class="club-hero">
+        <div class="club-hero-image">
+            <img src="images/caffe1.jpg" alt="Caffe Mozambik">
+            <div class="club-image-note">Mjesto odmora i druženja</div>
         </div>
 
-        <div class="program-card">
-            <h3>🍰 Domaći kolači</h3>
-            <p>Slatki program sa domaćim kolačima i tradicionalnim poslasticama.</p>
+        <div class="club-hero-copy">
+            <div class="club-hero-inner">
+                <span class="club-kicker">Oliv Elephant • Klubhaus</span>
+
+                <h2>Klubhaus</h2>
+
+                <p>
+                    Centralno mjesto okupljanja i odmora u okviru
+                    OE Sportsko Rekreativnog Centra.
+                </p>
+
+                <p>
+                    Namijenjen članovima, posjetiocima i gostima koji žele
+                    predah nakon aktivnosti, mirnu atmosferu i domaći ambijent.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="club-story">
+        <div class="club-story-title">
+            <small>Caffe Mozambik</small>
+            <h3>Mjesto koje usporava tempo.</h3>
         </div>
 
-        <div class="program-card">
-            <h3>🍯 Domaći proizvodi</h3>
-            <p>Domaći sokovi, med, džemovi i proizvodi lokalnog porijekla.</p>
+        <div class="club-story-copy">
+            <p>
+                Caffe Mozambik je prostor za odmor, razgovor i druženje.
+                Nakon treninga, boravka u prirodi ili off-road avanture,
+                ovdje se atmosfera mijenja i tempo postaje mirniji.
+            </p>
+
+            <p>
+                U ponudi su kafa, čajevi, domaći kolači, prirodni sokovi
+                i odabrani proizvodi lokalnog porijekla. Fokus je na
+                jednostavnosti, domaćem ukusu i prijatnom ambijentu.
+            </p>
+        </div>
+    </section>
+
+    <section class="club-menu">
+        <div class="club-menu-head">
+            <small>Ponuda Klubhausa</small>
+            <h3>Domaći ukus i opuštena atmosfera.</h3>
         </div>
 
-        <div class="program-card">
-            <h3>🌿 Prirodan ambijent</h3>
-            <p>Mirno mjesto za odmor u sklopu sportsko-rekreativnog centra.</p>
+        <div class="club-menu-row">
+            <h4>Kafa i osvježenje</h4>
+            <p>
+                Topli napici, kafa, čajevi i osvježavajuća pića
+                za goste centra i posjetioce.
+            </p>
         </div>
-    </div>
 
-    <h3>Galerija</h3>
+        <div class="club-menu-row">
+            <h4>Domaći kolači</h4>
+            <p>
+                Tradicionalne poslastice i slatki program pripremljen
+                za opušten predah i druženje.
+            </p>
+        </div>
 
-    <div class="gallery">
-        <img src="images/caffe1.jpg" alt="Caffe Mozambik" onclick="openLightbox(0)">
-        <img src="images/caffe2.jpg" alt="Domaći proizvodi" onclick="openLightbox(1)">
-        <img src="images/caffe3.jpg" alt="Domaći kolači" onclick="openLightbox(2)">
-        <img src="images/caffe4.jpg" alt="Prirodni sokovi" onclick="openLightbox(3)">
-        <img src="images/caffe5.jpg" alt="Prirodni sokovi" onclick="openLightbox(4)">
-        <img src="images/caffe6.jpg" alt="Prirodni sokovi" onclick="openLightbox(5)">
-        <img src="images/caffe7.jpg" alt="Prirodni sokovi" onclick="openLightbox(6)">
-        <img src="images/caffe8.jpg" alt="Prirodni sokovi" onclick="openLightbox(7)">
-        <img src="images/caffe9.jpg" alt="Caffe Mozambik" onclick="openLightbox(8)">
-        <img src="images/caffe10.jpg" alt="Domaći proizvodi" onclick="openLightbox(9)">
-        <img src="images/caffe11.jpg" alt="Domaći kolači" onclick="openLightbox(10)">
-        <img src="images/caffe12.jpg" alt="Prirodni sokovi" onclick="openLightbox(11)">
-        <img src="images/caffe13.jpg" alt="Prirodni sokovi" onclick="openLightbox(12)">
-        <img src="images/caffe14.jpg" alt="Prirodni sokovi" onclick="openLightbox(13)">
-        <img src="images/caffe15.jpg" alt="Prirodni sokovi" onclick="openLightbox(14)">
-        <img src="images/caffe16.jpg" alt="Prirodni sokovi" onclick="openLightbox(15)">
-    </div>
-        
-    
+        <div class="club-menu-row">
+            <h4>Domaći proizvodi</h4>
+            <p>
+                Prirodni sokovi, med, džemovi i drugi proizvodi
+                lokalnog i domaćeg porijekla.
+            </p>
+        </div>
+
+        <div class="club-menu-row">
+            <h4>Prirodan ambijent</h4>
+            <p>
+                Mirno mjesto u okviru centra, idealno za odmor
+                nakon aktivnosti i boravka u prirodi.
+            </p>
+        </div>
+    </section>
+
+    <section class="club-quote">
+        <blockquote>
+            Dobar odmor je dio svakog dobrog iskustva.
+        </blockquote>
+    </section>
+
+    <section class="club-gallery">
+        <div class="club-gallery-head">
+            <div>
+                <small>Galerija</small>
+                <h3>Atmosfera Klubhausa.</h3>
+            </div>
+
+            <p>
+                Kliknite na fotografiju za pregled preko cijelog ekrana
+                i listanje galerije.
+            </p>
+        </div>
+
+        <div class="club-gallery-grid gallery">
+            <img src="images/caffe1.jpg" alt="Caffe Mozambik" onclick="openLightbox(0)">
+            <img src="images/caffe2.jpg" alt="Domaći proizvodi" onclick="openLightbox(1)">
+            <img src="images/caffe3.jpg" alt="Domaći kolači" onclick="openLightbox(2)">
+            <img src="images/caffe4.jpg" alt="Prirodni sokovi" onclick="openLightbox(3)">
+            <img src="images/caffe5.jpg" alt="Ambijent" onclick="openLightbox(4)">
+            <img src="images/caffe6.jpg" alt="Klubhaus" onclick="openLightbox(5)">
+            <img src="images/caffe7.jpg" alt="Odmor" onclick="openLightbox(6)">
+            <img src="images/caffe8.jpg" alt="Druženje" onclick="openLightbox(7)">
+            <img src="images/caffe9.jpg" alt="Caffe Mozambik" onclick="openLightbox(8)">
+            <img src="images/caffe10.jpg" alt="Domaća ponuda" onclick="openLightbox(9)">
+            <img src="images/caffe11.jpg" alt="Domaći kolači" onclick="openLightbox(10)">
+            <img src="images/caffe12.jpg" alt="Prirodni sokovi" onclick="openLightbox(11)">
+            <img src="images/caffe13.jpg" alt="Ambijent Klubhausa" onclick="openLightbox(12)">
+            <img src="images/caffe14.jpg" alt="Oliv Elephant Klubhaus" onclick="openLightbox(13)">
+            <img src="images/caffe15.jpg" alt="Klubhaus detalji" onclick="openLightbox(14)">
+            <img src="images/caffe16.jpg" alt="Caffe detalji" onclick="openLightbox(15)">
+        </div>
+    </section>
+
 </main>
 
-    <div class="lightbox" id="lightbox">
+<div class="lightbox" id="lightbox">
     <span class="close" onclick="closeLightbox()">×</span>
     <button class="prev" onclick="changeImage(-1)">‹</button>
-    <img id="lightbox-img" src="">
+    <img id="lightbox-img" src="" alt="Pregled fotografije">
     <button class="next" onclick="changeImage(1)">›</button>
 </div>
 
 <footer>
-    <p>© 2026 OE Sportsko Rekreativni Centar</p>
+    <div class="footer-title">OE Sportsko Rekreativni Centar</div>
+    <p class="footer-subtitle">Strelište • Avantura • Priroda • Odmor</p>
+
+    <div class="footer-contact">
+        <span>📍 Kruhari, Sanski Most</span>
+        <a href="tel:+38761759795">📞 +387 61 759 795</a>
+        <a href="mailto:kontakt@olivelephant.com">✉️ kontakt@olivelephant.com</a>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 OE Sportsko Rekreativni Centar. Sva prava zadržana.
+    </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=240"></script>
+
 </body>
 </html>
