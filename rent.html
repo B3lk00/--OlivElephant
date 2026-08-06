@@ -3,113 +3,716 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4x4 Rent a Tours - OE Sportsko Rekreativni Centar</title>
-    <link rel="stylesheet" href="style.css">
+
+    <title>4x4 Rent & Tours - OE Sportsko Rekreativni Centar</title>
+
+    <link rel="stylesheet" href="style.css?v=260">
+
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/favicon.png">
+
+    <style>
+        /* =====================================================
+           4x4 RENT & TOURS — OFF-ROAD / ADRENALIN STIL
+        ===================================================== */
+
+        .rent-page {
+            width: min(1280px, calc(100% - 34px));
+            margin: 40px auto 80px;
+            padding: 0 !important;
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+            overflow: visible !important;
+        }
+
+        .rent-page::before {
+            display: none !important;
+        }
+
+        /* HERO */
+
+        .rent-hero {
+            position: relative;
+            min-height: 680px;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(7,10,7,.94) 0%,
+                    rgba(7,10,7,.72) 44%,
+                    rgba(7,10,7,.18) 78%
+                ),
+                url("images/quad1.jpg") center/cover no-repeat;
+            border-bottom: 1px solid rgba(194,163,107,.2);
+        }
+
+        .rent-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(115deg, transparent 0 56%, rgba(194,163,107,.11) 56% 57%, transparent 57%),
+                linear-gradient(115deg, transparent 0 70%, rgba(85,107,47,.12) 70% 71%, transparent 71%);
+            pointer-events: none;
+        }
+
+        .rent-hero::after {
+            content: "4X4";
+            position: absolute;
+            right: -.04em;
+            bottom: -.12em;
+            color: rgba(232,223,200,.03);
+            font-size: clamp(12rem, 30vw, 29rem);
+            font-weight: 950;
+            letter-spacing: -.1em;
+            line-height: .7;
+            pointer-events: none;
+        }
+
+        .rent-hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 900px;
+            padding: clamp(48px, 7vw, 90px);
+        }
+
+        .rent-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            color: var(--sand);
+            font-size: .74rem;
+            font-weight: 850;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+        }
+
+        .rent-kicker::before {
+            content: "";
+            width: 54px;
+            height: 2px;
+            background: var(--sand);
+            transform: skewX(-28deg);
+        }
+
+        .rent-hero h2 {
+            margin: 0 0 28px !important;
+            color: var(--cream) !important;
+            font-size: clamp(3.7rem, 9vw, 8.5rem) !important;
+            font-weight: 950;
+            line-height: .82 !important;
+            letter-spacing: -.06em;
+            text-transform: uppercase;
+        }
+
+        .rent-hero h2::after {
+            display: none !important;
+        }
+
+        .rent-hero p {
+            max-width: 720px !important;
+            margin: 0 !important;
+            color: rgba(232,223,200,.78) !important;
+            font-size: clamp(1.02rem, 1.45vw, 1.2rem) !important;
+            line-height: 1.9 !important;
+        }
+
+        /* UVODNI STRIP */
+
+        .rent-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-bottom: 1px solid rgba(194,163,107,.18);
+        }
+
+        .rent-strip-item {
+            padding: 28px clamp(18px, 3vw, 34px);
+            border-right: 1px solid rgba(194,163,107,.16);
+        }
+
+        .rent-strip-item:last-child {
+            border-right: 0;
+        }
+
+        .rent-strip-item small {
+            display: block;
+            margin-bottom: 7px;
+            color: rgba(194,163,107,.58);
+            font-size: .7rem;
+            font-weight: 850;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+        }
+
+        .rent-strip-item strong {
+            color: var(--cream);
+            font-size: clamp(1.05rem, 1.8vw, 1.4rem);
+            text-transform: uppercase;
+        }
+
+        /* VOZILA — ŠIROKE AKCIJSKE SEKCIJE */
+
+        .rent-fleet {
+            padding: clamp(85px, 11vw, 145px) 0;
+        }
+
+        .rent-fleet-head {
+            display: grid;
+            grid-template-columns: .65fr 1.35fr;
+            gap: 40px;
+            margin-bottom: 64px;
+        }
+
+        .rent-fleet-head small {
+            color: var(--sand);
+            font-weight: 850;
+            letter-spacing: .24em;
+            text-transform: uppercase;
+        }
+
+        .rent-fleet-head h3 {
+            margin: 0 !important;
+            color: var(--cream) !important;
+            font-size: clamp(2.7rem, 6vw, 5.8rem) !important;
+            line-height: .94 !important;
+            letter-spacing: -.05em;
+            text-transform: uppercase;
+        }
+
+        .vehicle-row {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(260px, .8fr) minmax(0, 1.2fr);
+            min-height: 420px;
+            margin-bottom: 54px;
+            overflow: hidden;
+            border-top: 1px solid rgba(194,163,107,.17);
+            border-bottom: 1px solid rgba(194,163,107,.17);
+        }
+
+        .vehicle-row:nth-child(even) {
+            grid-template-columns: minmax(0, 1.2fr) minmax(260px, .8fr);
+        }
+
+        .vehicle-row:nth-child(even) .vehicle-image {
+            order: 2;
+        }
+
+        .vehicle-row:nth-child(even) .vehicle-copy {
+            order: 1;
+        }
+
+        .vehicle-image {
+            position: relative;
+            min-height: 420px;
+            overflow: hidden;
+        }
+
+        .vehicle-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: saturate(.88) contrast(1.08);
+            transition: transform .8s ease;
+        }
+
+        .vehicle-row:hover .vehicle-image img {
+            transform: scale(1.045);
+        }
+
+        .vehicle-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent 62%, rgba(9,13,9,.24));
+        }
+
+        .vehicle-row:nth-child(even) .vehicle-image::after {
+            background: linear-gradient(270deg, transparent 62%, rgba(9,13,9,.24));
+        }
+
+        .vehicle-copy {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: clamp(38px, 6vw, 78px);
+            overflow: hidden;
+        }
+
+        .vehicle-copy::after {
+            content: attr(data-mark);
+            position: absolute;
+            right: -.08em;
+            bottom: -.12em;
+            color: rgba(232,223,200,.025);
+            font-size: clamp(8rem, 17vw, 16rem);
+            font-weight: 950;
+            letter-spacing: -.09em;
+            line-height: .7;
+            pointer-events: none;
+        }
+
+        .vehicle-copy-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 560px;
+        }
+
+        .vehicle-copy small {
+            display: block;
+            margin-bottom: 16px;
+            color: var(--sand);
+            font-weight: 850;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+        }
+
+        .vehicle-copy h4 {
+            margin: 0 0 22px;
+            color: var(--cream);
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            line-height: .9;
+            letter-spacing: -.045em;
+            text-transform: uppercase;
+        }
+
+        .vehicle-copy p {
+            margin: 0 !important;
+            color: rgba(232,223,200,.68) !important;
+            font-size: 1.04rem !important;
+            line-height: 1.85 !important;
+        }
+
+        /* SA VODIČEM / BEZ VODIČA */
+
+        .rent-modes {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            margin-bottom: 110px;
+            background: rgba(194,163,107,.16);
+        }
+
+        .rent-mode {
+            position: relative;
+            padding: clamp(42px, 6vw, 78px);
+            background: rgba(12,17,12,.96);
+            overflow: hidden;
+        }
+
+        .rent-mode::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(var(--sand), var(--green-light));
+        }
+
+        .rent-mode small {
+            display: block;
+            margin-bottom: 15px;
+            color: rgba(194,163,107,.63);
+            font-weight: 850;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+        }
+
+        .rent-mode h3 {
+            margin: 0 0 20px !important;
+            color: var(--cream) !important;
+            font-size: clamp(2rem, 4vw, 4rem) !important;
+            line-height: .95 !important;
+            text-transform: uppercase;
+        }
+
+        .rent-mode p {
+            margin: 0 !important;
+            color: rgba(232,223,200,.68) !important;
+            line-height: 1.85 !important;
+        }
+
+        /* GALERIJA */
+
+        .rent-gallery {
+            padding: 20px 0;
+        }
+
+        .rent-gallery-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 30px;
+            margin-bottom: 38px;
+        }
+
+        .rent-gallery-head small {
+            display: block;
+            margin-bottom: 12px;
+            color: var(--sand);
+            font-weight: 850;
+            letter-spacing: .24em;
+            text-transform: uppercase;
+        }
+
+        .rent-gallery-head h3 {
+            margin: 0 !important;
+            color: var(--cream) !important;
+            font-size: clamp(2.7rem, 5.8vw, 5.5rem) !important;
+            line-height: .95 !important;
+            letter-spacing: -.045em;
+            text-transform: uppercase;
+        }
+
+        .rent-gallery-head p {
+            max-width: 380px !important;
+            margin: 0 !important;
+            color: rgba(232,223,200,.58) !important;
+            text-align: right;
+        }
+
+        .rent-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 12px;
+        }
+
+        .rent-gallery-grid img {
+            width: 100%;
+            height: 330px;
+            object-fit: cover;
+            display: block;
+            cursor: pointer;
+            filter: saturate(.88) contrast(1.06);
+            transition: transform .3s ease, filter .3s ease;
+        }
+
+        .rent-gallery-grid img:nth-child(1),
+        .rent-gallery-grid img:nth-child(4) {
+            grid-column: span 8;
+        }
+
+        .rent-gallery-grid img:nth-child(2),
+        .rent-gallery-grid img:nth-child(3),
+        .rent-gallery-grid img:nth-child(5),
+        .rent-gallery-grid img:nth-child(6) {
+            grid-column: span 4;
+        }
+
+        .rent-gallery-grid img:hover {
+            transform: translateY(-5px);
+            filter: saturate(1) contrast(1.08);
+        }
+
+        /* MOBITEL */
+
+        @media (max-width: 900px) {
+            .rent-page {
+                width: calc(100% - 20px);
+                margin-top: 20px;
+            }
+
+            .rent-hero {
+                min-height: 610px;
+                align-items: center;
+                background-position: 62% center;
+            }
+
+            .rent-hero-content {
+                padding: 54px 22px;
+            }
+
+            .rent-hero h2 {
+                font-size: clamp(3.2rem, 17vw, 5rem) !important;
+            }
+
+            .rent-strip {
+                grid-template-columns: 1fr;
+            }
+
+            .rent-strip-item {
+                border-right: 0;
+                border-bottom: 1px solid rgba(194,163,107,.16);
+            }
+
+            .rent-fleet-head {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .vehicle-row,
+            .vehicle-row:nth-child(even) {
+                grid-template-columns: 1fr;
+                min-height: 0;
+            }
+
+            .vehicle-row:nth-child(even) .vehicle-image,
+            .vehicle-row:nth-child(even) .vehicle-copy {
+                order: initial;
+            }
+
+            .vehicle-image {
+                min-height: 330px;
+            }
+
+            .vehicle-copy {
+                padding: 44px 4px 58px;
+            }
+
+            .rent-modes {
+                grid-template-columns: 1fr;
+            }
+
+            .rent-gallery-head {
+                display: block;
+            }
+
+            .rent-gallery-head p {
+                margin-top: 18px !important;
+                text-align: left;
+            }
+
+            .rent-gallery-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 9px;
+            }
+
+            .rent-gallery-grid img,
+            .rent-gallery-grid img:nth-child(1),
+            .rent-gallery-grid img:nth-child(2),
+            .rent-gallery-grid img:nth-child(3),
+            .rent-gallery-grid img:nth-child(4),
+            .rent-gallery-grid img:nth-child(5),
+            .rent-gallery-grid img:nth-child(6) {
+                grid-column: auto;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .rent-gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rent-gallery-grid img {
+                height: 240px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
 <header>
-
     <div class="header-logo">
-    <img src="images/logo.png" alt="Oliv Elephant">
+        <img src="images/logo.png" alt="Oliv Elephant">
     </div>
-    
+
     <h1>Oliv Elephant Sportsko Rekreativni Centar</h1>
 
-    <button class="menu-toggle" id="menuToggle" aria-label="Otvori meni">
-    ☰
-</button>
+    <button
+        class="menu-toggle"
+        id="menuToggle"
+        type="button"
+        aria-label="Otvori meni"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
 
-<nav id="mobileMenu">
+    <nav id="mobileMenu">
+        <a href="index.html" class="nav-link">Početna</a>
 
-    <a href="index.html" class="nav-link">Početna</a>
+        <div class="dropdown">
+            <button class="nav-drop" type="button">
+                Strelište
+                <span class="dropdown-arrow">⌄</span>
+            </button>
 
-    <div class="dropdown">
-        <button class="nav-drop" type="button">
-            Strelište
-            <span class="dropdown-arrow">⌄</span>
-        </button>
-
-        <div class="dropdown-menu">
-            <a href="streliste.html">O strelištu</a>
-            <a href="klub.html">Klub praktičnog streljaštva</a>
-            <a href="akademija.html">Akademija oružja</a>
+            <div class="dropdown-menu">
+                <a href="streliste.html">O strelištu</a>
+                <a href="klub.html">Klub praktičnog streljaštva</a>
+                <a href="akademija.html">Akademija oružja</a>
+            </div>
         </div>
-    </div>
 
-    <a href="klubhaus.html" class="nav-link">Klubhaus</a>
-
-    <a href="rent.html" class="nav-link">4x4 Rent & Tours</a>
-
-    <a href="smjestaj.html" class="nav-link">Prenoćište</a>
-
-    <a href="kontakt.html" class="nav-link nav-contact">
-        Kontakt
-    </a>
-
-</nav>
+        <a href="klubhaus.html" class="nav-link">Klubhaus</a>
+        <a href="rent.html" class="nav-link">4x4 Rent & Tours</a>
+        <a href="smjestaj.html" class="nav-link">Prenoćište</a>
+        <a href="kontakt.html" class="nav-link nav-contact">Kontakt</a>
+    </nav>
 </header>
 
-<main>
-    <h2>4x4 Rent & Tours</h2>
+<main class="rent-page">
 
-    <p class="hero-text">
-        4x4 Rent & Tours pruža mogućnost iznajmljivanja quadova,
-        buggy vozila i terenskih vozila za vožnju kroz prirodu,
-        šumske puteve i okolinu centra.
-    </p>
+    <section class="rent-hero">
+        <div class="rent-hero-content">
+            <span class="rent-kicker">Oliv Elephant • Off-road iskustvo</span>
 
-    <p class="hero-text">
-        Vožnje mogu biti organizovane sa vodičem ili bez vodiča,
-        u zavisnosti od iskustva vozača, dogovora i izabrane rute.
-        Ponuda je pogodna za pojedince, parove, grupe prijatelja
-        i sve ljubitelje off-road avanture.
-    </p>
+            <h2>4x4 Rent<br>& Tours</h2>
 
-    <div class="program-grid">
-        <div class="program-card">
-            <h3>Quad</h3>
-            <p>Dinamična vožnja za ljubitelje prirode, adrenalina i kraćih off-road tura.</p>
+            <p>
+                Quadovi, buggy vozila i terenska vozila za vožnju kroz
+                prirodu, šumske puteve i okolinu centra — sa vodičem ili
+                bez vodiča, u zavisnosti od iskustva i odabrane rute.
+            </p>
+        </div>
+    </section>
+
+    <section class="rent-strip">
+        <div class="rent-strip-item">
+            <small>Način vožnje</small>
+            <strong>Sa vodičem ili samostalno</strong>
         </div>
 
-        <div class="program-card">
-            <h3>Buggy</h3>
-            <p>Stabilno i atraktivno vozilo za avanturističku vožnju kroz razne terene.</p>
+        <div class="rent-strip-item">
+            <small>Za koga</small>
+            <strong>Pojedinci, parovi i grupe</strong>
         </div>
 
-        <div class="program-card">
-            <h3>G-Class</h3>
-            <p>Terensko iskustvo u snažnom vozilu, idealno za zahtjevnije ture i grupne vožnje.</p>
+        <div class="rent-strip-item">
+            <small>Ambijent</small>
+            <strong>Šuma, makadam i priroda</strong>
         </div>
-    </div>
+    </section>
 
-    <h3 class="section-title">Ponuda vozila</h3>
+    <section class="rent-fleet">
+        <div class="rent-fleet-head">
+            <small>Izaberi vozilo</small>
+            <h3>Tri načina da doživiš teren.</h3>
+        </div>
 
-    <div class="gallery">
-        <img src="images/quad1.jpg" alt="Quad" onclick="openLightbox(0)">
-        <img src="images/quad2.jpg" alt="Buggy" onclick="openLightbox(1)">
-        <img src="images/quad3.jpg" alt="G-Class" onclick="openLightbox(2)">
-        <img src="images/quad4.jpg" alt="4x4 tura" onclick="openLightbox(3)">
-        <img src="images/quad5.jpg" alt="4x4 tura" onclick="openLightbox(4)">
-        <img src="images/quad6.jpg" alt="4x4 tura" onclick="openLightbox(5)">
-    </div>
+        <article class="vehicle-row">
+            <div class="vehicle-image">
+                <img src="images/quad2.jpg" alt="Quad">
+            </div>
+
+            <div class="vehicle-copy" data-mark="Q">
+                <div class="vehicle-copy-inner">
+                    <small>Brzo i direktno</small>
+                    <h4>Quad</h4>
+                    <p>
+                        Dinamična vožnja za ljubitelje adrenalina, prirode
+                        i kraćih off-road tura. Idealan izbor za solo vožnju
+                        i istraživanje terena.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <article class="vehicle-row">
+            <div class="vehicle-image">
+                <img src="images/quad3.jpg" alt="Buggy">
+            </div>
+
+            <div class="vehicle-copy" data-mark="B">
+                <div class="vehicle-copy-inner">
+                    <small>Stabilno i atraktivno</small>
+                    <h4>Buggy</h4>
+                    <p>
+                        Kombinacija stabilnosti, kontrole i atraktivne vožnje.
+                        Pogodan za avanturističke ture kroz različite tipove
+                        terena.
+                    </p>
+                </div>
+            </div>
+        </article>
+
+        <article class="vehicle-row">
+            <div class="vehicle-image">
+                <img src="images/quad4.jpg" alt="G-Class">
+            </div>
+
+            <div class="vehicle-copy" data-mark="G">
+                <div class="vehicle-copy-inner">
+                    <small>Snaga i komfor</small>
+                    <h4>G-Class</h4>
+                    <p>
+                        Terensko iskustvo u snažnom vozilu, idealno za
+                        zahtjevnije rute, grupne vožnje i goste koji žele
+                        više komfora bez odricanja od avanture.
+                    </p>
+                </div>
+            </div>
+        </article>
+    </section>
+
+    <section class="rent-modes">
+        <div class="rent-mode">
+            <small>Opcija 01</small>
+            <h3>Tura sa vodičem</h3>
+            <p>
+                Organizovana ruta, podrška tokom vožnje i sigurnije upoznavanje
+                terena za goste koji prvi put dolaze ili žele vođeno iskustvo.
+            </p>
+        </div>
+
+        <div class="rent-mode">
+            <small>Opcija 02</small>
+            <h3>Vožnja bez vodiča</h3>
+            <p>
+                Za iskusnije vozače i goste koji žele slobodniji tempo,
+                u skladu sa dogovorom, pravilima centra i izabranom rutom.
+            </p>
+        </div>
+    </section>
+
+    <section class="rent-gallery">
+        <div class="rent-gallery-head">
+            <div>
+                <small>Ponuda vozila</small>
+                <h3>Teren kroz objektiv.</h3>
+            </div>
+
+            <p>
+                Kliknite fotografiju za pregled preko cijelog ekrana
+                i listanje galerije.
+            </p>
+        </div>
+
+        <div class="rent-gallery-grid gallery">
+            <img src="images/quad1.jpg" alt="Quad" onclick="openLightbox(0)">
+            <img src="images/quad2.jpg" alt="Quad tura" onclick="openLightbox(1)">
+            <img src="images/quad3.jpg" alt="Buggy" onclick="openLightbox(2)">
+            <img src="images/quad4.jpg" alt="G-Class" onclick="openLightbox(3)">
+            <img src="images/quad5.jpg" alt="4x4 tura" onclick="openLightbox(4)">
+            <img src="images/quad6.jpg" alt="Off-road avantura" onclick="openLightbox(5)">
+        </div>
+    </section>
+
 </main>
 
 <div class="lightbox" id="lightbox">
     <span class="close" onclick="closeLightbox()">×</span>
     <button class="prev" onclick="changeImage(-1)">‹</button>
-    <img id="lightbox-img" src="">
+    <img id="lightbox-img" src="" alt="Pregled fotografije">
     <button class="next" onclick="changeImage(1)">›</button>
 </div>
-    
 
 <footer>
-    <p>© 2026 OE Sportsko Rekreativni Centar</p>
+    <div class="footer-title">OE Sportsko Rekreativni Centar</div>
+    <p class="footer-subtitle">Strelište • Avantura • Priroda • Odmor</p>
+
+    <div class="footer-contact">
+        <span>📍 Kruhari, Sanski Most</span>
+        <a href="tel:+38761759795">📞 +387 61 759 795</a>
+        <a href="mailto:kontakt@olivelephant.com">✉️ kontakt@olivelephant.com</a>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 OE Sportsko Rekreativni Centar. Sva prava zadržana.
+    </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=260"></script>
+
 </body>
 </html>
