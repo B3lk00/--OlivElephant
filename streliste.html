@@ -244,34 +244,57 @@
 
         .range-quote {
             position: relative;
-            min-height: 520px;
+
+            /* manji, široki banner */
+            width: 86%;
+            height: 360px;
+            min-height: 0;
+
             display: flex;
-            align-items: center;
-            margin: 20px 0 110px;
+            align-items: flex-end;
+
+            margin: 70px auto 100px;
             overflow: hidden;
+            border-radius: 16px;
+
             background:
-                linear-gradient(rgba(8,12,8,.54), rgba(8,12,8,.72)),
-                url("images/shooting range12.jpeg") center/cover no-repeat;
+                linear-gradient(
+                    90deg,
+                    rgba(8,12,8,.55) 0%,
+                    rgba(8,12,8,.25) 45%,
+                    rgba(8,12,8,.08) 75%
+                ),
+                url("images/shooting range12.jpeg") center 58% / cover no-repeat;
         }
 
         .range-quote::after {
             content: "";
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 70% 30%, rgba(194,163,107,.18), transparent 34%);
+            background: radial-gradient(
+                circle at 70% 30%,
+                rgba(194,163,107,.10),
+                transparent 34%
+            );
+            pointer-events: none;
         }
 
         .range-quote blockquote {
             position: relative;
             z-index: 2;
-            max-width: 820px;
+
+            max-width: 520px;
+
             margin: 0;
-            padding: clamp(40px, 7vw, 90px);
+            padding: 0 0 28px 30px;
+
             color: var(--cream);
-            font-size: clamp(2.7rem, 6vw, 6.5rem);
-            font-weight: 950;
-            line-height: .9;
-            letter-spacing: -.05em;
+
+            /* dosta manji tekst */
+            font-size: clamp(1.35rem, 2.8vw, 2.6rem);
+            font-weight: 900;
+            line-height: 1.02;
+            letter-spacing: -.035em;
             text-transform: uppercase;
         }
 
@@ -467,13 +490,26 @@
             }
 
             .range-quote {
-                min-height: 430px;
-                margin-bottom: 90px;
+                width: 94%;
+                height: 250px;
+                min-height: 0;
+                margin: 55px auto 80px;
+
+                background:
+                    linear-gradient(
+                        90deg,
+                        rgba(8,12,8,.58) 0%,
+                        rgba(8,12,8,.24) 55%,
+                        rgba(8,12,8,.08) 100%
+                    ),
+                    url("images/shooting range12.jpeg") center 58% / cover no-repeat;
             }
 
             .range-quote blockquote {
-                padding: 42px 22px;
-                font-size: clamp(2.5rem, 13vw, 4.5rem);
+                max-width: 72%;
+                padding: 0 0 18px 18px;
+                font-size: clamp(1rem, 5vw, 1.5rem);
+                line-height: 1.08;
             }
 
             .program-line {
@@ -506,6 +542,18 @@
         @media (max-width: 480px) {
             .range-slider {
                 min-height: 340px;
+            }
+
+            .range-quote {
+                width: 96%;
+                height: 215px;
+                margin: 45px auto 70px;
+            }
+
+            .range-quote blockquote {
+                max-width: 75%;
+                padding: 0 0 14px 14px;
+                font-size: .95rem;
             }
 
             .range-masonry {
