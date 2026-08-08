@@ -3,94 +3,401 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Kontakt - OE Sportsko Rekreativni Centar</title>
-    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="style.css?v=280">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/favicon.png">
+
+    <style>
+        /* KONTAKT — minimalan, navigacijski dizajn */
+
+        .contact-page {
+            width: min(1240px, calc(100% - 34px));
+            margin: 40px auto 80px;
+            padding: 0 !important;
+            background: transparent !important;
+            border: 0 !important;
+            box-shadow: none !important;
+        }
+
+        .contact-page::before { display: none !important; }
+
+        .contact-intro {
+            display: grid;
+            grid-template-columns: .8fr 1.2fr;
+            gap: clamp(40px, 8vw, 120px);
+            padding: clamp(70px, 10vw, 125px) 0 80px;
+            border-bottom: 1px solid rgba(194,163,107,.18);
+        }
+
+        .contact-kicker {
+            display: block;
+            margin-bottom: 18px;
+            color: var(--sand);
+            font-size: .73rem;
+            font-weight: 850;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+        }
+
+        .contact-intro h2 {
+            margin: 0 !important;
+            color: var(--cream) !important;
+            font-size: clamp(3.8rem, 8vw, 8rem) !important;
+            font-weight: 950;
+            line-height: .82 !important;
+            letter-spacing: -.06em;
+            text-transform: uppercase;
+        }
+
+        .contact-intro h2::after { display: none !important; }
+
+        .contact-intro-copy {
+            align-self: end;
+            max-width: 700px;
+        }
+
+        .contact-intro-copy p {
+            margin: 0 !important;
+            color: rgba(232,223,200,.72) !important;
+            font-size: clamp(1.05rem, 1.55vw, 1.25rem) !important;
+            line-height: 1.95 !important;
+        }
+
+        /* Kontakt bez kartica */
+
+        .contact-lines {
+            padding: 30px 0 100px;
+        }
+
+        .contact-line {
+            display: grid;
+            grid-template-columns: 190px minmax(0, 1fr) 42px;
+            gap: 28px;
+            align-items: center;
+            padding: 30px 0;
+            border-bottom: 1px solid rgba(194,163,107,.16);
+            text-decoration: none;
+        }
+
+        .contact-line:first-child {
+            border-top: 1px solid rgba(194,163,107,.16);
+        }
+
+        .contact-line-label {
+            color: rgba(194,163,107,.62);
+            font-size: .72rem;
+            font-weight: 850;
+            letter-spacing: .21em;
+            text-transform: uppercase;
+        }
+
+        .contact-line-value {
+            color: var(--cream);
+            font-size: clamp(1.3rem, 2.7vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -.025em;
+        }
+
+        .contact-line-arrow {
+            color: var(--sand);
+            font-size: 1.8rem;
+            transition: transform .25s ease;
+        }
+
+        a.contact-line:hover .contact-line-arrow {
+            transform: translateX(7px);
+        }
+
+        a.contact-line:hover .contact-line-value {
+            color: var(--sand);
+        }
+
+        /* Mapa kao glavni vizual */
+
+        .location-section {
+            padding: 20px 0 110px;
+        }
+
+        .location-head {
+            display: grid;
+            grid-template-columns: .72fr 1.28fr;
+            gap: 40px;
+            align-items: end;
+            margin-bottom: 42px;
+        }
+
+        .location-head small {
+            color: var(--sand);
+            font-weight: 850;
+            letter-spacing: .23em;
+            text-transform: uppercase;
+        }
+
+        .location-head h3 {
+            margin: 0 !important;
+            color: var(--cream) !important;
+            font-size: clamp(2.5rem, 5.7vw, 5.6rem) !important;
+            line-height: .95 !important;
+            letter-spacing: -.05em;
+            text-transform: uppercase;
+        }
+
+        .map-wrap {
+            position: relative;
+            height: 520px;
+            overflow: hidden;
+            border: 1px solid rgba(194,163,107,.16);
+        }
+
+        .map-wrap iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+            filter: grayscale(.7) contrast(1.05) brightness(.82);
+        }
+
+        .map-overlay {
+            position: absolute;
+            left: 28px;
+            bottom: 28px;
+            z-index: 2;
+            max-width: 350px;
+            padding: 22px 25px;
+            background: rgba(9,14,9,.91);
+            backdrop-filter: blur(10px);
+            border-left: 3px solid var(--sand);
+        }
+
+        .map-overlay small {
+            display: block;
+            margin-bottom: 7px;
+            color: rgba(194,163,107,.68);
+            font-size: .68rem;
+            font-weight: 850;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+        }
+
+        .map-overlay strong {
+            display: block;
+            color: var(--cream);
+            font-size: 1.25rem;
+            line-height: 1.4;
+        }
+
+        .map-overlay a {
+            display: inline-block;
+            margin-top: 13px;
+            color: var(--sand);
+            font-size: .76rem;
+            font-weight: 850;
+            letter-spacing: .12em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        /* završna napomena */
+
+        .contact-note {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(35px, 7vw, 100px);
+            padding: 10px 0 80px;
+        }
+
+        .contact-note h3 {
+            margin: 0 !important;
+            color: var(--cream) !important;
+            font-size: clamp(2rem, 4.5vw, 4rem) !important;
+            line-height: .98 !important;
+            letter-spacing: -.04em;
+            text-transform: uppercase;
+        }
+
+        .contact-note p {
+            margin: 0 !important;
+            color: rgba(232,223,200,.65) !important;
+            line-height: 1.9 !important;
+        }
+
+        @media (max-width: 900px) {
+            .contact-page {
+                width: calc(100% - 20px);
+                margin-top: 20px;
+            }
+
+            .contact-intro {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding-top: 60px;
+            }
+
+            .contact-intro h2 {
+                font-size: clamp(3.4rem, 19vw, 5.4rem) !important;
+            }
+
+            .contact-line {
+                grid-template-columns: 1fr 34px;
+                gap: 10px;
+                padding: 25px 0;
+            }
+
+            .contact-line-label {
+                grid-column: 1 / -1;
+            }
+
+            .location-head {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .map-wrap {
+                height: 430px;
+            }
+
+            .map-overlay {
+                left: 14px;
+                right: 14px;
+                bottom: 14px;
+                max-width: none;
+            }
+
+            .contact-note {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
 <header>
-
     <div class="header-logo">
-    <img src="images/logo.png" alt="Oliv Elephant">
+        <img src="images/logo.png" alt="Oliv Elephant">
     </div>
-    
+
     <h1>Oliv Elephant Sportsko Rekreativni Centar</h1>
 
-    <button class="menu-toggle" id="menuToggle" aria-label="Otvori meni">
-    ☰
-</button>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Otvori meni" aria-expanded="false">
+        ☰
+    </button>
 
-<nav id="mobileMenu">
-
-    <a href="index.html" class="nav-link">Početna</a>
-
-    <div class="dropdown">
-        <button class="nav-drop" type="button">
-            Strelište
-            <span class="dropdown-arrow">⌄</span>
-        </button>
-
-        <div class="dropdown-menu">
-            <a href="streliste.html">O strelištu</a>
-            <a href="klub.html">Klub praktičnog streljaštva</a>
-            <a href="akademija.html">Akademija oružja</a>
-        </div>
-    </div>
-
-    <a href="klubhaus.html" class="nav-link">Klubhaus</a>
-
-    <a href="rent.html" class="nav-link">4x4 Rent & Tours</a>
-
-    <a href="smjestaj.html" class="nav-link">Prenoćište</a>
-
-    <a href="kontakt.html" class="nav-link nav-contact">
-        Kontakt
-    </a>
-
-</nav>
+    <nav id="mobileMenu">
+        <a href="index.html" class="nav-link">Početna</a>
+        <a href="streliste.html">O strelištu</a>
+        <a href="klubhaus.html" class="nav-link">Klubhaus</a>
+        <a href="rent.html" class="nav-link">4x4 Rent & Tours</a>
+        <a href="smjestaj.html" class="nav-link">Prenoćište</a>
+        <a href="kontakt.html" class="nav-link nav-contact">Kontakt</a>
+    </nav>
 </header>
 
-<main>
+<main class="contact-page">
 
-    <h2>Kontakt</h2>
-
-    <p class="hero-text">
-        Za informacije o strelištu, obukama, smještaju ili rezervacijama,
-        kontaktirajte nas putem telefona, e-maila ili nas posjetite na lokaciji.
-    </p>
-
-    <div class="contact-grid">
-
-        <div class="contact-card">
-            <h3>📞 Telefon</h3>
-            <p>+387 61-759-795</p>
+    <section class="contact-intro">
+        <div>
+            <span class="contact-kicker">Oliv Elephant • Sanski Most</span>
+            <h2>Kontakt</h2>
         </div>
 
-        <div class="contact-card">
-            <h3>✉️ E-mail</h3>
-            <p> kontakt@olivelephant.com</p>
+        <div class="contact-intro-copy">
+            <p>
+                Za informacije o strelištu, obukama, smještaju,
+                4x4 turama ili rezervacijama javite nam se direktno
+                ili nas posjetite u Kruharima kod Sanskog Mosta.
+            </p>
+        </div>
+    </section>
+
+    <section class="contact-lines">
+
+        <a class="contact-line" href="tel:+38761759795">
+            <span class="contact-line-label">Telefon</span>
+            <span class="contact-line-value">+387 61 759 795</span>
+            <span class="contact-line-arrow">→</span>
+        </a>
+
+        <a class="contact-line" href="mailto:kontakt@olivelephant.com">
+            <span class="contact-line-label">E-mail</span>
+            <span class="contact-line-value">kontakt@olivelephant.com</span>
+            <span class="contact-line-arrow">→</span>
+        </a>
+
+        <div class="contact-line">
+            <span class="contact-line-label">Lokacija</span>
+            <span class="contact-line-value">Kruhari, Sanski Most</span>
+            <span class="contact-line-arrow">•</span>
         </div>
 
-        <div class="contact-card">
-            <h3>📍 Lokacija</h3>
-            <p>Kruhari , Sanski Most</p>
+        <div class="contact-line">
+            <span class="contact-line-label">Radno vrijeme</span>
+            <span class="contact-line-value">Po dogovoru i rezervaciji termina</span>
+            <span class="contact-line-arrow">•</span>
         </div>
 
-        <div class="contact-card">
-            <h3>🕒 Radno vrijeme</h3>
-            <p>Po dogovoru i rezervaciji termina.</p>
+    </section>
+
+    <section class="location-section">
+        <div class="location-head">
+            <small>Pronađite nas</small>
+            <h3>Od puta do Oliv Elephanta.</h3>
         </div>
 
-    </div>
+        <div class="map-wrap">
+            <iframe
+                src="https://www.google.com/maps?q=Kruhari%2C%20Sanski%20Most%2C%20Bosnia%20and%20Herzegovina&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Lokacija Oliv Elephant - Kruhari, Sanski Most">
+            </iframe>
+
+            <div class="map-overlay">
+                <small>Lokacija centra</small>
+                <strong>Kruhari, Sanski Most<br>Bosna i Hercegovina</strong>
+
+                <a href="https://www.google.com/maps/search/?api=1&query=Kruhari%2C%20Sanski%20Most%2C%20Bosnia%20and%20Herzegovina"
+                   target="_blank"
+                   rel="noopener">
+                    Otvori rutu →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-note">
+        <h3>Dolazite prvi put?</h3>
+
+        <p>
+            Za termine, obuke, ture i smještaj preporučujemo da nas
+            kontaktirate prije dolaska. Tako možemo potvrditi dostupnost
+            i dati vam sve potrebne informacije prije puta.
+        </p>
+    </section>
+
 </main>
 
 <footer>
-    <p>© 2026 OE Sportsko Rekreativni Centar</p>
+    <div class="footer-title">OE Sportsko Rekreativni Centar</div>
+    <p class="footer-subtitle">Strelište • Avantura • Priroda • Odmor</p>
+
+    <div class="footer-contact">
+        <span>📍 Kruhari, Sanski Most</span>
+        <a href="tel:+38761759795">📞 +387 61 759 795</a>
+        <a href="mailto:kontakt@olivelephant.com">✉️ kontakt@olivelephant.com</a>
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 OE Sportsko Rekreativni Centar. Sva prava zadržana.
+    </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=280"></script>
+
 </body>
 </html>
