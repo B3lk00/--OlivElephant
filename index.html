@@ -186,28 +186,33 @@
         }
 
         .oe-story-mark {
-            align-self: start;
+            align-self: center;
             display: flex;
             flex-direction: column;
-            gap: 14px;
-            padding-top: 8px;
+            align-items: flex-start;
+            gap: 11px;
         }
 
-        .oe-story-mark span {
-            color: rgba(194, 163, 107, .22);
-            font-size: clamp(5rem, 10vw, 9rem);
-            font-weight: 950;
-            line-height: .75;
-            letter-spacing: -.09em;
+        .oe-story-side-line {
+            width: 72px;
+            height: 2px;
+            margin-bottom: 8px;
+            background: linear-gradient(90deg, var(--sand), var(--green-light));
+        }
+
+        .oe-story-mark strong {
+            color: rgba(232,223,200,.82);
+            font-size: clamp(1.15rem, 2vw, 1.75rem);
+            font-weight: 900;
+            line-height: 1.12;
+            letter-spacing: .08em;
         }
 
         .oe-story-mark small {
-            max-width: 155px;
-            color: rgba(194, 163, 107, .62);
+            color: rgba(194,163,107,.7);
             font-size: .62rem;
             font-weight: 850;
-            line-height: 1.8;
-            letter-spacing: .2em;
+            letter-spacing: .22em;
         }
 
         .oe-story-content {
@@ -533,18 +538,16 @@
             }
 
             .oe-story-mark {
-                flex-direction: row;
-                align-items: flex-end;
-                gap: 18px;
+                align-items: flex-start;
+                gap: 9px;
             }
 
-            .oe-story-mark span {
-                font-size: 4.4rem;
+            .oe-story-side-line {
+                width: 54px;
             }
 
-            .oe-story-mark small {
-                max-width: 180px;
-                padding-bottom: 2px;
+            .oe-story-mark strong {
+                font-size: 1.05rem;
             }
 
             .oe-story-title {
@@ -665,8 +668,9 @@
 
         <section class="oe-story">
             <div class="oe-story-mark">
-                <span>OE</span>
-                <small>SPORT • PRIRODA • ISKUSTVO</small>
+                <span class="oe-story-side-line"></span>
+                <strong>SPORTSKO<br>REKREATIVNI<br>CENTAR</strong>
+                <small>SANSKI MOST</small>
             </div>
 
             <div class="oe-story-content">
