@@ -193,24 +193,24 @@
 
   .stay-wide-image {
     position: relative;
-    width: 82%;
-    height: auto;
-    min-height: 0;
-    margin: 80px auto;
+    width: 86%;
+    height: 360px;
+    margin: 72px auto;
     overflow: hidden;
-    border-radius: 14px;
+    border-radius: 16px;
+    background: #0b100b;
 }
 
 .stay-wide-image img {
     width: 100%;
-    height: auto;
-    min-height: 0;
+    height: 100%;
     display: block;
+    object-fit: cover;
 
-    /* NEMA cover niti contain */
-    object-fit: unset;
+    /* Podešen kadar da se vide sto, klupe i što više originalne slike */
+    object-position: center 62%;
 
-    filter: saturate(.88) contrast(1.02) brightness(.78);
+    filter: saturate(.9) contrast(1.02) brightness(.82);
 }
 
 .stay-wide-image::after {
@@ -219,23 +219,21 @@
     inset: 0;
     background: linear-gradient(
         90deg,
-        rgba(6,10,7,.30) 0%,
-        rgba(6,10,7,.08) 45%,
-        transparent 70%
+        rgba(6,10,7,.38) 0%,
+        rgba(6,10,7,.10) 42%,
+        transparent 72%
     );
     pointer-events: none;
 }
 
 .stay-wide-label {
     position: absolute;
-    left: 28px;
-    bottom: 25px;
+    left: 30px;
+    bottom: 24px;
     z-index: 2;
-
-    max-width: 380px;
-
+    max-width: 330px;
     color: var(--cream);
-    font-size: clamp(1rem, 1.8vw, 1.55rem);
+    font-size: clamp(1rem, 1.7vw, 1.45rem);
     font-weight: 850;
     line-height: 1.12;
     letter-spacing: -.02em;
@@ -329,30 +327,28 @@
                 padding: 26px 0;
             }
 
-           @media (max-width: 900px) {
+            .stay-wide-image {
+                width: 94%;
+                height: 250px;
+                margin: 52px auto;
+                border-radius: 13px;
+            }
 
-  .stay-wide-image {
-        width: 94%;
-        height: auto;
-        min-height: 0;
-        margin: 55px auto;
-    }
+            .stay-wide-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center 62%;
+            }
 
-    .stay-wide-image img {
-        width: 100%;
-        height: auto;
-        min-height: 0;
-        object-fit: unset;
-    }
+            .stay-wide-label {
+                left: 18px;
+                bottom: 16px;
+                max-width: 68%;
+                font-size: .9rem;
+                line-height: 1.15;
+            }
 
-    .stay-wide-label {
-        left: 16px;
-        bottom: 16px;
-        max-width: 65%;
-        font-size: .9rem;
-        line-height: 1.15;
-    }
-}
             .stay-gallery-head { display: block; }
 
             .stay-gallery-head p {
@@ -383,6 +379,19 @@
             .stay-meta-item {
                 border-right: 0 !important;
                 border-bottom: 1px solid rgba(194,163,107,.15);
+            }
+
+            .stay-wide-image {
+                width: 96%;
+                height: 215px;
+                margin: 44px auto;
+            }
+
+            .stay-wide-label {
+                left: 14px;
+                bottom: 14px;
+                max-width: 72%;
+                font-size: .82rem;
             }
 
             .stay-gallery-grid { grid-template-columns: 1fr; }
