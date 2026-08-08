@@ -241,10 +241,10 @@
         }
 
         /* CITAT PREKO SLIKE */
-
         .range-quote {
             position: relative;
 
+            /* kao na Smještaju: jedan široki banner */
             width: 86%;
             height: 360px;
             min-height: 0;
@@ -252,61 +252,47 @@
             display: flex;
             align-items: flex-end;
 
-            margin: 70px auto 100px;
+            margin: 72px auto 100px;
             overflow: hidden;
             border-radius: 16px;
 
-            /* Ista fotografija u pozadini popunjava prostor,
-               a cijela fotografija se prikazuje iznad nje. */
+            /* SAMO JEDNA SLIKA — nema slike unutar slike */
             background:
-                linear-gradient(rgba(8,12,8,.48), rgba(8,12,8,.48)),
-                url("images/shooting range12.jpeg") center / cover no-repeat;
-        }
-
-        .range-quote::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-
-            /* KLJUČNO: contain = cijela originalna slika je vidljiva */
-            background:
-                url("images/shooting range12.jpeg") center / contain no-repeat;
-
-            z-index: 1;
+                linear-gradient(
+                    90deg,
+                    rgba(8,12,8,.42) 0%,
+                    rgba(8,12,8,.12) 45%,
+                    rgba(8,12,8,.03) 72%
+                ),
+                url("images/shooting range12.jpeg") center 54% / cover no-repeat;
         }
 
         .range-quote::after {
             content: "";
             position: absolute;
             inset: 0;
-            z-index: 2;
-
             background: linear-gradient(
-                90deg,
-                rgba(8,12,8,.42) 0%,
-                rgba(8,12,8,.10) 42%,
-                rgba(8,12,8,.02) 72%
+                180deg,
+                rgba(8,12,8,.03) 0%,
+                rgba(8,12,8,.16) 100%
             );
-
             pointer-events: none;
         }
 
         .range-quote blockquote {
             position: relative;
-            z-index: 3;
+            z-index: 2;
 
-            max-width: 520px;
+            max-width: 420px;
 
             margin: 0;
-            padding: 0 0 28px 30px;
+            padding: 0 0 26px 30px;
 
             color: var(--cream);
-
-            /* dosta manji tekst */
-            font-size: clamp(1.35rem, 2.8vw, 2.6rem);
+            font-size: clamp(1.15rem, 2.2vw, 2rem);
             font-weight: 900;
-            line-height: 1.02;
-            letter-spacing: -.035em;
+            line-height: 1.05;
+            letter-spacing: -.03em;
             text-transform: uppercase;
         }
 
@@ -500,7 +486,6 @@
                 font-size: .98rem !important;
                 line-height: 1.8 !important;
             }
-
             .range-quote {
                 width: 94%;
                 height: 250px;
@@ -508,20 +493,20 @@
                 margin: 55px auto 80px;
 
                 background:
-                    linear-gradient(rgba(8,12,8,.48), rgba(8,12,8,.48)),
-                    url("images/shooting range12.jpeg") center / cover no-repeat;
-            }
-
-            .range-quote::before {
-                background:
-                    url("images/shooting range12.jpeg") center / contain no-repeat;
+                    linear-gradient(
+                        90deg,
+                        rgba(8,12,8,.46) 0%,
+                        rgba(8,12,8,.14) 52%,
+                        rgba(8,12,8,.03) 100%
+                    ),
+                    url("images/shooting range12.jpeg") center 54% / cover no-repeat;
             }
 
             .range-quote blockquote {
-                max-width: 72%;
-                padding: 0 0 18px 18px;
-                font-size: clamp(1rem, 5vw, 1.5rem);
-                line-height: 1.08;
+                max-width: 68%;
+                padding: 0 0 17px 18px;
+                font-size: .95rem;
+                line-height: 1.1;
             }
 
             .program-line {
@@ -558,7 +543,7 @@
 
             .range-quote {
                 width: 96%;
-                height: 215px;
+                height: 205px;
                 margin: 45px auto 70px;
             }
 
