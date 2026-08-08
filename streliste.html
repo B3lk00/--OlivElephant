@@ -31,7 +31,7 @@
 
         .range-hero {
             display: grid;
-            grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
+            grid-template-columns: minmax(0, 1fr) minmax(430px, 1fr);
             min-height: 650px;
             border-bottom: 1px solid rgba(194, 163, 107, .18);
         }
@@ -163,12 +163,14 @@
 
         .range-copy h2 {
             margin: 0 0 28px !important;
+            max-width: 100%;
             color: var(--cream) !important;
-            font-size: clamp(3.2rem, 6.7vw, 6.8rem) !important;
+            font-size: clamp(3rem, 5.4vw, 5.6rem) !important;
             font-weight: 950;
-            line-height: .86 !important;
+            line-height: .88 !important;
             letter-spacing: -.055em;
             text-transform: uppercase;
+            overflow-wrap: anywhere;
         }
 
         .range-copy h2::after {
@@ -181,6 +183,17 @@
             color: rgba(232,223,200,.76) !important;
             font-size: clamp(1rem, 1.35vw, 1.15rem) !important;
             line-height: 1.9 !important;
+        }
+
+
+        html[lang="de"] .range-copy h2 {
+            font-size: clamp(2.8rem, 4.8vw, 5rem) !important;
+            letter-spacing: -.045em;
+        }
+
+        html[lang="de"] .range-copy {
+            padding-left: clamp(36px, 4.8vw, 68px);
+            padding-right: clamp(28px, 4vw, 58px);
         }
 
         /* TEKSTUALNE SEKCIJE BEZ SLIKA I KARTICA */
@@ -494,7 +507,8 @@
 
         /* MOBITEL */
 
-        @media (max-width: 900px) {
+        @media (max-width: 900px)
+         {
             .range-page {
                 width: calc(100% - 20px);
                 margin-top: 20px;
@@ -614,6 +628,14 @@
                 columns: 1;
             }
         }
+    
+        @media (max-width: 900px) {
+            html[lang="de"] .range-copy h2 {
+                font-size: clamp(2.4rem, 11vw, 4rem) !important;
+                overflow-wrap: normal;
+            }
+        }
+
     </style>
 </head>
 
