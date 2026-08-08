@@ -4,23 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Klubhaus - OlivElephant Sportsko Rekreativni Centar</title>
+    <title>Strelište - OlivElephant Sportsko Rekreativni Centar</title>
 
-    <link rel="stylesheet" href="style.css?v=250">
+    <link rel="stylesheet" href="style.css?v=230">
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
     <link rel="apple-touch-icon" href="images/favicon.png">
 
     <style>
-        /* =====================================================
-           KLUBHAUS — EDITORIAL / LODGE STIL
-           Namjerno drugačiji od indexa i Strelišta
-        ===================================================== */
-
-        .club-page {
-            width: min(1220px, calc(100% - 34px));
-            margin: 44px auto 80px;
+        .range-page {
+            width: min(1280px, calc(100% - 34px));
+            margin: 40px auto 80px;
             padding: 0 !important;
             background: transparent !important;
             border: 0 !important;
@@ -28,292 +23,437 @@
             overflow: visible !important;
         }
 
-        .club-page::before {
+        .range-page::before {
             display: none !important;
         }
 
-        /* HERO — TEKST DOMINIRA, SLIKE SU KOLAŽ */
+        /* HERO */
 
-        .club-intro {
+        .range-hero {
             display: grid;
-            grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
-            gap: clamp(46px, 7vw, 110px);
-            align-items: center;
-            min-height: 610px;
-            padding: clamp(54px, 8vw, 100px) 0;
+            grid-template-columns: minmax(0, 1fr) minmax(430px, 1fr);
+            min-height: 650px;
             border-bottom: 1px solid rgba(194, 163, 107, .18);
         }
 
-        .club-intro-copy {
-            max-width: 720px;
+        .range-slider {
+            position: relative;
+            min-height: 650px;
+            overflow: hidden;
+            background: #0a0e09;
         }
 
-        .club-kicker {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 24px;
-            color: var(--sand);
-            font-size: .73rem;
-            font-weight: 850;
-            letter-spacing: .25em;
-            text-transform: uppercase;
+        .range-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transform: scale(1.08);
+            transition: opacity 1s ease, transform 7s ease;
         }
 
-        .club-kicker::before {
+        .range-slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .range-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(.82) contrast(1.08) brightness(.8);
+        }
+
+        .range-slider::after {
             content: "";
-            width: 44px;
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(180deg, transparent 56%, rgba(0,0,0,.58)),
+                linear-gradient(90deg, transparent 64%, rgba(10,14,9,.22));
+            pointer-events: none;
+        }
+
+        .range-slider-ui {
+            position: absolute;
+            left: 28px;
+            right: 28px;
+            bottom: 24px;
+            z-index: 4;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .range-count {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            color: var(--cream);
+            font-size: .78rem;
+            font-weight: 800;
+            letter-spacing: .14em;
+        }
+
+        .range-count::before {
+            content: "";
+            width: 48px;
             height: 1px;
             background: var(--sand);
         }
 
-        .club-intro h2 {
-            margin: 0 0 28px !important;
-            color: var(--cream) !important;
-            font-size: clamp(3.5rem, 8vw, 7.8rem) !important;
-            font-weight: 950;
-            line-height: .86 !important;
-            letter-spacing: -.055em;
-            text-transform: uppercase;
+        .range-dots {
+            display: flex;
+            gap: 8px;
         }
 
-        .club-intro h2::after {
-            display: none !important;
+        .range-dot {
+            width: 9px;
+            height: 9px;
+            padding: 0;
+            border: 1px solid rgba(232,223,200,.65);
+            border-radius: 50%;
+            background: transparent;
+            cursor: pointer;
+            transition: .25s ease;
         }
 
-        .club-intro-copy p {
-            max-width: 690px !important;
-            margin: 0 0 20px !important;
-            color: rgba(232,223,200,.74) !important;
-            font-size: clamp(1.02rem, 1.4vw, 1.18rem) !important;
-            line-height: 1.95 !important;
+        .range-dot.active {
+            width: 28px;
+            border-radius: 999px;
+            background: var(--sand);
+            border-color: var(--sand);
         }
 
-        .club-intro-copy p:last-child {
-            margin-bottom: 0 !important;
-        }
-
-        .club-collage {
+        .range-copy {
             position: relative;
-            min-height: 500px;
-        }
-
-        .club-collage img {
-            position: absolute;
-            display: block;
-            object-fit: cover;
-            box-shadow: 0 24px 60px rgba(0,0,0,.36);
-            filter: saturate(.9) contrast(1.03);
-        }
-
-        .club-collage img:nth-child(1) {
-            width: 72%;
-            height: 72%;
-            right: 0;
-            top: 0;
-        }
-
-        .club-collage img:nth-child(2) {
-            width: 58%;
-            height: 54%;
-            left: 0;
-            bottom: 0;
-            border: 10px solid rgba(16,20,15,.9);
-        }
-
-        .club-collage::after {
-            content: "CAFFE MOZAMBIK";
-            position: absolute;
-            right: 8px;
-            bottom: 16px;
-            color: var(--sand);
-            font-size: .7rem;
-            font-weight: 850;
-            letter-spacing: .2em;
-            text-transform: uppercase;
-            writing-mode: vertical-rl;
-        }
-
-        /* VELIKA EDITORIAL REČENICA */
-
-        .club-manifesto {
-            padding: clamp(78px, 11vw, 145px) 0;
-            border-bottom: 1px solid rgba(194,163,107,.18);
-        }
-
-        .club-manifesto p {
-            max-width: 1100px !important;
-            margin: 0 !important;
-            color: var(--cream) !important;
-            font-size: clamp(2.2rem, 5.7vw, 5.4rem) !important;
-            line-height: 1.02 !important;
-            letter-spacing: -.04em;
-            font-weight: 850;
-        }
-
-        .club-manifesto p span {
-            color: var(--sand);
-        }
-
-        /* JEDAN DOLAZAK — ČETIRI TRENUTKA */
-
-        .club-moments {
-            padding: clamp(80px, 10vw, 140px) 0;
-            border-bottom: 1px solid rgba(194,163,107,.18);
-        }
-
-        .club-moments-head {
-            display: grid;
-            grid-template-columns: .72fr 1.28fr;
-            gap: 40px;
-            margin-bottom: 58px;
-        }
-
-        .club-moments-head small {
-            color: var(--sand);
-            font-weight: 850;
-            letter-spacing: .23em;
-            text-transform: uppercase;
-        }
-
-        .club-moments-head h3 {
-            margin: 0 !important;
-            color: var(--cream) !important;
-            font-size: clamp(2.4rem, 5.4vw, 5.3rem) !important;
-            line-height: .96 !important;
-            letter-spacing: -.045em;
-            text-transform: uppercase;
-        }
-
-        .club-moment {
-            display: grid;
-            grid-template-columns: 220px minmax(0, 1fr) 170px;
-            gap: 28px;
+            display: flex;
             align-items: center;
-            padding: 26px 0;
-            border-top: 1px solid rgba(194,163,107,.15);
+            padding: clamp(48px, 6vw, 86px);
+            overflow: hidden;
         }
 
-        .club-moment:last-child {
-            border-bottom: 1px solid rgba(194,163,107,.15);
+        .range-copy::after {
+            content: "RANGE";
+            position: absolute;
+            right: -.12em;
+            bottom: -.05em;
+            color: rgba(232,223,200,.025);
+            font-size: clamp(8rem, 15vw, 15rem);
+            font-weight: 950;
+            letter-spacing: -.08em;
+            line-height: .75;
+            pointer-events: none;
         }
 
-        .club-moment-word {
+        .range-copy-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 560px;
+        }
+
+        .range-kicker {
+            display: inline-block;
+            margin-bottom: 24px;
             color: var(--sand);
-            font-size: clamp(1.35rem, 2.2vw, 2rem);
-            font-weight: 900;
-            line-height: 1.05;
+            font-size: .74rem;
+            font-weight: 850;
+            letter-spacing: .26em;
+            text-transform: uppercase;
+        }
+
+        .range-copy h2 {
+            margin: 0 0 28px !important;
+            max-width: 100%;
+            color: var(--cream) !important;
+            font-size: clamp(3rem, 5.4vw, 5.6rem) !important;
+            font-weight: 950;
+            line-height: .88 !important;
+            letter-spacing: -.055em;
             text-transform: uppercase;
             overflow-wrap: anywhere;
         }
 
-        .club-moment p {
+        .range-copy h2::after {
+            display: none !important;
+        }
+
+        .range-copy p {
             margin: 0 !important;
-            max-width: none !important;
-            color: rgba(232,223,200,.67) !important;
-            line-height: 1.8 !important;
-        }
-
-        .club-moment-time {
-            text-align: right;
-            color: rgba(194,163,107,.48);
-            font-size: .78rem;
-            font-weight: 850;
-            letter-spacing: .2em;
-            text-transform: uppercase;
-        }
-
-
-        html[lang="de"] .club-moment {
-            grid-template-columns: 250px minmax(0, 1fr) 155px;
-            gap: 24px;
-        }
-
-        html[lang="de"] .club-moment-word {
-            font-size: clamp(1.2rem, 1.9vw, 1.75rem);
-            letter-spacing: -.02em;
-        }
-
-        html[lang="de"] .club-moment p {
-            font-size: .98rem !important;
-            line-height: 1.7 !important;
-        }
-
-        html[lang="de"] .club-moment-time {
-            font-size: .68rem;
-            letter-spacing: .16em;
-        }
-
-        /* CAFFE MOZAMBIK — CENTRALNA SLIKA I TEKST */
-
-        .club-feature {
-            display: grid;
-            grid-template-columns: minmax(0, 1.05fr) minmax(330px, .95fr);
-            gap: clamp(44px, 7vw, 100px);
-            align-items: center;
-            padding: clamp(86px, 11vw, 150px) 0;
-            border-bottom: 1px solid rgba(194,163,107,.18);
-        }
-
-        .club-feature-visual {
-            position: relative;
-        }
-
-        .club-feature-visual img {
-            width: 100%;
-            max-height: 600px;
-            object-fit: cover;
-            display: block;
-            filter: saturate(.9) contrast(1.04);
-        }
-
-        .club-feature-visual::before {
-            content: "";
-            position: absolute;
-            left: -18px;
-            top: -18px;
-            width: 45%;
-            height: 45%;
-            border-left: 1px solid rgba(194,163,107,.42);
-            border-top: 1px solid rgba(194,163,107,.42);
-        }
-
-        .club-feature-copy small {
-            display: block;
-            margin-bottom: 18px;
-            color: var(--sand);
-            font-weight: 850;
-            letter-spacing: .23em;
-            text-transform: uppercase;
-        }
-
-        .club-feature-copy h3 {
-            margin: 0 0 26px !important;
-            color: var(--cream) !important;
-            font-size: clamp(2.6rem, 5.6vw, 5.5rem) !important;
-            line-height: .94 !important;
-            letter-spacing: -.045em;
-            text-transform: uppercase;
-        }
-
-        .club-feature-copy p {
-            margin: 0 0 20px !important;
-            max-width: 600px !important;
-            color: rgba(232,223,200,.7) !important;
+            max-width: 560px !important;
+            color: rgba(232,223,200,.76) !important;
+            font-size: clamp(1rem, 1.35vw, 1.15rem) !important;
             line-height: 1.9 !important;
         }
 
-        .club-feature-copy p:last-child {
+
+        html[lang="de"] .range-copy h2 {
+            font-size: clamp(2.6rem, 4.15vw, 4.4rem) !important;
+            letter-spacing: -.055em;
+            white-space: nowrap;
+            overflow-wrap: normal;
+        }
+
+        html[lang="de"] .range-copy {
+            padding-left: clamp(36px, 4.8vw, 68px);
+            padding-right: clamp(28px, 4vw, 58px);
+        }
+
+        /* TEKSTUALNE SEKCIJE BEZ SLIKA I KARTICA */
+
+        .range-details {
+            padding: clamp(80px, 10vw, 135px) 0;
+        }
+
+        .range-detail-row {
+            display: grid;
+            grid-template-columns: minmax(180px, .62fr) minmax(0, 1.38fr);
+            gap: clamp(36px, 7vw, 100px);
+            align-items: start;
+            padding: clamp(38px, 5vw, 62px) 0;
+            border-top: 1px solid rgba(194,163,107,.17);
+        }
+
+        .range-detail-row:last-child {
+            border-bottom: 1px solid rgba(194,163,107,.17);
+        }
+
+        .range-detail-label {
+            position: sticky;
+            top: 150px;
+        }
+
+        .range-detail-label small {
+            display: block;
+            margin-bottom: 14px;
+            color: rgba(194,163,107,.65);
+            font-weight: 850;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+        }
+
+        .range-detail-label h3 {
+            margin: 0 !important;
+            color: var(--sand) !important;
+            font-size: clamp(1.8rem, 3.3vw, 3.2rem) !important;
+            line-height: 1 !important;
+            text-transform: uppercase;
+        }
+
+        .range-detail-content {
+            max-width: 760px;
+        }
+
+        .range-detail-content p {
+            margin: 0 0 22px !important;
+            max-width: none !important;
+            color: rgba(232,223,200,.73) !important;
+            font-size: clamp(1.02rem, 1.35vw, 1.15rem) !important;
+            line-height: 1.95 !important;
+        }
+
+        .range-detail-content p:last-child {
             margin-bottom: 0 !important;
         }
 
-        /* GALERIJA — MANJE SLIKE, EDITORIAL GRID */
+        /* PROGRAMI — KLUB I AKADEMIJA NA ISTOJ STRANICI */
 
-        .club-gallery {
-            padding: clamp(80px, 10vw, 135px) 0 20px;
+        .range-programs {
+            padding: 30px 0 125px;
         }
 
-        .club-gallery-head {
+        .range-programs-head {
+            max-width: 880px;
+            margin-bottom: 55px;
+        }
+
+        .range-programs-head small {
+            color: var(--sand);
+            font-weight: 850;
+            letter-spacing: .24em;
+            text-transform: uppercase;
+        }
+
+        .range-programs-head h3 {
+            margin: 16px 0 22px !important;
+            color: var(--cream) !important;
+            font-size: clamp(2.7rem, 6vw, 5.8rem) !important;
+            line-height: .92 !important;
+            letter-spacing: -.05em;
+            text-transform: uppercase;
+        }
+
+        .range-programs-head p {
+            max-width: 690px !important;
+            margin: 0 !important;
+            color: rgba(232,223,200,.62) !important;
+            font-size: 1.05rem !important;
+            line-height: 1.8 !important;
+        }
+
+        .program-feature {
+            position: relative;
+            border-top: 1px solid rgba(194,163,107,.22);
+        }
+
+        .program-feature:last-child {
+            border-bottom: 1px solid rgba(194,163,107,.22);
+        }
+
+        .program-feature::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: -1px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--sand), var(--green-light));
+            transition: width .45s ease;
+        }
+
+        .program-feature:hover::before,
+        .program-feature.open::before {
+            width: 100%;
+        }
+
+        .program-trigger {
+            width: 100%;
+            min-height: 175px;
+            display: grid;
+            grid-template-columns: 150px minmax(0, 1fr) 60px;
+            gap: 28px;
+            align-items: center;
+            padding: 30px 0;
+            border: 0;
+            background: transparent;
+            color: inherit;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .program-index {
+            color: rgba(194,163,107,.58);
+            font-size: .72rem;
+            font-weight: 900;
+            letter-spacing: .22em;
+        }
+
+        .program-title-wrap {
+            display: block;
+        }
+
+        .program-title-wrap strong {
+            display: block;
+            color: var(--cream);
+            font-size: clamp(2rem, 4.6vw, 4.6rem);
+            font-weight: 900;
+            line-height: .95;
+            letter-spacing: -.045em;
+            text-transform: uppercase;
+            transition: color .25s ease, transform .25s ease;
+        }
+
+        .program-title-wrap small {
+            display: block;
+            margin-top: 15px;
+            color: rgba(232,223,200,.53);
+            font-size: .78rem;
+            font-weight: 750;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .program-trigger:hover .program-title-wrap strong,
+        .program-feature.open .program-title-wrap strong {
+            color: var(--sand);
+            transform: translateX(7px);
+        }
+
+        .program-toggle {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            justify-self: end;
+            border: 1px solid rgba(194,163,107,.3);
+            border-radius: 50%;
+            color: var(--sand);
+            font-size: 1.65rem;
+            font-weight: 300;
+            transition: transform .35s ease, background .25s ease;
+        }
+
+        .program-feature.open .program-toggle {
+            transform: rotate(45deg);
+            background: rgba(194,163,107,.08);
+        }
+
+        .program-panel {
+            display: grid;
+            grid-template-rows: 0fr;
+            opacity: 0;
+            transition: grid-template-rows .5s ease, opacity .35s ease;
+        }
+
+        .program-feature.open .program-panel {
+            grid-template-rows: 1fr;
+            opacity: 1;
+        }
+
+        .program-panel-inner {
+            min-height: 0;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: .75fr 1.25fr;
+            gap: clamp(40px, 7vw, 100px);
+        }
+
+        .program-feature.open .program-panel-inner {
+            padding: 0 0 58px 178px;
+        }
+
+        .program-intro {
+            margin: 0 !important;
+            color: rgba(232,223,200,.72) !important;
+            font-size: clamp(1rem, 1.3vw, 1.13rem) !important;
+            line-height: 1.85 !important;
+        }
+
+        .program-points {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0 38px;
+        }
+
+        .program-points > div {
+            padding: 0 0 24px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid rgba(194,163,107,.13);
+        }
+
+        .program-points span {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--sand);
+            font-size: .82rem;
+            font-weight: 900;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .program-points p {
+            margin: 0 !important;
+            color: rgba(232,223,200,.61) !important;
+            font-size: .96rem !important;
+            line-height: 1.7 !important;
+        }
+
+        /* GALERIJA */
+
+        .range-gallery {
+            padding: 30px 0 20px;
+        }
+
+        .range-gallery-head {
             display: flex;
             justify-content: space-between;
             align-items: end;
@@ -321,7 +461,7 @@
             margin-bottom: 38px;
         }
 
-        .club-gallery-head small {
+        .range-gallery-head small {
             display: block;
             margin-bottom: 12px;
             color: var(--sand);
@@ -330,148 +470,171 @@
             text-transform: uppercase;
         }
 
-        .club-gallery-head h3 {
+        .range-gallery-head h3 {
             margin: 0 !important;
             color: var(--cream) !important;
-            font-size: clamp(2.5rem, 5.8vw, 5.4rem) !important;
+            font-size: clamp(2.5rem, 5.8vw, 5.5rem) !important;
             line-height: .95 !important;
             letter-spacing: -.045em;
             text-transform: uppercase;
         }
 
-        .club-gallery-head p {
-            max-width: 360px !important;
+        .range-gallery-head p {
+            max-width: 380px !important;
             margin: 0 !important;
-            color: rgba(232,223,200,.58) !important;
+            color: rgba(232,223,200,.6) !important;
             text-align: right;
         }
 
-        .club-gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
+        .range-masonry {
+            columns: 4 250px;
+            column-gap: 16px;
         }
 
-        .club-gallery-grid img {
+        .range-masonry img {
             width: 100%;
-            height: 230px;
-            object-fit: cover;
             display: block;
+            margin: 0 0 16px;
+            break-inside: avoid;
+            border-radius: 14px;
             cursor: pointer;
-            border-radius: 10px;
-            filter: saturate(.88) contrast(1.03);
-            transition: transform .28s ease, filter .28s ease;
+            filter: saturate(.86) contrast(1.04);
+            transition: transform .3s ease, filter .3s ease;
         }
 
-        .club-gallery-grid img:nth-child(5n + 1) {
-            grid-column: span 2;
-        }
-
-        .club-gallery-grid img:hover {
-            transform: translateY(-4px);
-            filter: saturate(1) contrast(1.06);
+        .range-masonry img:hover {
+            transform: scale(1.015);
+            filter: saturate(1) contrast(1.07);
         }
 
         /* MOBITEL */
 
-        @media (max-width: 900px) {
-            .club-page {
+        @media (max-width: 900px)
+         {
+            .range-page {
                 width: calc(100% - 20px);
                 margin-top: 20px;
             }
 
-            .club-intro {
+            .range-hero {
                 grid-template-columns: 1fr;
                 min-height: 0;
             }
 
-            .club-intro-copy {
-                padding-top: 20px;
+            .range-slider {
+                min-height: 430px;
             }
 
-            .club-intro h2 {
+            .range-copy {
+                padding: 58px 4px 72px;
+            }
+
+            .range-copy h2 {
                 font-size: clamp(3.1rem, 17vw, 5rem) !important;
             }
 
-            .club-collage {
-                min-height: 420px;
+            .range-detail-row {
+                grid-template-columns: 1fr;
+                gap: 22px;
+                padding: 42px 0;
             }
 
-            .club-moments-head {
-                grid-template-columns: 1fr;
-                gap: 18px;
+            .range-detail-label {
+                position: static;
             }
 
-            .club-moment {
-                grid-template-columns: 1fr;
-                gap: 10px;
+            .range-detail-label h3 {
+                font-size: 2rem !important;
+            }
+
+            .range-detail-content p {
+                font-size: .98rem !important;
+                line-height: 1.8 !important;
+            }
+
+            .range-programs {
+                padding-bottom: 90px;
+            }
+
+            .range-programs-head h3 {
+                font-size: clamp(2.5rem, 13vw, 4.2rem) !important;
+            }
+
+            .program-trigger {
+                min-height: 145px;
+                grid-template-columns: 1fr 46px;
+                gap: 16px;
                 padding: 26px 0;
             }
 
-            .club-moment-time {
-                text-align: left;
+            .program-index {
+                grid-column: 1 / -1;
+                margin-bottom: -5px;
             }
 
-            .club-feature {
+            .program-title-wrap strong {
+                font-size: clamp(1.7rem, 8vw, 2.6rem);
+                line-height: 1;
+            }
+
+            .program-title-wrap small {
+                font-size: .67rem;
+                line-height: 1.6;
+            }
+
+            .program-toggle {
+                width: 42px;
+                height: 42px;
+                font-size: 1.4rem;
+            }
+
+            .program-panel-inner {
                 grid-template-columns: 1fr;
+                gap: 28px;
             }
 
-            .club-feature-copy {
-                order: 1;
+            .program-feature.open .program-panel-inner {
+                padding: 0 0 42px;
             }
 
-            .club-feature-visual {
-                order: 2;
+            .program-points {
+                grid-template-columns: 1fr;
+                gap: 0;
             }
 
-            .club-gallery-head {
+            .range-gallery-head {
                 display: block;
             }
 
-            .club-gallery-head p {
+            .range-gallery-head p {
                 margin-top: 18px !important;
                 text-align: left;
             }
 
-            .club-gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 9px;
+            .range-masonry {
+                columns: 2 145px;
+                column-gap: 10px;
             }
 
-            .club-gallery-grid img,
-            .club-gallery-grid img:nth-child(5n + 1) {
-                grid-column: auto;
-                height: 180px;
+            .range-masonry img {
+                margin-bottom: 10px;
             }
         }
 
-        @media (max-width: 520px) {
-            .club-collage {
-                min-height: 330px;
+        @media (max-width: 480px) {
+            .range-slider {
+                min-height: 340px;
             }
 
-            .club-gallery-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .club-gallery-grid img {
-                height: 220px;
+            .range-masonry {
+                columns: 1;
             }
         }
     
         @media (max-width: 900px) {
-            html[lang="de"] .club-moment {
-                grid-template-columns: 1fr;
-                gap: 10px;
-            }
-
-            html[lang="de"] .club-moment-word,
-            html[lang="de"] .club-moment-time {
-                text-align: left;
-            }
-
-            html[lang="de"] .club-moment-time {
-                margin-top: 2px;
+            html[lang="de"] .range-copy h2 {
+                font-size: clamp(2.4rem, 11vw, 4rem) !important;
+                overflow-wrap: normal;
             }
         }
 
@@ -507,137 +670,252 @@
     </nav>
 </header>
 
-<main class="club-page">
+<main class="range-page">
 
-    <section class="club-intro">
-        <div class="club-intro-copy">
-            <span class="club-kicker">OlivElephant • Klubhaus</span>
+    <section class="range-hero">
 
-            <h2>Klubhaus</h2>
+        <div class="range-slider">
+            <div class="range-slide active">
+                <img src="images/shooting range1.jpeg" alt="Strelište Oliv Elephant">
+            </div>
 
-            <p>
-                Mjesto gdje završava tempo aktivnosti, a počinje druženje.
-                Klubhaus okuplja članove, posjetioce i goste centra u
-                opuštenom i domaćem ambijentu.
-            </p>
+            <div class="range-slide">
+                <img src="images/shooting range5.jpeg" alt="Streljačka linija">
+            </div>
 
-            <p>
-                Nije zamišljen kao običan caffe, već kao prostor koji povezuje
-                cijeli doživljaj OlivElephanta — od terena do stola.
-            </p>
+            <div class="range-slide">
+                <img src="images/shooting range3.jpeg" alt="Trening na strelištu">
+            </div>
+
+            <div class="range-slide">
+                <img src="images/shooting range4.jpeg" alt="Strelište u prirodi">
+            </div>
+
+            <div class="range-slider-ui">
+                <div class="range-count">
+                    <span id="rangeCurrentSlide">01</span>
+                    <span>/ 04</span>
+                </div>
+
+                <div class="range-dots">
+                    <button class="range-dot active" type="button" aria-label="Slika 1"></button>
+                    <button class="range-dot" type="button" aria-label="Slika 2"></button>
+                    <button class="range-dot" type="button" aria-label="Slika 3"></button>
+                    <button class="range-dot" type="button" aria-label="Slika 4"></button>
+                </div>
+            </div>
         </div>
 
-        <div class="club-collage">
-            <img src="images/caffe1.jpg" alt="Caffe Mozambik">
-            <img src="images/caffe4.jpg" alt="Klubhaus ambijent">
+        <div class="range-copy">
+            <div class="range-copy-inner">
+                <span class="range-kicker">OlivElephant • Strelište</span>
+
+                <h2>Strelište</h2>
+
+                <p>
+                    Profesionalno okruženje za sportsko, rekreativno i
+                    edukativno streljaštvo. Sigurnost, kontrola i kvalitetno
+                    iskustvo nalaze se u osnovi svakog treninga, obuke i posjete.
+                </p>
+            </div>
         </div>
+
     </section>
 
-    <section class="club-manifesto">
-        <p>
-            Neka mjesta služe da prođe vrijeme.
-            <span>Klubhaus je napravljen da ga poželite produžiti.</span>
-        </p>
+    <section class="range-details">
+
+        <article class="range-detail-row">
+            <div class="range-detail-label">
+                <small>Temelj svakog dolaska</small>
+                <h3>Sigurnost</h3>
+            </div>
+
+            <div class="range-detail-content">
+                <p>
+                    Svaka aktivnost počinje jasnim pravilima, stručnim nadzorom
+                    i odgovornim pristupom. Prije prvog pucnja učesnik se upoznaje
+                    sa prostorom, opremom i pravilima ponašanja na strelištu.
+                </p>
+
+                <p>
+                    Cilj nije samo pogoditi metu, već razviti pravilne navike,
+                    kontrolu i sigurnost koja se podrazumijeva u svakom trenutku.
+                </p>
+            </div>
+        </article>
+
+        <article class="range-detail-row">
+            <div class="range-detail-label">
+                <small>Razvoj tehnike</small>
+                <h3>Sportsko streljaštvo</h3>
+            </div>
+
+            <div class="range-detail-content">
+                <p>
+                    Trening je usmjeren na preciznost, brzinu, kontrolu i pravilnu
+                    tehniku. Svaki program se prilagođava iskustvu učesnika i cilju
+                    koji želi postići.
+                </p>
+
+                <p>
+                    Kroz kontinuiran rad razvijaju se sigurnost u izvođenju,
+                    pravilno rukovanje i sposobnost donošenja mirnih odluka
+                    pod pritiskom.
+                </p>
+            </div>
+        </article>
+
+        <article class="range-detail-row">
+            <div class="range-detail-label">
+                <small>Iskustvo za posjetioce</small>
+                <h3>Rekreacija</h3>
+            </div>
+
+            <div class="range-detail-content">
+                <p>
+                    Strelište je pogodno i za pojedince, grupe i goste koji se
+                    prvi put susreću sa streljaštvom i žele ga upoznati u
+                    kontrolisanom okruženju.
+                </p>
+
+                <p>
+                    Uz stručnu podršku, posjeta postaje zanimljivo i edukativno
+                    iskustvo koje spaja koncentraciju, disciplinu i osjećaj
+                    ličnog napretka.
+                </p>
+            </div>
+        </article>
+
     </section>
 
-    <section class="club-moments">
-        <div class="club-moments-head">
-            <small>Jedan dolazak</small>
-
-            <h3>Četiri trenutka koja čine atmosferu.</h3>
-        </div>
-
-        <div class="club-moment">
-            <div class="club-moment-word">Stani</div>
+    <section class="range-programs" id="programi">
+        <div class="range-programs-head">
+            <small>Programi strelišta</small>
+            <h3>Dva pravca.<br>Jedan standard.</h3>
             <p>
-                Nakon treninga, ture ili boravka u prirodi, prvi trenutak
-                je jednostavan — sjesti, usporiti i promijeniti ritam.
+                Sportski razvoj kroz klub ili strukturirana edukacija kroz akademiju.
+                Sve ostaje na jednoj stranici — bez nepotrebnog otvaranja dodatnih podstranica.
             </p>
-            <div class="club-moment-time">Prvi utisak</div>
         </div>
 
-        <div class="club-moment">
-            <div class="club-moment-word">Udahni</div>
-            <p>
-                Miran ambijent i otvoren prostor stvaraju mjesto gdje se
-                razgovor vraća u prvi plan, bez žurbe i buke.
-            </p>
-            <div class="club-moment-time">Predah</div>
-        </div>
+        <article class="program-feature">
+            <button class="program-trigger" type="button" aria-expanded="false">
+                <span class="program-index">KLUB</span>
 
-        <div class="club-moment">
-            <div class="club-moment-word">Probaj</div>
-            <p>
-                Domaći kolači, prirodni sokovi, kafa i proizvodi lokalnog
-                porijekla upotpunjuju osjećaj autentičnog domaćeg mjesta.
-            </p>
-            <div class="club-moment-time">Domaći ukus</div>
-        </div>
+                <span class="program-title-wrap">
+                    <strong>Klub praktičnog streljaštva</strong>
+                    <small>Obuka • Trening • PIRO • Turniri</small>
+                </span>
 
-        <div class="club-moment">
-            <div class="club-moment-word">Ostani</div>
-            <p>
-                Klubhaus nije samo stanica između aktivnosti, već prostor
-                u kojem se iskustvo centra nastavlja kroz druženje.
-            </p>
-            <div class="club-moment-time">Dobra atmosfera</div>
-        </div>
+                <span class="program-toggle" aria-hidden="true">+</span>
+            </button>
+
+            <div class="program-panel">
+                <div class="program-panel-inner">
+                    <p class="program-intro">
+                        Klub okuplja zaljubljenike u praktično streljaštvo kroz obuke,
+                        redovne treninge, napredne programe i takmičenja.
+                    </p>
+
+                    <div class="program-points">
+                        <div>
+                            <span>Obuka</span>
+                            <p>Osnove praktičnog streljaštva i sigurno rukovanje.</p>
+                        </div>
+
+                        <div>
+                            <span>Trening</span>
+                            <p>Redovni treninzi za preciznost, brzinu i tehniku.</p>
+                        </div>
+
+                        <div>
+                            <span>PIRO</span>
+                            <p>Napredni programi i specijalizovane vježbe.</p>
+                        </div>
+
+                        <div>
+                            <span>Turniri</span>
+                            <p>Organizacija i učešće na turnirima.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="program-feature program-feature-alt">
+            <button class="program-trigger" type="button" aria-expanded="false">
+                <span class="program-index">AKADEMIJA</span>
+
+                <span class="program-title-wrap">
+                    <strong>Akademija oružja Oliv Elephant</strong>
+                    <small>Edukacija • Sigurnost • Obuke i kursevi</small>
+                </span>
+
+                <span class="program-toggle" aria-hidden="true">+</span>
+            </button>
+
+            <div class="program-panel">
+                <div class="program-panel-inner academy-layout">
+                    <p class="program-intro">
+                        Akademija pruža edukaciju iz oblasti sigurnog rukovanja oružjem,
+                        teorijske nastave i praktične obuke.
+                    </p>
+
+                    <div class="program-points">
+                        <div>
+                            <span>Akademija oružja</span>
+                            <p>Edukacija o vrstama oružja, sigurnosti i pravilnoj upotrebi.</p>
+                        </div>
+
+                        <div>
+                            <span>OlivElephant programi</span>
+                            <p>Specijalizovani programi, obuke i kursevi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
     </section>
 
-    <section class="club-feature">
-        <div class="club-feature-visual">
-            <img src="images/caffe6.jpg" alt="Caffe Mozambik detalji">
-        </div>
-
-        <div class="club-feature-copy">
-            <small>Caffe Mozambik</small>
-
-            <h3>Identitet unutar centra.</h3>
-
-            <p>
-                Caffe Mozambik je srce Klubhausa i mjesto gdje se sastaju
-                posjetioci različitih interesa — strijelci, gosti, porodice,
-                ljubitelji prirode i avanture.
-            </p>
-
-            <p>
-                Upravo ta mješavina ljudi, aktivnosti i domaće ponude
-                daje prostoru karakter koji se ne može svesti samo na
-                kafu, kolače ili odmor.
-            </p>
-        </div>
-    </section>
-
-    <section class="club-gallery">
-        <div class="club-gallery-head">
+    <section class="range-gallery">
+        <div class="range-gallery-head">
             <div>
                 <small>Galerija</small>
-                <h3>Detalji koji grade atmosferu.</h3>
+                <h3>Strelište kroz detalje.</h3>
             </div>
 
             <p>
-                Kliknite fotografiju za pregled preko cijelog ekrana
-                i listanje galerije.
+                Kliknite na fotografiju za pregled preko cijelog ekrana
+                i listanje kompletne galerije.
             </p>
         </div>
 
-        <div class="club-gallery-grid gallery">
-            <img src="images/caffe1.jpg" alt="Caffe Mozambik" onclick="openLightbox(0)">
-            <img src="images/caffe2.jpg" alt="Domaći proizvodi" onclick="openLightbox(1)">
-            <img src="images/caffe3.jpg" alt="Domaći kolači" onclick="openLightbox(2)">
-            <img src="images/caffe4.jpg" alt="Prirodni sokovi" onclick="openLightbox(3)">
-            <img src="images/caffe5.jpg" alt="Ambijent" onclick="openLightbox(4)">
-            <img src="images/caffe6.jpg" alt="Klubhaus" onclick="openLightbox(5)">
-            <img src="images/caffe7.jpg" alt="Odmor" onclick="openLightbox(6)">
-            <img src="images/caffe8.jpg" alt="Druženje" onclick="openLightbox(7)">
-            <img src="images/caffe9.jpg" alt="Caffe Mozambik" onclick="openLightbox(8)">
-            <img src="images/caffe10.jpg" alt="Domaća ponuda" onclick="openLightbox(9)">
-            <img src="images/caffe11.jpg" alt="Domaći kolači" onclick="openLightbox(10)">
-            <img src="images/caffe12.jpg" alt="Prirodni sokovi" onclick="openLightbox(11)">
-            <img src="images/caffe13.jpg" alt="Ambijent Klubhausa" onclick="openLightbox(12)">
-            <img src="images/caffe14.jpg" alt="Oliv Elephant Klubhaus" onclick="openLightbox(13)">
-            <img src="images/caffe15.jpg" alt="Klubhaus detalji" onclick="openLightbox(14)">
-            <img src="images/caffe16.jpg" alt="Caffe detalji" onclick="openLightbox(15)">
+        <div class="range-masonry gallery">
+            <img src="images/shooting range1.jpeg" alt="Strelište 1" onclick="openLightbox(0)">
+            <img src="images/shooting range2.jpeg" alt="Strelište 2" onclick="openLightbox(1)">
+            <img src="images/shooting range3.jpeg" alt="Strelište 3" onclick="openLightbox(2)">
+            <img src="images/shooting range4.jpeg" alt="Strelište 4" onclick="openLightbox(3)">
+            <img src="images/shooting range5.jpeg" alt="Strelište 5" onclick="openLightbox(4)">
+            <img src="images/shooting range6.jpeg" alt="Strelište 6" onclick="openLightbox(5)">
+            <img src="images/shooting range7.jpeg" alt="Strelište 7" onclick="openLightbox(6)">
+            <img src="images/shooting range8.jpeg" alt="Strelište 8" onclick="openLightbox(7)">
+            <img src="images/shooting range9.jpeg" alt="Strelište 9" onclick="openLightbox(8)">
+            <img src="images/shooting range10.jpeg" alt="Strelište 10" onclick="openLightbox(9)">
+            <img src="images/shooting range11.jpeg" alt="Strelište 11" onclick="openLightbox(10)">
+            <img src="images/shooting range12.jpeg" alt="Strelište 12" onclick="openLightbox(11)">
+            <img src="images/shooting range13.jpeg" alt="Strelište 13" onclick="openLightbox(12)">
+            <img src="images/shooting range14.jpeg" alt="Strelište 14" onclick="openLightbox(13)">
+            <img src="images/shooting range15.jpeg" alt="Strelište 15" onclick="openLightbox(14)">
+            <img src="images/shooting range16.jpeg" alt="Strelište 16" onclick="openLightbox(15)">
+            <img src="images/shooting range17.jpeg" alt="Strelište 17" onclick="openLightbox(16)">
+            <img src="images/shooting range18.jpeg" alt="Strelište 18" onclick="openLightbox(17)">
+            <img src="images/shooting range19.jpeg" alt="Strelište 19" onclick="openLightbox(18)">
+            <img src="images/shooting range20.jpeg" alt="Strelište 20" onclick="openLightbox(19)">
+            <img src="images/shooting range21.jpeg" alt="Strelište 21" onclick="openLightbox(20)">
+            <img src="images/shooting range22.jpeg" alt="Strelište 22" onclick="openLightbox(21)">
+            <img src="images/shooting range23.jpeg" alt="Strelište 23" onclick="openLightbox(22)">
+            <img src="images/shooting range24.jpeg" alt="Strelište 24" onclick="openLightbox(23)">
+            <img src="images/shooting range25.jpeg" alt="Strelište 25" onclick="openLightbox(24)">
         </div>
     </section>
 
@@ -666,6 +944,68 @@
 </footer>
 
 <script src="script.js?v=300"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const slides = document.querySelectorAll(".range-slide");
+    const dots = document.querySelectorAll(".range-dot");
+    const currentLabel = document.getElementById("rangeCurrentSlide");
+
+    if (!slides.length) return;
+
+    let current = 0;
+    let timer;
+
+    function showSlide(index) {
+        current = (index + slides.length) % slides.length;
+
+        slides.forEach((slide, i) => {
+            slide.classList.toggle("active", i === current);
+        });
+
+        dots.forEach((dot, i) => {
+            dot.classList.toggle("active", i === current);
+        });
+
+        if (currentLabel) {
+            currentLabel.textContent = String(current + 1).padStart(2, "0");
+        }
+    }
+
+    function startSlider() {
+        clearInterval(timer);
+        timer = setInterval(() => showSlide(current + 1), 4500);
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener("click", function () {
+            showSlide(index);
+            startSlider();
+        });
+    });
+
+    showSlide(0);
+    startSlider();
+
+    document.querySelectorAll(".program-trigger").forEach((trigger) => {
+        trigger.addEventListener("click", function () {
+            const feature = this.closest(".program-feature");
+            const isOpen = feature.classList.contains("open");
+
+            document.querySelectorAll(".program-feature.open").forEach((item) => {
+                if (item !== feature) {
+                    item.classList.remove("open");
+                    const otherTrigger = item.querySelector(".program-trigger");
+                    if (otherTrigger) otherTrigger.setAttribute("aria-expanded", "false");
+                }
+            });
+
+            feature.classList.toggle("open", !isOpen);
+            this.setAttribute("aria-expanded", String(!isOpen));
+        });
+    });
+});
+</script>
 
 </body>
 </html>
