@@ -348,13 +348,13 @@
             border-top: 1px solid rgba(194,163,107,.18);
         }
 
-        .social-head {
-            display: grid;
-            grid-template-columns: .72fr 1.28fr;
-            gap: 40px;
-            align-items: end;
-            margin-bottom: 42px;
-        }
+.social-head {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 60px;
+    align-items: end;
+    margin-bottom: 42px;
+}
 
         .social-head small {
             color: var(--sand);
@@ -367,10 +367,11 @@
 .social-head h3 {
     margin: 0 !important;
     color: var(--cream) !important;
-    font-size: clamp(2rem, 3.6vw, 3.8rem) !important;
+    font-size: clamp(2rem, 3.2vw, 3.5rem) !important;
     line-height: 1 !important;
     letter-spacing: -0.035em;
     text-transform: uppercase;
+    white-space: nowrap;
 }
 
         .social-head p {
@@ -523,6 +524,11 @@
                 gap: 22px;
             }
 
+.social-head h3 {
+    white-space: normal;
+    font-size: 2rem !important;
+}
+            
             .arrival-layout {
                 grid-template-columns: 1fr;
             }
