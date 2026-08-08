@@ -116,90 +116,7 @@
             color: var(--sand);
         }
 
-        /* Mapa kao glavni vizual */
-
-        .location-section {
-            padding: 20px 0 110px;
-        }
-
-        .location-head {
-            display: grid;
-            grid-template-columns: .72fr 1.28fr;
-            gap: 40px;
-            align-items: end;
-            margin-bottom: 42px;
-        }
-
-        .location-head small {
-            color: var(--sand);
-            font-weight: 850;
-            letter-spacing: .23em;
-            text-transform: uppercase;
-        }
-
-        .location-head h3 {
-            margin: 0 !important;
-            color: var(--cream) !important;
-            font-size: clamp(2.5rem, 5.7vw, 5.6rem) !important;
-            line-height: .95 !important;
-            letter-spacing: -.05em;
-            text-transform: uppercase;
-        }
-
-        .map-wrap {
-            position: relative;
-            height: 520px;
-            overflow: hidden;
-            border: 1px solid rgba(194,163,107,.16);
-        }
-
-        .map-wrap iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-            display: block;
-            filter: grayscale(.7) contrast(1.05) brightness(.82);
-        }
-
-        .map-overlay {
-            position: absolute;
-            left: 28px;
-            bottom: 28px;
-            z-index: 2;
-            max-width: 350px;
-            padding: 22px 25px;
-            background: rgba(9,14,9,.91);
-            backdrop-filter: blur(10px);
-            border-left: 3px solid var(--sand);
-        }
-
-        .map-overlay small {
-            display: block;
-            margin-bottom: 7px;
-            color: rgba(194,163,107,.68);
-            font-size: .68rem;
-            font-weight: 850;
-            letter-spacing: .2em;
-            text-transform: uppercase;
-        }
-
-        .map-overlay strong {
-            display: block;
-            color: var(--cream);
-            font-size: 1.25rem;
-            line-height: 1.4;
-        }
-
-        .map-overlay a {
-            display: inline-block;
-            margin-top: 13px;
-            color: var(--sand);
-            font-size: .76rem;
-            font-weight: 850;
-            letter-spacing: .12em;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
+        /* završna napomena */
 
         /* završna napomena */
 
@@ -360,6 +277,69 @@
             letter-spacing: .15em;
         }
 
+
+        /* RADNO VRIJEME */
+
+        .contact-hours {
+            align-items: start;
+        }
+
+        .hours-wrap {
+            width: min(100%, 650px);
+        }
+
+        .hours-status {
+            display: flex;
+            justify-content: space-between;
+            gap: 25px;
+            align-items: baseline;
+            padding-bottom: 20px;
+        }
+
+        .hours-status strong {
+            color: var(--cream);
+            font-size: clamp(1.3rem, 2.2vw, 2rem);
+            letter-spacing: -.02em;
+        }
+
+        .hours-status > span {
+            color: var(--sand);
+            font-size: .9rem;
+            font-weight: 850;
+            white-space: nowrap;
+        }
+
+        .hours-list {
+            padding-top: 17px;
+            border-top: 1px solid rgba(194,163,107,.15);
+        }
+
+        .hours-list > div {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 24px;
+            padding: 7px 0;
+        }
+
+        .hours-list span {
+            color: rgba(232,223,200,.65);
+            font-size: .93rem;
+        }
+
+        .hours-list b {
+            color: rgba(232,223,200,.82);
+            font-size: .9rem;
+            font-weight: 650;
+            white-space: nowrap;
+        }
+
+        .hours-list > div:nth-child(-n+3) b {
+            color: rgba(232,223,200,.38);
+            text-transform: uppercase;
+            font-size: .78rem;
+            letter-spacing: .08em;
+        }
+
         @media (max-width: 900px) {
             .contact-page {
                 width: calc(100% - 20px);
@@ -386,23 +366,33 @@
                 grid-column: 1 / -1;
             }
 
+            .contact-hours {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-hours .contact-line-arrow {
+                display: none;
+            }
+
+            .hours-wrap {
+                width: 100%;
+            }
+
+            .hours-status {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .hours-list > div {
+                gap: 12px;
+            }
+
             .location-head {
                 grid-template-columns: 1fr;
                 gap: 14px;
             }
-
-            .map-wrap {
-                height: 430px;
-            }
-
-            .map-overlay {
-                left: 14px;
-                right: 14px;
-                bottom: 14px;
-                max-width: none;
-            }
-
-            .contact-note {
+.contact-note {
                 grid-template-columns: 1fr;
                 gap: 22px;
             }
@@ -501,9 +491,26 @@
             <span class="contact-line-arrow">•</span>
         </div>
 
-        <div class="contact-line">
+        <div class="contact-line contact-hours">
             <span class="contact-line-label">Radno vrijeme</span>
-            <span class="contact-line-value">Po dogovoru i rezervaciji termina</span>
+
+            <div class="hours-wrap">
+                <div class="hours-status">
+                    <strong>Četvrtak – nedjelja</strong>
+                    <span>09:00 – 21:00</span>
+                </div>
+
+                <div class="hours-list">
+                    <div><span>Ponedjeljak</span><b>Zatvoreno</b></div>
+                    <div><span>Utorak</span><b>Zatvoreno</b></div>
+                    <div><span>Srijeda</span><b>Zatvoreno</b></div>
+                    <div><span>Četvrtak</span><b>09:00 – 21:00</b></div>
+                    <div><span>Petak</span><b>09:00 – 21:00</b></div>
+                    <div><span>Subota</span><b>09:00 – 21:00</b></div>
+                    <div><span>Nedjelja</span><b>09:00 – 21:00</b></div>
+                </div>
+            </div>
+
             <span class="contact-line-arrow">•</span>
         </div>
 
