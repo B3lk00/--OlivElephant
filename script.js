@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     sessionStorage.setItem("introPlayed", "true");
 
-    const finalText = "OLIV ELEPHANT";
+    const finalText = "OlivElephant";
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#@!?%&_=+-*/[]{}<>|\\/~$€£¥";
 
     let iteration = 0;
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
             clearInterval(interval);
 
             setTimeout(() => {
-                glitchText.innerHTML = "OLIV ELEPHANT SPORTSKO<br>REKREATIVNI CENTAR";
+                glitchText.innerHTML = "OLIVELEPHANT SPORTSKO<br>REKREATIVNI CENTAR";
             }, 1200);
 
             setTimeout(() => {
