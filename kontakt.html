@@ -225,6 +225,141 @@
             line-height: 1.9 !important;
         }
 
+
+        /* DOLAZAK — zamjena za Google Maps */
+
+        .contact-arrival {
+            padding-bottom: 110px;
+        }
+
+        .arrival-layout {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 1px;
+            background: rgba(194,163,107,.16);
+            border-top: 1px solid rgba(194,163,107,.16);
+            border-bottom: 1px solid rgba(194,163,107,.16);
+        }
+
+        .arrival-main,
+        .arrival-steps {
+            background: rgba(10,15,10,.96);
+        }
+
+        .arrival-main {
+            min-height: 470px;
+            padding: clamp(42px, 6vw, 78px);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .arrival-main::after {
+            content: "OE";
+            position: absolute;
+            right: -.08em;
+            top: -.1em;
+            color: rgba(232,223,200,.025);
+            font-size: clamp(12rem, 22vw, 21rem);
+            font-weight: 950;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .arrival-number {
+            color: var(--sand);
+            font-size: .75rem;
+            font-weight: 900;
+            letter-spacing: .22em;
+        }
+
+        .arrival-main h4 {
+            max-width: 620px;
+            margin: 18px 0 24px;
+            color: var(--cream);
+            font-size: clamp(2.5rem, 5vw, 5rem);
+            line-height: .92;
+            letter-spacing: -.045em;
+            text-transform: uppercase;
+        }
+
+        .arrival-main p {
+            max-width: 610px !important;
+            margin: 0 !important;
+            color: rgba(232,223,200,.65) !important;
+            line-height: 1.9 !important;
+        }
+
+        .arrival-steps {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .arrival-step {
+            display: grid;
+            grid-template-columns: 55px 1fr;
+            gap: 20px;
+            padding: 38px clamp(28px, 4vw, 52px);
+            border-bottom: 1px solid rgba(194,163,107,.15);
+        }
+
+        .arrival-step > span {
+            color: rgba(194,163,107,.55);
+            font-size: .75rem;
+            font-weight: 900;
+            letter-spacing: .18em;
+        }
+
+        .arrival-step strong {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--cream);
+            font-size: 1.18rem;
+            text-transform: uppercase;
+        }
+
+        .arrival-step p {
+            margin: 0 !important;
+            color: rgba(232,223,200,.6) !important;
+            line-height: 1.75 !important;
+        }
+
+        .arrival-call {
+            margin-top: auto;
+            padding: 38px clamp(28px, 4vw, 52px);
+            color: inherit;
+            text-decoration: none;
+            transition: background .25s ease;
+        }
+
+        .arrival-call:hover {
+            background: rgba(194,163,107,.07);
+        }
+
+        .arrival-call small {
+            display: block;
+            margin-bottom: 9px;
+            color: rgba(194,163,107,.58);
+            font-weight: 850;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+        }
+
+        .arrival-call strong {
+            display: block;
+            margin-bottom: 17px;
+            color: var(--cream);
+            font-size: clamp(1.5rem, 3vw, 2.4rem);
+        }
+
+        .arrival-call b {
+            color: var(--sand);
+            font-size: .76rem;
+            letter-spacing: .15em;
+        }
+
         @media (max-width: 900px) {
             .contact-page {
                 width: calc(100% - 20px);
@@ -271,6 +406,24 @@
                 grid-template-columns: 1fr;
                 gap: 22px;
             }
+
+            .arrival-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .arrival-main {
+                min-height: 390px;
+                padding: 38px 22px;
+            }
+
+            .arrival-step {
+                grid-template-columns: 38px 1fr;
+                padding: 30px 22px;
+            }
+
+            .arrival-call {
+                padding: 32px 22px;
+            }
         }
     </style>
 </head>
@@ -290,7 +443,20 @@
 
     <nav id="mobileMenu">
         <a href="index.html" class="nav-link">Početna</a>
-        <a href="streliste.html">O strelištu</a>
+
+        <div class="dropdown">
+            <button class="nav-drop" type="button">
+                Strelište
+                <span class="dropdown-arrow">⌄</span>
+            </button>
+
+            <div class="dropdown-menu">
+                <a href="streliste.html">O strelištu</a>
+                <a href="klub.html">Klub praktičnog streljaštva</a>
+                <a href="akademija.html">Akademija oružja</a>
+            </div>
+        </div>
+
         <a href="klubhaus.html" class="nav-link">Klubhaus</a>
         <a href="rent.html" class="nav-link">4x4 Rent & Tours</a>
         <a href="smjestaj.html" class="nav-link">Prenoćište</a>
@@ -343,28 +509,44 @@
 
     </section>
 
-    <section class="location-section">
+    <section class="location-section contact-arrival">
         <div class="location-head">
-            <small>Pronađite nas</small>
-            <h3>Od puta do Oliv Elephanta.</h3>
+            <small>Dolazak u centar</small>
+            <h3>Prije nego krenete.</h3>
         </div>
 
-        <div class="map-wrap">
-            <iframe
-                src="https://www.google.com/maps?q=Kruhari%2C%20Sanski%20Most%2C%20Bosnia%20and%20Herzegovina&output=embed"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                title="Lokacija Oliv Elephant - Kruhari, Sanski Most">
-            </iframe>
+        <div class="arrival-layout">
+            <div class="arrival-main">
+                <span class="arrival-number">01</span>
+                <h4>Kruhari, Sanski Most</h4>
+                <p>
+                    Centar se nalazi u Kruharima kod Sanskog Mosta. Pošto online
+                    navigacija može ponuditi pogrešan prilaz, nemojte se oslanjati
+                    na automatski odabranu rutu.
+                </p>
+            </div>
 
-            <div class="map-overlay">
-                <small>Lokacija centra</small>
-                <strong>Kruhari, Sanski Most<br>Bosna i Hercegovina</strong>
+            <div class="arrival-steps">
+                <div class="arrival-step">
+                    <span>02</span>
+                    <div>
+                        <strong>Javite se prije polaska</strong>
+                        <p>Pozovite nas i dobit ćete tačne upute za najjednostavniji prilaz centru.</p>
+                    </div>
+                </div>
 
-                <a href="https://www.google.com/maps/search/?api=1&query=Kruhari%2C%20Sanski%20Most%2C%20Bosnia%20and%20Herzegovina"
-                   target="_blank"
-                   rel="noopener">
-                    Otvori rutu →
+                <div class="arrival-step">
+                    <span>03</span>
+                    <div>
+                        <strong>Dogovorite termin</strong>
+                        <p>Za strelište, obuke, 4x4 ture i smještaj preporučujemo prethodnu najavu.</p>
+                    </div>
+                </div>
+
+                <a class="arrival-call" href="tel:+38761759795">
+                    <small>Direktan kontakt</small>
+                    <strong>+387 61 759 795</strong>
+                    <b>POZOVI NAS →</b>
                 </a>
             </div>
         </div>
