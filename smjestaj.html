@@ -191,7 +191,7 @@
             line-height: 1.85 !important;
         }
 
-       .stay-wide-image {
+     .stay-wide-image {
     position: relative;
     width: 82%;
     height: 340px;
@@ -199,36 +199,47 @@
     margin: 80px auto;
     overflow: hidden;
     border-radius: 14px;
+    background: #0b100b;
 }
 
 .stay-wide-image img {
     width: 100%;
     height: 100%;
     min-height: 0;
-    object-fit: cover;
+    object-fit: contain; /* KLJUČNO - prikazuje cijelu sliku */
+    object-position: center;
     display: block;
     filter: saturate(.88) contrast(1.02) brightness(.78);
 }
 
-        .stay-wide-image::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, transparent 50%, rgba(6,10,7,.58));
-        }
+.stay-wide-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(6,10,7,.32) 0%,
+        rgba(6,10,7,.08) 55%,
+        transparent 100%
+    );
+    pointer-events: none;
+}
 
-        .stay-wide-label {
-            position: absolute;
-            left: clamp(24px, 5vw, 70px);
-            bottom: 34px;
-            z-index: 2;
-            color: var(--cream);
-            font-size: clamp(1.7rem, 4vw, 3.8rem);
-            font-weight: 850;
-            letter-spacing: -.03em;
-            text-transform: uppercase;
-        }
+.stay-wide-label {
+    position: absolute;
+    left: 30px;
+    bottom: 25px;
+    z-index: 2;
 
+    max-width: 520px;
+
+    color: var(--cream);
+    font-size: clamp(1.25rem, 2.5vw, 2.2rem);
+    font-weight: 850;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    text-transform: uppercase;
+}
         .stay-gallery { padding: 10px 0 20px; }
 
         .stay-gallery-head {
@@ -317,18 +328,31 @@
                 padding: 26px 0;
             }
 
-            .stay-wide-image {
-    width: 94%;
-    height: 250px;
-    min-height: 0;
-    margin: 55px auto;
-}
+           @media (max-width: 900px) {
 
-.stay-wide-image img {
-    height: 100%;
-    min-height: 0;
-}
+    .stay-wide-image {
+        width: 94%;
+        height: 230px;
+        min-height: 0;
+        margin: 55px auto;
+    }
 
+    .stay-wide-image img {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        object-fit: contain;
+        object-position: center;
+    }
+
+    .stay-wide-label {
+        left: 18px;
+        bottom: 18px;
+        max-width: 75%;
+        font-size: 1.15rem;
+        line-height: 1.15;
+    }
+}
             .stay-gallery-head { display: block; }
 
             .stay-gallery-head p {
