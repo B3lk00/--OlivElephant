@@ -173,29 +173,63 @@
             50% { transform: translateY(6px); }
         }
 
-        /* UVODNA PRIČA */
+        /* UVODNA PRIČA — novi editorial izgled */
 
         .oe-story {
+            position: relative;
             display: grid;
-            grid-template-columns: minmax(220px, .7fr) minmax(0, 1.5fr);
-            gap: clamp(34px, 7vw, 110px);
-            padding: clamp(68px, 10vw, 130px) clamp(4px, 3vw, 34px);
+            grid-template-columns: minmax(180px, .48fr) minmax(0, 1.52fr);
+            gap: clamp(40px, 8vw, 120px);
+            padding: clamp(75px, 10vw, 135px) clamp(4px, 3vw, 34px);
+            border-top: 1px solid rgba(194, 163, 107, .13);
             border-bottom: 1px solid rgba(194, 163, 107, .19);
         }
 
-        .oe-section-index {
-            color: rgba(194, 163, 107, .58);
-            font-size: 4.8rem;
+        .oe-story-mark {
+            align-self: start;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            padding-top: 8px;
+        }
+
+        .oe-story-mark span {
+            color: rgba(194, 163, 107, .22);
+            font-size: clamp(5rem, 10vw, 9rem);
+            font-weight: 950;
+            line-height: .75;
+            letter-spacing: -.09em;
+        }
+
+        .oe-story-mark small {
+            max-width: 155px;
+            color: rgba(194, 163, 107, .62);
+            font-size: .62rem;
+            font-weight: 850;
+            line-height: 1.8;
+            letter-spacing: .2em;
+        }
+
+        .oe-story-content {
+            max-width: 900px;
+        }
+
+        .oe-story-eyebrow {
+            display: inline-block;
+            margin-bottom: 18px;
+            color: var(--sand);
+            font-size: .72rem;
             font-weight: 900;
-            line-height: 1;
+            letter-spacing: .22em;
+            text-transform: uppercase;
         }
 
         .oe-story-title {
-            margin: 0 0 26px !important;
+            margin: 0 0 30px !important;
             color: var(--cream) !important;
-            font-size: clamp(2.2rem, 5vw, 5.4rem) !important;
-            line-height: 1 !important;
-            letter-spacing: -.035em;
+            font-size: clamp(2.3rem, 5vw, 5.2rem) !important;
+            line-height: .98 !important;
+            letter-spacing: -.04em;
             text-transform: uppercase;
         }
 
@@ -203,12 +237,42 @@
             display: none !important;
         }
 
-        .oe-story p {
-            max-width: 830px !important;
+        .oe-story-content > p {
+            max-width: 790px !important;
             margin: 0 !important;
-            color: rgba(232, 223, 200, .76) !important;
-            font-size: clamp(1.05rem, 1.6vw, 1.28rem) !important;
-            line-height: 2 !important;
+            color: rgba(232, 223, 200, .73) !important;
+            font-size: clamp(1.02rem, 1.5vw, 1.2rem) !important;
+            line-height: 1.95 !important;
+        }
+
+        .oe-story-signature {
+            display: grid;
+            grid-template-columns: 70px auto;
+            align-items: center;
+            gap: 5px 18px;
+            width: fit-content;
+            margin-top: 38px;
+        }
+
+        .oe-story-signature > span {
+            grid-row: 1 / 3;
+            width: 70px;
+            height: 1px;
+            background: linear-gradient(90deg, var(--sand), rgba(194,163,107,.08));
+        }
+
+        .oe-story-signature strong {
+            color: var(--cream);
+            font-size: .82rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .oe-story-signature small {
+            color: rgba(232,223,200,.42);
+            font-size: .63rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
         }
 
         /* AKTUELNI DOGAĐAJ */
@@ -421,50 +485,6 @@
             line-height: 1.8 !important;
         }
 
-        /* ZAVRŠNA PORUKA */
-
-        .oe-ending {
-            position: relative;
-            padding: clamp(70px, 11vw, 150px) 0 24px;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .oe-ending::before {
-            content: "ELEPHANT";
-            position: absolute;
-            left: 50%;
-            top: 52%;
-            transform: translate(-50%, -50%);
-            color: rgba(232,223,200,.025);
-            font-size: clamp(6rem, 18vw, 16rem);
-            font-weight: 950;
-            letter-spacing: -.08em;
-            white-space: nowrap;
-            pointer-events: none;
-        }
-
-        .oe-ending h3 {
-            position: relative;
-            margin: 0 auto 22px !important;
-            max-width: 1050px;
-            color: var(--cream) !important;
-            font-size: clamp(2.7rem, 7vw, 7.2rem) !important;
-            line-height: .9 !important;
-            letter-spacing: -.05em;
-            text-transform: uppercase;
-        }
-
-        .oe-ending p {
-            position: relative;
-            margin: 0 auto !important;
-            color: var(--sand) !important;
-            font-size: .9rem !important;
-            font-weight: 850;
-            letter-spacing: .25em;
-            text-transform: uppercase;
-        }
-
         /* MOBITEL */
 
         @media (max-width: 820px) {
@@ -506,12 +526,35 @@
 
             .oe-story {
                 grid-template-columns: 1fr;
-                gap: 22px;
-                padding: 70px 4px;
+                gap: 34px;
+                padding: 72px 4px;
             }
 
-            .oe-section-index {
-                font-size: 2.8rem;
+            .oe-story-mark {
+                flex-direction: row;
+                align-items: flex-end;
+                gap: 18px;
+            }
+
+            .oe-story-mark span {
+                font-size: 4.4rem;
+            }
+
+            .oe-story-mark small {
+                max-width: 180px;
+                padding-bottom: 2px;
+            }
+
+            .oe-story-title {
+                font-size: clamp(2.25rem, 11vw, 3.7rem) !important;
+            }
+
+            .oe-story-signature {
+                grid-template-columns: 46px auto;
+            }
+
+            .oe-story-signature > span {
+                width: 46px;
             }
 
             .oe-event-heading {
@@ -544,9 +587,6 @@
                 font-size: 1.65rem;
             }
 
-            .oe-ending {
-                padding-top: 88px;
-            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -605,9 +645,9 @@
                 <span class="oe-kicker">Oliv Elephant • Sanski Most</span>
 
                 <h2>
-                    Preciznost.<br>
-                    Avantura.<br>
-                    Priroda.
+                    Stvoreno za one<br>
+                    koji žele nešto<br>
+                    drugačije.
                 </h2>
 
                 <p class="oe-hero-copy">
@@ -624,20 +664,31 @@
         </section>
 
         <section class="oe-story">
-            <div class="oe-section-index">01</div>
+            <div class="oe-story-mark">
+                <span>OE</span>
+                <small>SPORT • PRIRODA • ISKUSTVO</small>
+            </div>
 
-            <div>
+            <div class="oe-story-content">
+                <span class="oe-story-eyebrow">Jedno mjesto. Više doživljaja.</span>
+
                 <h3 class="oe-story-title">
-                    Više od destinacije.
+                    Nije samo mjesto<br>
+                    na koje dolazite.
                 </h3>
 
                 <p>
-                    Oliv Elephant nije zamišljen kao obična lokacija,
-                    već kao prostor u kojem se susreću sport, priroda,
-                    sigurnost, edukacija i avantura. Svaki dio centra
-                    osmišljen je da posjetiocu pruži iskustvo koje traje
-                    duže od same posjete.
+                    Oliv Elephant spaja sport, prirodu, sigurnost, edukaciju
+                    i avanturu u prostor osmišljen za potpuno drugačiji doživljaj.
+                    Od prvog dolaska do posljednjeg trenutka, svaki dio centra
+                    ima svoju svrhu.
                 </p>
+
+                <div class="oe-story-signature">
+                    <span></span>
+                    <strong>Oliv Elephant</strong>
+                    <small>Sportsko Rekreativni Centar</small>
+                </div>
             </div>
         </section>
 
@@ -726,13 +777,6 @@
             </div>
         </section>
 
-        <section class="oe-ending">
-            <h3>
-                Stvoreno za one koji žele nešto drugačije.
-            </h3>
-
-            <p>Oliv Elephant • Preciznost • Avantura • Priroda</p>
-        </section>
 
     </main>
 
