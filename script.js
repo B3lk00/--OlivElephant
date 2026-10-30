@@ -91,7 +91,7 @@ function changeImage(direction) {
 
 
 /* ==========================================
-   OLIV ELEPHANT INTRO ANIMACIJA
+   OLIVELEPHANT INTRO ANIMACIJA
 ========================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 /* ==========================================================
-   OLIV ELEPHANT — BA / DE / EN JEZIČKI SISTEM
+   OLIVELEPHANT — BA / DE / EN JEZIČKI SISTEM
    - Ne dira intro / loading screen
    - Pamti izbor jezika
    - Prvi put prikazuje diskretnu notifikaciju nakon introa
@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Turniri": "Tournaments",
         "Organizacija i učešće na turnirima.": "Tournament organization and participation.",
         "AKADEMIJA": "ACADEMY",
-        "Akademija oružja Oliv Elephant": "Oliv Elephant Firearms Academy",
+        "Akademija oružja OlivElephant": "OlivElephant Firearms Academy",
         "Edukacija • Sigurnost • Obuke i kursevi": "Education • Safety • Training & Courses",
         "Akademija pruža edukaciju iz oblasti sigurnog rukovanja oružjem, teorijske nastave i praktične obuke.": "The academy provides education in safe firearm handling, theory and practical training.",
         "Akademija oružja": "Firearms Academy",
@@ -335,9 +335,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "Petak": "Friday",
         "Subota": "Saturday",
         "Nedjelja": "Sunday",
-        "Pratite Oliv Elephant": "Follow Oliv Elephant",
+        "Pratite OlivElephant": "Follow OlivElephant",
         "Novosti, događaji i trenutci iz centra — pratite nas na društvenim mrežama.": "News, events and moments from the center — follow us on social media.",
-        "Oliv Elephant Sportsko Rekreativni Centar": "Oliv Elephant Sports & Recreation Center"
+        "OlivElephant Sportsko Rekreativni Centar": "OlivElephant Sports & Recreation Center"
 },
         de: {
         "Početna": "Startseite",
@@ -411,7 +411,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Turniri": "Turniere",
         "Organizacija i učešće na turnirima.": "Organisation und Teilnahme an Turnieren.",
         "AKADEMIJA": "AKADEMIE",
-        "Akademija oružja Oliv Elephant": "Oliv Elephant Waffenakademie",
+        "Akademija oružja OlivElephant": "OlivElephant Waffenakademie",
         "Edukacija • Sigurnost • Obuke i kursevi": "Ausbildung • Sicherheit • Trainings & Kurse",
         "Akademija pruža edukaciju iz oblasti sigurnog rukovanja oružjem, teorijske nastave i praktične obuke.": "Die Akademie vermittelt sicheren Umgang mit Waffen, Theorie und praktische Ausbildung.",
         "Akademija oružja": "Waffenakademie",
@@ -520,9 +520,9 @@ document.addEventListener("DOMContentLoaded", function () {
         "Petak": "Freitag",
         "Subota": "Samstag",
         "Nedjelja": "Sonntag",
-        "Pratite Oliv Elephant": "Folgen Sie Oliv Elephant",
+        "Pratite OlivElephant": "Folgen Sie OlivElephant",
         "Novosti, događaji i trenutci iz centra — pratite nas na društvenim mrežama.": "Neuigkeiten, Veranstaltungen und Eindrücke aus dem Zentrum — folgen Sie uns in den sozialen Medien.",
-        "Oliv Elephant Sportsko Rekreativni Centar": "Oliv Elephant Sport- und Freizeitzentrum"
+        "OlivElephant Sportsko Rekreativni Centar": "OlivElephant Sport- und Freizeitzentrum"
 }
     };
 
@@ -847,7 +847,7 @@ document.addEventListener("DOMContentLoaded", function () {
         toast.innerHTML = `
             <div class="oe-language-toast-top">
                 <div>
-                    <span class="oe-language-toast-kicker">OLIV ELEPHANT</span>
+                    <span class="oe-language-toast-kicker">OLIVELEPHANT</span>
                     <h3 class="oe-language-toast-title">Odaberite jezik</h3>
                     <p class="oe-language-toast-text">Izaberite jezik prikaza stranice.</p>
                 </div>
@@ -938,4 +938,3 @@ document.addEventListener("DOMContentLoaded", function () {
         initLanguageSystem();
     }
 })();
-
