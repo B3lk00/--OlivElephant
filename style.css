@@ -2016,3 +2016,16 @@ header nav > a:hover,
         padding: 11px 12px !important;
     }
 }
+
+
+/* OLIVELEPHANT — VEĆI LOGO U NAVIGACIJI */
+@media (min-width: 769px) {
+  header { min-height: 176px !important; padding-left: 150px !important; padding-right: 28px !important; }
+  .header-logo { left: 22px !important; }
+  .header-logo img { width: 118px !important; height: 118px !important; object-fit: contain !important; }
+}
+@media (max-width: 768px) {
+  header { min-height: 112px !important; padding-left: 92px !important; padding-right: 68px !important; }
+  .header-logo { left: 12px !important; }
+  .header-logo img { width: 72px !important; height: 72px !important; object-fit: contain !important; }
+}
