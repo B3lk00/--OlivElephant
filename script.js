@@ -940,3 +940,25 @@ document.addEventListener("DOMContentLoaded", function () {
         initLanguageSystem();
     }
 })();
+
+
+
+
+/* OlivElephant — oznacavanje aktivne navigacije */
+document.addEventListener("DOMContentLoaded", () => {
+  const currentPage =
+    location.pathname.split("/").pop() || "index.html";
+
+  document.querySelectorAll("header nav a[href]").forEach(link => {
+    const href = link.getAttribute("href");
+    if (!href || href.startsWith("#")) return;
+
+    const page = href.split("?")[0].split("#")[0];
+
+    if (page === currentPage) {
+      link.setAttribute("aria-current", "page");
+      link.classList.add("winter-active");
+    }
+  });
+});
+
