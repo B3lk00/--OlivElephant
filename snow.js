@@ -254,46 +254,56 @@
     animationId = requestAnimationFrame(animate);
   }
 
-  function waitForIntro() {
-    const selectors = [
-      "#intro",
-      "#intro-overlay",
-      "#loading-screen",
-      "#loader",
-      ".intro-overlay",
-      ".loading-screen",
-      ".preloader"
-    ];
+  
+function waitForIntro() {
+  const key = "olivSnowVisited";
 
-    const started = Date.now();
-
-    const timer = setInterval(() => {
-      const visible = selectors.some(selector => {
-        const element = document.querySelector(selector);
-        if (!element) return false;
-
-        const style = getComputedStyle(element);
-
-        return (
-          style.display !== "none" &&
-          style.visibility !== "hidden" &&
-          Number(style.opacity) > 0.05 &&
-          element.getBoundingClientRect().width > 0
-        );
-      });
-
-      if (!visible || Date.now() - started > 12000) {
-        clearInterval(timer);
-        setTimeout(startSnow, 700);
-      }
-    }, 250);
+  // Nakon prve posjete ne cekamo loading animaciju
+  try {
+    if (sessionStorage.getItem(key) === "1") {
+      startSnow();
+      return;
+    }
+  } catch (e) {
+    // Nastavi normalno ako storage nije dostupan
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", waitForIntro, {
-      once: true
+  const selectors = [
+    "#intro",
+    "#intro-overlay",
+    "#loading-screen",
+    "#loader",
+    ".intro-overlay",
+    ".loading-screen",
+    ".preloader"
+  ];
+
+  const started = Date.now();
+
+  const timer = setInterval(() => {
+    const visible = selectors.some(selector => {
+      const element = document.querySelector(selector);
+      if (!element) return false;
+
+      const style = getComputedStyle(element);
+
+      return (
+        style.display !== "none" &&
+        style.visibility !== "hidden" &&
+        Number(style.opacity) > 0.05 &&
+        element.getBoundingClientRect().width > 0
+      );
     });
-  } else {
-    waitForIntro();
-  }
+
+    if (!visible || Date.now() - started > 12000) {
+      clearInterval(timer);
+
+      try {
+        sessionStorage.setItem(key, "1");
+      } catch (e) {}
+
+      startSnow();
+    }
+  }, 150);
+}
 })();
