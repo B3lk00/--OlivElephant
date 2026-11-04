@@ -1,14 +1,15 @@
 
 /* ==================================================
-   OLIVELEPHANT — WINTER SNOW V3
-   Sitnije kristalne pahulje i gusce padanje
+   OLIVELEPHANT — WINTER SNOW V4
+   Kristalne pahulje + brze pokretanje
+   Snijeg preko cijelog ekrana i navigacije
 ================================================== */
 
 (() => {
   "use strict";
 
-  if (window.__olivSnowV3) return;
-  window.__olivSnowV3 = true;
+  if (window.__olivSnowV4) return;
+  window.__olivSnowV4 = true;
 
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     return;
@@ -24,9 +25,9 @@
     width: "100%",
     height: "100%",
     pointerEvents: "none",
-    zIndex: "999",
+    zIndex: "2147483640",
     opacity: "0",
-    transition: "opacity 1.8s ease"
+    transition: "opacity 0.4s ease"
   });
 
   let ctx;
@@ -40,7 +41,7 @@
   const random = (min, max) =>
     min + Math.random() * (max - min);
 
-  // Crtanje kristalne pahulje sa sest krakova
+  // Kristalna pahulja sa sest krakova
   function createSnowflake(size, variant) {
     const sprite = document.createElement("canvas");
     const padding = 5;
@@ -50,6 +51,7 @@
     sprite.height = diameter;
 
     const c = sprite.getContext("2d");
+    if (!c) return sprite;
 
     c.translate(diameter / 2, diameter / 2);
 
@@ -102,10 +104,10 @@
     return sprite;
   }
 
+  // Razliciti oblici i velicine pahulja
   function generateSprites() {
     sprites = [];
 
-    // Manje pahulje nego u prethodnoj verziji
     const sizes = [3.5, 4.5, 5.5, 6.5, 8, 10, 12];
 
     for (const size of sizes) {
@@ -115,6 +117,7 @@
     }
   }
 
+  // Kreiranje jedne pahulje
   function createFlake(initial = false) {
     const mobile = width < 768;
 
@@ -144,6 +147,7 @@
     };
   }
 
+  // Velicina ekrana i broj pahulja
   function resize() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
@@ -155,7 +159,6 @@
 
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    // Skoro duplo vise pahulja
     const mobile = width < 768;
 
     const count = Math.min(
@@ -172,6 +175,7 @@
     );
   }
 
+  // Animacija padanja snijega
   function animate(time) {
     if (!lastTime) lastTime = time;
 
@@ -220,6 +224,7 @@
     animationId = requestAnimationFrame(animate);
   }
 
+  // Pokretanje snijega
   function startSnow() {
     if (document.getElementById("oliv-snow-canvas")) return;
 
@@ -254,56 +259,68 @@
     animationId = requestAnimationFrame(animate);
   }
 
-  
-function waitForIntro() {
-  const key = "olivSnowVisited";
+  // Prvi dolazak ceka intro, ostali odmah pokrecu snijeg
+  function waitForIntro() {
+    const key = "olivSnowVisited";
 
-  // Nakon prve posjete ne cekamo loading animaciju
-  try {
-    if (sessionStorage.getItem(key) === "1") {
-      startSnow();
-      return;
+    try {
+      if (sessionStorage.getItem(key) === "1") {
+        startSnow();
+        return;
+      }
+    } catch (e) {
+      // Ako sessionStorage nije dostupan, nastavi normalno
     }
-  } catch (e) {
-    // Nastavi normalno ako storage nije dostupan
+
+    const selectors = [
+      "#intro",
+      "#intro-overlay",
+      "#loading-screen",
+      "#loader",
+      ".intro-overlay",
+      ".loading-screen",
+      ".preloader"
+    ];
+
+    const started = Date.now();
+
+    const timer = setInterval(() => {
+      const visible = selectors.some(selector => {
+        const element = document.querySelector(selector);
+        if (!element) return false;
+
+        const style = getComputedStyle(element);
+
+        return (
+          style.display !== "none" &&
+          style.visibility !== "hidden" &&
+          Number(style.opacity) > 0.05 &&
+          element.getBoundingClientRect().width > 0
+        );
+      });
+
+      if (!visible || Date.now() - started > 12000) {
+        clearInterval(timer);
+
+        try {
+          sessionStorage.setItem(key, "1");
+        } catch (e) {}
+
+        startSnow();
+      }
+    }, 150);
   }
 
-  const selectors = [
-    "#intro",
-    "#intro-overlay",
-    "#loading-screen",
-    "#loader",
-    ".intro-overlay",
-    ".loading-screen",
-    ".preloader"
-  ];
+  // OVO JE DIO KOJI JE NEDOSTAJAO
+  // Automatski poziva funkciju za pokretanje snijega
+  if (document.readyState === "loading") {
+    document.addEventListener(
+      "DOMContentLoaded",
+      waitForIntro,
+      { once: true }
+    );
+  } else {
+    waitForIntro();
+  }
 
-  const started = Date.now();
-
-  const timer = setInterval(() => {
-    const visible = selectors.some(selector => {
-      const element = document.querySelector(selector);
-      if (!element) return false;
-
-      const style = getComputedStyle(element);
-
-      return (
-        style.display !== "none" &&
-        style.visibility !== "hidden" &&
-        Number(style.opacity) > 0.05 &&
-        element.getBoundingClientRect().width > 0
-      );
-    });
-
-    if (!visible || Date.now() - started > 12000) {
-      clearInterval(timer);
-
-      try {
-        sessionStorage.setItem(key, "1");
-      } catch (e) {}
-
-      startSnow();
-    }
-  }, 150);
-}
 })();
