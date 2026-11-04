@@ -1,196 +1,192 @@
 
-/* =====================================================
-   OLIVELEPHANT — FROZEN GLASS NAVBAR V3
-   Snijeg + prirodnije ledenice na svakom dugmetu
-   Ne mijenja snow.js, prevode ili funkciju menija
-===================================================== */
-
-/* Uklanjanje prethodnog leda s cijelog headera */
-header::before,
-header::after {
-    content: none !important;
-    display: none !important;
-}
+/* ================================================
+   OLIVELEPHANT — WINTER NAVBAR V4
+   Frozen glass / snow / natural icicles
+================================================ */
 
 header {
-    overflow: visible !important;
-    border-bottom: 1px solid rgba(194,163,107,.24) !important;
+  overflow: visible !important;
+  border-bottom: 1px solid rgba(179,218,231,.18) !important;
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(35,66,75,.22),transparent 70%),
+    rgba(8,18,19,.94) !important;
 }
 
-/* Sva glavna navigacijska dugmad */
+/* Ukloni stare ukrase cijelog headera */
+header::before,
+header::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Dugmad */
 header nav > a,
 header nav > .dropdown > a,
 header nav > .dropdown > .nav-drop {
-    position: relative !important;
-    isolation: isolate;
-    overflow: visible !important;
+  position: relative !important;
+  isolation: isolate;
+  overflow: visible !important;
+  color: #edf6f8 !important;
+  border: 1px solid rgba(164,218,240,.66) !important;
+  border-radius: 999px !important;
 
-    color: #eaf4f7 !important;
-    border: 1px solid rgba(165,211,235,.62) !important;
-    border-radius: 999px !important;
+  background:
+    linear-gradient(175deg,
+      rgba(160,215,237,.24) 0%,
+      rgba(31,68,80,.3) 22%,
+      rgba(8,22,27,.91) 65%,
+      rgba(34,76,91,.52) 100%) !important;
 
-    background:
-        linear-gradient(
-            165deg,
-            rgba(199,235,251,.18) 0%,
-            rgba(46,84,101,.24) 19%,
-            rgba(9,25,31,.84) 58%,
-            rgba(17,40,50,.86) 100%
-        ) !important;
+  box-shadow:
+    inset 0 2px 2px rgba(239,251,255,.38),
+    inset 0 -2px 5px rgba(120,199,232,.25),
+    0 0 12px rgba(128,208,242,.18),
+    0 5px 15px rgba(0,0,0,.35) !important;
 
-    box-shadow:
-        inset 0 2px 2px rgba(237,250,255,.38),
-        inset 0 -3px 5px rgba(101,181,218,.23),
-        inset 0 0 12px rgba(119,191,226,.09),
-        0 3px 12px rgba(0,0,0,.38),
-        0 0 8px rgba(144,209,241,.12) !important;
-
-    text-shadow: 0 1px 2px rgba(0,0,0,.7);
-    transition: transform .25s ease,
-                box-shadow .25s ease !important;
+  text-shadow: 0 1px 3px #061115;
+  transition: transform .25s,box-shadow .25s !important;
 }
 
-/* SNJEZNI POKRIVAC NA VRHU DUGMETA */
+/* Snijeg koji lezi na gornjem rubu dugmeta */
 header nav > a::before,
 header nav > .dropdown > a::before,
 header nav > .dropdown > .nav-drop::before {
-    content: "" !important;
-    display: block !important;
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  left: 7% !important;
+  right: 7% !important;
+  top: -6px !important;
+  height: 11px !important;
+  z-index: 3;
+  pointer-events: none;
 
-    position: absolute !important;
-    left: 9% !important;
-    right: 9% !important;
-    top: -7px !important;
-    height: 13px !important;
+  background:
+    radial-gradient(ellipse at 13% 65%,#fff 0 33%,transparent 67%),
+    radial-gradient(ellipse at 34% 40%,#f8fdff 0 39%,transparent 70%),
+    radial-gradient(ellipse at 62% 58%,#fff 0 42%,transparent 75%),
+    radial-gradient(ellipse at 85% 65%,#e6f7ff 0 35%,transparent 70%),
+    linear-gradient(to bottom,#f7fcff,#b4dce9 75%,transparent) !important;
 
-    pointer-events: none !important;
-    z-index: 2 !important;
-
-    background:
-        radial-gradient(ellipse at 12% 68%,
-            #fff 0 38%, transparent 72%),
-        radial-gradient(ellipse at 37% 44%,
-            #f4fbff 0 42%, transparent 73%),
-        radial-gradient(ellipse at 67% 62%,
-            #fff 0 43%, transparent 75%),
-        radial-gradient(ellipse at 89% 69%,
-            #e7f7ff 0 40%, transparent 72%),
-        linear-gradient(
-            to bottom,
-            rgba(255,255,255,.98),
-            rgba(188,225,244,.75),
-            transparent
-        ) !important;
-
-    border-radius: 55% 45% 36% 48% / 80% 85% 30% 35%;
-    filter: drop-shadow(0 2px 2px rgba(162,221,249,.32));
+  border-radius: 48% 53% 34% 45% / 65% 70% 25% 25%;
+  filter: drop-shadow(0 2px 2px rgba(167,220,241,.35));
 }
 
-/* PRIRODNIJE LEDENICE — SVG sa razlicitim oblicima */
+/* Ledene sige — mekani organski SVG oblici */
 header nav > a::after,
 header nav > .dropdown > a::after,
 header nav > .dropdown > .nav-drop::after {
-    content: "" !important;
-    display: block !important;
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  left: 7% !important;
+  right: 7% !important;
+  top: calc(100% - 2px) !important;
+  height: 28px !important;
+  z-index: 3;
+  pointer-events: none;
 
-    position: absolute !important;
-    left: 5% !important;
-    right: 5% !important;
-    top: calc(100% - 3px) !important;
-    height: 30px !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 45' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='i' x1='0' y1='0' x2='.25' y2='1'%3E%3Cstop stop-color='%23f5fdff' stop-opacity='.92'/%3E%3Cstop offset='.3' stop-color='%23a5d6e9' stop-opacity='.72'/%3E%3Cstop offset='.75' stop-color='%236db2ce' stop-opacity='.35'/%3E%3Cstop offset='1' stop-color='%23e5faff' stop-opacity='.1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23i)' stroke='%23d5f4ff' stroke-opacity='.5' d='M0 0 Q22 3 38 2 Q43 3 45 10 Q47 21 48 41 Q50 44 51 37 L55 12 Q57 3 65 3 L88 2 Q94 3 96 10 L100 24 Q102 28 104 21 L107 9 Q110 3 117 3 L143 2 Q148 3 150 10 L153 36 Q155 42 157 35 L162 12 Q165 3 173 3 L195 2 Q200 3 202 10 L205 22 Q207 26 209 19 L212 9 Q215 3 221 3 L237 2 Q243 3 245 11 L249 39 Q251 44 253 36 L257 7 L260 2 Z'/%3E%3Cpath fill='none' stroke='white' stroke-opacity='.72' stroke-width='1.5' d='M48 8 Q49 19 49 34 M154 8 L155 33 M250 9 L251 33 M101 8 L102 20 M206 8 L207 18'/%3E%3C/svg%3E") !important;
 
-    pointer-events: none !important;
-    z-index: 3 !important;
-
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 44' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='ice' x1='0' y1='0' x2='0.25' y2='1'%3E%3Cstop stop-color='%23f4fdff' stop-opacity='.96'/%3E%3Cstop offset='.28' stop-color='%23a9dcf1' stop-opacity='.76'/%3E%3Cstop offset='.75' stop-color='%2369b5d5' stop-opacity='.33'/%3E%3Cstop offset='1' stop-color='%23e4faff' stop-opacity='.12'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23ice)' stroke='%23d7f5ff' stroke-opacity='.52' stroke-width='.8' d='M0 0 C14 2 24 1 37 2 C42 3 42 8 44 16 C46 26 47 36 49 42 C51 36 52 22 54 13 C55 8 57 5 63 4 C77 3 84 2 96 3 C101 4 102 9 103 14 L105 25 L108 12 Q110 4 117 3 L139 3 Q143 4 145 10 L148 33 Q150 39 152 32 L157 12 Q159 4 168 3 L191 2 Q197 4 199 11 L201 20 Q203 23 205 18 L208 8 Q210 4 216 3 L236 3 Q243 4 245 11 L248 39 Q250 43 252 37 L257 12 Q259 5 266 4 L283 3 Q290 3 292 9 L295 20 L298 5 L300 2 Z'/%3E%3Cpath fill='none' stroke='%23fff' stroke-opacity='.78' stroke-width='1.5' stroke-linecap='round' d='M48 7 Q49 20 49 35 M150 7 L150 30 M250 8 L250 34 M105 7 L106 18 M294 7 L295 15'/%3E%3C/svg%3E") !important;
-
-    background-repeat: no-repeat !important;
-    background-position: top center !important;
-    background-size: 100% 100% !important;
-
-    filter:
-        drop-shadow(0 2px 2px rgba(129,206,243,.3))
-        drop-shadow(0 0 3px rgba(173,228,250,.22)) !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
+  filter: drop-shadow(0 2px 3px rgba(132,211,242,.35));
 }
 
-/* ZLATNI SJAJ NA AKTIVNOJ KATEGORIJI */
+/* Zlatni sjaj na aktivnoj kategoriji */
 header nav > a[aria-current="page"],
 header nav > a.winter-active,
 header nav > .dropdown > a[aria-current="page"] {
-    color: #f7dfab !important;
-    border-color: rgba(241,193,115,.9) !important;
-
-    background:
-        linear-gradient(
-            160deg,
-            rgba(148,102,42,.2),
-            rgba(15,27,30,.9) 60%,
-            rgba(99,65,24,.2)
-        ) !important;
-
-    box-shadow:
-        inset 0 1px 2px rgba(255,231,179,.48),
-        0 0 14px rgba(243,182,92,.26),
-        0 3px 12px rgba(0,0,0,.4) !important;
+  color: #f7dcaa !important;
+  border-color: #dcb979 !important;
+  background:
+    linear-gradient(165deg,
+      rgba(154,109,48,.28),
+      rgba(13,28,30,.93) 55%,
+      rgba(115,79,35,.23)) !important;
+  box-shadow:
+    inset 0 1px 3px rgba(255,226,169,.45),
+    0 0 17px rgba(239,180,91,.38),
+    0 5px 14px rgba(0,0,0,.4) !important;
 }
 
-/* HOVER */
 header nav > a:hover,
 header nav > .dropdown > a:hover,
 header nav > .dropdown > .nav-drop:hover {
-    color: #fff !important;
-    transform: translateY(-2px) !important;
-
-    border-color: rgba(233,250,255,.95) !important;
-
-    box-shadow:
-        inset 0 2px 3px rgba(255,255,255,.4),
-        inset 0 -3px 7px rgba(139,218,249,.3),
-        0 0 18px rgba(153,218,249,.28),
-        0 5px 15px rgba(0,0,0,.4) !important;
+  transform: translateY(-2px) !important;
+  border-color: #f1fcff !important;
+  box-shadow:
+    inset 0 2px 3px rgba(255,255,255,.4),
+    0 0 20px rgba(157,223,250,.38),
+    0 6px 16px rgba(0,0,0,.4) !important;
 }
 
-/* Razmak za ledenice na desktopu */
-@media (min-width: 769px) {
-    header nav {
-        padding-top: 8px !important;
-        padding-bottom: 25px !important;
-        row-gap: 25px !important;
-    }
+/* Razmak za ledenice */
+@media (min-width:769px) {
+  header nav {
+    padding-top: 9px !important;
+    padding-bottom: 28px !important;
+    row-gap: 28px !important;
+  }
 }
 
-/* MOBILNA VERZIJA */
-@media (max-width: 768px) {
-    header nav > a,
-    header nav > .dropdown > a,
-    header nav > .dropdown > .nav-drop {
-        border-radius: 13px !important;
-        margin-bottom: 8px !important;
-    }
-
-    header nav > a::before,
-    header nav > .dropdown > a::before,
-    header nav > .dropdown > .nav-drop::before {
-        top: -4px !important;
-        height: 8px !important;
-    }
-
-    header nav > a::after,
-    header nav > .dropdown > a::after,
-    header nav > .dropdown > .nav-drop::after {
-        height: 12px !important;
-        opacity: .7 !important;
-    }
-
-    header nav {
-        row-gap: 10px !important;
-    }
+/* Zimski detalji u gornjim uglovima */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 165px;
+  height: 115px;
+  z-index: 10001;
+  pointer-events: none;
+  opacity: .42;
+  background:
+    radial-gradient(ellipse at 0 0,rgba(225,245,252,.3),transparent 70%),
+    repeating-linear-gradient(
+      135deg,
+      transparent 0 17px,
+      rgba(208,235,245,.11) 18px 19px,
+      transparent 20px 34px
+    );
+  mask-image: linear-gradient(135deg,#000,transparent 75%);
 }
 
-@media (prefers-reduced-motion: reduce) {
-    header nav > a,
-    header nav > .dropdown > a,
-    header nav > .dropdown > .nav-drop {
-        transition: none !important;
-    }
+/* Snijeg mora biti IZNAD navigacije */
+#oliv-snow-canvas {
+  z-index: 2147483640 !important;
+  pointer-events: none !important;
+}
+
+/* Mobilna verzija */
+@media (max-width:768px) {
+  header nav > a,
+  header nav > .dropdown > a,
+  header nav > .dropdown > .nav-drop {
+    border-radius: 12px !important;
+    margin-bottom: 9px !important;
+  }
+
+  header nav > a::before,
+  header nav > .dropdown > a::before,
+  header nav > .dropdown > .nav-drop::before {
+    top: -4px !important;
+    height: 8px !important;
+  }
+
+  header nav > a::after,
+  header nav > .dropdown > a::after,
+  header nav > .dropdown > .nav-drop::after {
+    height: 13px !important;
+  }
+
+  header nav {
+    row-gap: 10px !important;
+  }
+
+  body::after {
+    width: 90px;
+    height: 65px;
+    opacity: .25;
+  }
 }
